@@ -5,3 +5,119 @@
 2026-10-03 09:07:10 | [32mINFO    [0m | core.logger:201 | ============================================================
 2026-10-03 09:07:13 | [32mINFO    [0m | knowledge_base.vector_store:148 | VectorStore (ChromaDB) initialized LOCAL: path=E:\CampusPulse\python_service\data\chroma_db
 2026-10-03 09:07:13 | [32mINFO    [0m | knowledge_base.vector_store:158 | Collection 'user_data' ready — 0 documents
+2026-10-03 09:28:34 | [32mINFO    [0m | core.logger:197 | ============================================================
+2026-10-03 09:28:34 | [32mINFO    [0m | core.logger:198 | Logging initialized successfully
+2026-10-03 09:28:34 | [32mINFO    [0m | core.logger:199 |   Log level : INFO
+2026-10-03 09:28:34 | [32mINFO    [0m | core.logger:200 |   Log file  : logs\agent.log
+2026-10-03 09:28:34 | [32mINFO    [0m | core.logger:201 | ============================================================
+2026-10-03 09:28:36 | [32mINFO    [0m | knowledge_base.vector_store:148 | VectorStore (ChromaDB) initialized LOCAL: path=E:\CampusPulse\python_service\data\chroma_db
+2026-10-03 09:28:36 | [32mINFO    [0m | knowledge_base.vector_store:158 | Collection 'student_data' ready — 0 documents
+2026-10-03 09:28:52 | [32mINFO    [0m | core.logger:197 | ============================================================
+2026-10-03 09:28:52 | [32mINFO    [0m | core.logger:198 | Logging initialized successfully
+2026-10-03 09:28:52 | [32mINFO    [0m | core.logger:199 |   Log level : INFO
+2026-10-03 09:28:52 | [32mINFO    [0m | core.logger:200 |   Log file  : logs\agent.log
+2026-10-03 09:28:52 | [32mINFO    [0m | core.logger:201 | ============================================================
+2026-10-03 09:28:53 | [32mINFO    [0m | knowledge_base.vector_store:148 | VectorStore (ChromaDB) initialized LOCAL: path=E:\CampusPulse\python_service\data\chroma_db
+2026-10-03 09:28:53 | [32mINFO    [0m | knowledge_base.vector_store:158 | Collection 'student_data' ready — 0 documents
+2026-10-03 09:28:53 | [32mINFO    [0m | knowledge_base.document_loader:393 | Loading PDF: data.pdf with chunk_size=1200
+2026-10-03 09:28:55 | [32mINFO    [0m | knowledge_base.document_loader:454 | Loaded 6 chunks from data.pdf
+2026-10-03 09:39:46 | [32mINFO    [0m | core.logger:197 | ============================================================
+2026-10-03 09:39:46 | [32mINFO    [0m | core.logger:198 | Logging initialized successfully
+2026-10-03 09:39:46 | [32mINFO    [0m | core.logger:199 |   Log level : INFO
+2026-10-03 09:39:46 | [32mINFO    [0m | core.logger:200 |   Log file  : logs\agent.log
+2026-10-03 09:39:46 | [32mINFO    [0m | core.logger:201 | ============================================================
+2026-10-03 09:39:48 | [32mINFO    [0m | knowledge_base.vector_store:148 | VectorStore (ChromaDB) initialized LOCAL: path=E:\CampusPulse\python_service\data\chroma_db
+2026-10-03 09:39:48 | [32mINFO    [0m | knowledge_base.vector_store:158 | Collection 'student_data' ready — 0 documents
+2026-10-03 09:39:48 | [32mINFO    [0m | knowledge_base.document_loader:393 | Loading PDF: data.pdf with chunk_size=1200
+2026-10-03 09:39:48 | [32mINFO    [0m | knowledge_base.document_loader:454 | Loaded 6 chunks from data.pdf
+2026-10-03 09:39:50 | [32mINFO    [0m | knowledge_base.embed:204 | GeminiEmbedder initialized: model=gemini-embedding-2, dimension=3072, batch_size=25
+2026-10-03 09:39:50 | [32mINFO    [0m | knowledge_base.embed:502 | Default Gemini embedder registered successfully
+2026-10-03 09:39:50 | [32mINFO    [0m | knowledge_base.embed:312 | Embedding 6 texts in 1 batch(es) of max 25
+2026-10-03 09:39:52 | [32mINFO    [0m | knowledge_base.embed:354 | Embedding complete: 6 vectors (3072D each)
+2026-10-03 09:39:52 | [32mINFO    [0m | knowledge_base.vector_store:234 | Adding 6 documents to collection 'student_data'
+2026-10-03 09:41:43 | [32mINFO    [0m | core.logger:197 | ============================================================
+2026-10-03 09:41:43 | [32mINFO    [0m | core.logger:198 | Logging initialized successfully
+2026-10-03 09:41:43 | [32mINFO    [0m | core.logger:199 |   Log level : INFO
+2026-10-03 09:41:43 | [32mINFO    [0m | core.logger:200 |   Log file  : logs\agent.log
+2026-10-03 09:41:43 | [32mINFO    [0m | core.logger:201 | ============================================================
+2026-10-03 09:41:45 | [32mINFO    [0m | knowledge_base.vector_store:148 | VectorStore (ChromaDB) initialized LOCAL: path=E:\CampusPulse\python_service\data\chroma_db
+2026-10-03 09:43:04 | [32mINFO    [0m | core.logger:197 | ============================================================
+2026-10-03 09:43:04 | [32mINFO    [0m | core.logger:198 | Logging initialized successfully
+2026-10-03 09:43:04 | [32mINFO    [0m | core.logger:199 |   Log level : INFO
+2026-10-03 09:43:04 | [32mINFO    [0m | core.logger:200 |   Log file  : logs\agent.log
+2026-10-03 09:43:04 | [32mINFO    [0m | core.logger:201 | ============================================================
+2026-10-03 09:43:06 | [32mINFO    [0m | knowledge_base.vector_store:148 | VectorStore (ChromaDB) initialized LOCAL: path=E:\CampusPulse\python_service\data\chroma_db
+2026-10-03 09:43:06 | [32mINFO    [0m | knowledge_base.vector_store:158 | Collection 'student_data' ready — 0 documents
+2026-10-03 09:43:06 | [32mINFO    [0m | knowledge_base.document_loader:393 | Loading PDF: data.pdf with chunk_size=1200
+2026-10-03 09:43:06 | [32mINFO    [0m | knowledge_base.document_loader:454 | Loaded 6 chunks from data.pdf
+2026-10-03 09:43:07 | [32mINFO    [0m | knowledge_base.embed:204 | GeminiEmbedder initialized: model=gemini-embedding-2, dimension=3072, batch_size=25
+2026-10-03 09:43:07 | [32mINFO    [0m | knowledge_base.embed:502 | Default Gemini embedder registered successfully
+2026-10-03 09:43:07 | [32mINFO    [0m | knowledge_base.embed:312 | Embedding 6 texts in 1 batch(es) of max 25
+2026-10-03 09:43:09 | [32mINFO    [0m | knowledge_base.embed:354 | Embedding complete: 6 vectors (3072D each)
+2026-10-03 09:43:09 | [32mINFO    [0m | knowledge_base.vector_store:234 | Adding 6 documents to collection 'student_data'
+2026-10-03 09:44:34 | [32mINFO    [0m | core.logger:197 | ============================================================
+2026-10-03 09:44:34 | [32mINFO    [0m | core.logger:198 | Logging initialized successfully
+2026-10-03 09:44:34 | [32mINFO    [0m | core.logger:199 |   Log level : INFO
+2026-10-03 09:44:34 | [32mINFO    [0m | core.logger:200 |   Log file  : logs\agent.log
+2026-10-03 09:44:34 | [32mINFO    [0m | core.logger:201 | ============================================================
+2026-10-03 09:44:35 | [32mINFO    [0m | knowledge_base.vector_store:148 | VectorStore (ChromaDB) initialized LOCAL: path=E:\CampusPulse\python_service\data\chroma_db
+2026-10-03 09:45:47 | [32mINFO    [0m | core.logger:197 | ============================================================
+2026-10-03 09:45:47 | [32mINFO    [0m | core.logger:198 | Logging initialized successfully
+2026-10-03 09:45:47 | [32mINFO    [0m | core.logger:199 |   Log level : INFO
+2026-10-03 09:45:47 | [32mINFO    [0m | core.logger:200 |   Log file  : logs\agent.log
+2026-10-03 09:45:47 | [32mINFO    [0m | core.logger:201 | ============================================================
+2026-10-03 09:45:48 | [32mINFO    [0m | knowledge_base.vector_store:148 | VectorStore (ChromaDB) initialized LOCAL: path=E:\CampusPulse\python_service\data\chroma_db
+2026-10-03 09:46:54 | INFO     | core.logger:197 | ============================================================
+2026-10-03 09:46:54 | INFO     | core.logger:198 | Logging initialized successfully
+2026-10-03 09:46:54 | INFO     | core.logger:199 |   Log level : INFO
+2026-10-03 09:46:54 | INFO     | core.logger:200 |   Log file  : logs\agent.log
+2026-10-03 09:46:54 | INFO     | core.logger:201 | ============================================================
+2026-10-03 09:47:09 | INFO     | core.logger:197 | ============================================================
+2026-10-03 09:47:09 | INFO     | core.logger:198 | Logging initialized successfully
+2026-10-03 09:47:09 | INFO     | core.logger:199 |   Log level : INFO
+2026-10-03 09:47:09 | INFO     | core.logger:200 |   Log file  : logs\agent.log
+2026-10-03 09:47:09 | INFO     | core.logger:201 | ============================================================
+2026-10-03 09:47:42 | INFO     | core.logger:197 | ============================================================
+2026-10-03 09:47:42 | INFO     | core.logger:198 | Logging initialized successfully
+2026-10-03 09:47:42 | INFO     | core.logger:199 |   Log level : INFO
+2026-10-03 09:47:42 | INFO     | core.logger:200 |   Log file  : logs\agent.log
+2026-10-03 09:47:42 | INFO     | core.logger:201 | ============================================================
+2026-10-03 09:53:02 | [32mINFO    [0m | core.logger:197 | ============================================================
+2026-10-03 09:53:02 | [32mINFO    [0m | core.logger:198 | Logging initialized successfully
+2026-10-03 09:53:02 | [32mINFO    [0m | core.logger:199 |   Log level : INFO
+2026-10-03 09:53:02 | [32mINFO    [0m | core.logger:200 |   Log file  : logs\agent.log
+2026-10-03 09:53:02 | [32mINFO    [0m | core.logger:201 | ============================================================
+2026-10-03 09:53:03 | [32mINFO    [0m | knowledge_base.vector_store:148 | VectorStore (ChromaDB) initialized LOCAL: path=E:\CampusPulse\python_service\data\chroma_db
+2026-10-03 09:53:03 | [32mINFO    [0m | knowledge_base.vector_store:158 | Collection 'student_data' ready — 0 documents
+2026-10-03 09:53:04 | [32mINFO    [0m | knowledge_base.embed:204 | GeminiEmbedder initialized: model=gemini-embedding-2, dimension=3072, batch_size=25
+2026-10-03 09:53:04 | [32mINFO    [0m | knowledge_base.embed:502 | Default Gemini embedder registered successfully
+2026-10-03 09:53:04 | [32mINFO    [0m | knowledge_base.document_loader:393 | Loading PDF: data.pdf with chunk_size=1200
+2026-10-03 09:53:05 | [32mINFO    [0m | knowledge_base.document_loader:454 | Loaded 6 chunks from data.pdf
+2026-10-03 09:53:05 | [32mINFO    [0m | knowledge_base.embed:312 | Embedding 6 texts in 1 batch(es) of max 25
+2026-10-03 09:53:07 | [32mINFO    [0m | knowledge_base.embed:354 | Embedding complete: 6 vectors (3072D each)
+2026-10-03 09:53:07 | [32mINFO    [0m | knowledge_base.vector_store:234 | Adding 6 documents to collection 'student_data'
+2026-10-03 09:54:08 | INFO     | core.logger:197 | ============================================================
+2026-10-03 09:54:08 | INFO     | core.logger:198 | Logging initialized successfully
+2026-10-03 09:54:08 | INFO     | core.logger:199 |   Log level : INFO
+2026-10-03 09:54:08 | INFO     | core.logger:200 |   Log file  : logs\agent.log
+2026-10-03 09:54:08 | INFO     | core.logger:201 | ============================================================
+2026-10-03 09:54:28 | INFO     | core.logger:197 | ============================================================
+2026-10-03 09:54:28 | INFO     | core.logger:198 | Logging initialized successfully
+2026-10-03 09:54:28 | INFO     | core.logger:199 |   Log level : INFO
+2026-10-03 09:54:28 | INFO     | core.logger:200 |   Log file  : logs\agent.log
+2026-10-03 09:54:28 | INFO     | core.logger:201 | ============================================================
+2026-10-03 10:05:04 | [32mINFO    [0m | core.logger:197 | ============================================================
+2026-10-03 10:05:04 | [32mINFO    [0m | core.logger:198 | Logging initialized successfully
+2026-10-03 10:05:04 | [32mINFO    [0m | core.logger:199 |   Log level : INFO
+2026-10-03 10:05:04 | [32mINFO    [0m | core.logger:200 |   Log file  : logs\agent.log
+2026-10-03 10:05:04 | [32mINFO    [0m | core.logger:201 | ============================================================
+2026-10-03 10:05:13 | [32mINFO    [0m | knowledge_base.vector_store:148 | VectorStore (ChromaDB) initialized LOCAL: path=E:\CampusPulse\python_service\data\chroma_db
+2026-10-03 10:05:13 | [32mINFO    [0m | knowledge_base.vector_store:158 | Collection 'student_data' ready — 0 documents
+2026-10-03 10:05:15 | [32mINFO    [0m | knowledge_base.embed:204 | GeminiEmbedder initialized: model=gemini-embedding-2, dimension=3072, batch_size=25
+2026-10-03 10:05:15 | [32mINFO    [0m | knowledge_base.embed:502 | Default Gemini embedder registered successfully
+2026-10-03 10:05:15 | [32mINFO    [0m | knowledge_base.document_loader:393 | Loading PDF: data.pdf with chunk_size=1200
+2026-10-03 10:05:19 | [32mINFO    [0m | knowledge_base.document_loader:454 | Loaded 6 chunks from data.pdf
+2026-10-03 10:05:19 | [32mINFO    [0m | knowledge_base.embed:312 | Embedding 6 texts in 1 batch(es) of max 25
+2026-10-03 10:05:21 | [32mINFO    [0m | knowledge_base.embed:354 | Embedding complete: 6 vectors (3072D each)
+2026-10-03 10:05:21 | [32mINFO    [0m | knowledge_base.vector_store:234 | Adding 6 documents to collection 'student_data'
+2026-10-03 10:05:21 | [32mINFO    [0m | knowledge_base.vector_store:271 | Successfully added 6 documents to 'student_data' (total: 6)
