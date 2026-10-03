@@ -147,7 +147,6 @@ func main() {
 		reportHandler.DeleteMine,
 	)
 
-
 	// STAFF INCIDENT ROUTES
 	staffIncidents := protected.Group("/incidents")
 

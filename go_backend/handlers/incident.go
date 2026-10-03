@@ -148,8 +148,7 @@ func (h *IncidentHandler) UpdateStatus(
 		c.JSON(
 			http.StatusBadRequest,
 			gin.H{
-				"error":
-				"invalid status request",
+				"error": "invalid status request",
 			},
 		)
 

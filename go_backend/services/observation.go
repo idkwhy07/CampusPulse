@@ -340,11 +340,9 @@ func reportView(
 				&IncidentTracking{
 					ID: *item.IncidentID,
 
-					Status:
-					*item.IncidentStatus,
+					Status: *item.IncidentStatus,
 
-					Confidence:
-					*item.IncidentConfidence,
+					Confidence: *item.IncidentConfidence,
 				}
 		}
 	}
