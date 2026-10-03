@@ -41,7 +41,7 @@ class SearchIndex:
         """
         embed_cache: dict[str, list[float]] | None
             Cache dùng chung qua nhiều lần sync, khoá là hash(chunk_text).
-            Chunk đã có trong cache thì không gọi Ollama lại.
+            Chunk đã có trong cache thì không gọi Gemini API lại.
             Truyền None để tắt cache (hành vi cũ).
         """
         self.docs = [(r.report_id, text) for r in reports for text in chunks(r)]

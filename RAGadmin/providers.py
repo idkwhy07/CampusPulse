@@ -131,42 +131,6 @@ Không suy ra tổng số toàn hệ thống từ các kết quả tìm kiếm n
         return {"answer": answer, "report_ids": sorted(all_ids)}
 
 
-class OllamaProvider(BaseAIProvider):
-    def __init__(self, settings):
-        self.settings = settings
-
-    def post(self, endpoint, payload):
-        with httpx.Client(timeout=self.settings.timeout, trust_env=False) as client:
-            response = client.post(self.settings.ollama_url + endpoint, json=payload)
-            response.raise_for_status()
-            return response.json()
-
-    def structured(self, system, payload, schema):
-        response = self.post("/api/generate", {
-            "model": self.settings.chat_model, "stream": False,
-            "system": system, "prompt": json.dumps(payload, ensure_ascii=False),
-            "format": schema, "options": {"temperature": 0, "num_ctx": 16384},
-        })
-        if response.get("done") is not True or response.get("done_reason") == "length":
-            raise ValueError("Mô hình chưa hoàn tất câu trả lời")
-        return json.loads(response["response"])
-
-    def embed(self, texts):
-        vectors = self.post("/api/embed", {
-            "model": self.settings.embed_model, "input": texts, "truncate": False,
-        })["embeddings"]
-        if not isinstance(vectors, list) or len(vectors) != len(texts):
-            raise ValueError("Thiếu embedding")
-        for v in vectors:
-            if (not isinstance(v, list) or not v or
-                any(type(x) not in (int, float) or not math.isfinite(x) for x in v)
-                or not any(v)):
-                raise ValueError("Embedding không hợp lệ")
-        if len({len(v) for v in vectors}) > 1:
-            raise ValueError("Kích thước embedding không nhất quán")
-        return vectors
-
-
 class DeepSeekGeminiProvider(BaseAIProvider):
     """
     Provider kết hợp:
@@ -270,6 +234,4 @@ CloudProvider = DeepSeekGeminiProvider
 def get_provider(settings):
     if settings.ai_mode in {"cloud", "deepseek"}:
         return DeepSeekGeminiProvider(settings)
-    elif settings.ai_mode == "ollama":
-        return OllamaProvider(settings)
     return None

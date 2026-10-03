@@ -25,7 +25,7 @@ class ConfusedProvider:
     ('co bao nhieu phan anh ve mang o H1?', 'phản ánh', 4),
 ])
 def test_exact_user_entity_wins_over_wrong_llm(question,entity,expected):
-    settings=Settings(ai_mode='ollama',ai_required=True)
+    settings = Settings(ai_mode='cloud', gemini_api_key='fake', deepseek_api_key='fake', ai_required=True)
     bot=Chatbot(settings,FileReportSource(settings.reports_path),ConfusedProvider())
     bot.sync()
     result=bot.chat(question)

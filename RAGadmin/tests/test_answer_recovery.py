@@ -3,14 +3,14 @@ import pytest
 
 from ai_errors import explain_ai_error
 from config import Settings
-from providers import NO_EVIDENCE, OllamaProvider
+from providers import NO_EVIDENCE, BaseAIProvider, DeepSeekGeminiProvider
 from rag import Chatbot
 from sources import FileReportSource
 
 
 def test_citations_attached_by_code():
     data = {'insufficient_evidence':False,'sections':[{'text':'Wi-Fi chập chờn.', 'report_ids':[1,2]}]}
-    result = OllamaProvider.assemble_answer(data,{1,2})
+    result = BaseAIProvider.assemble_answer(data,{1,2})
     assert '[PA1]' in result['answer'] and '[PA2]' in result['answer']
     Chatbot.validate_answer(result,{1,2})
 
@@ -18,17 +18,17 @@ def test_citations_attached_by_code():
 def test_unknown_citation_rejected():
     data = {'insufficient_evidence':False,'sections':[{'text':'Wi-Fi chập chờn.', 'report_ids':[999]}]}
     with pytest.raises(ValueError):
-        OllamaProvider.assemble_answer(data,{1,2})
+        BaseAIProvider.assemble_answer(data,{1,2})
 
 
 def test_no_evidence_not_treated_as_failure():
-    result = OllamaProvider.assemble_answer({'insufficient_evidence':True,'sections':[]},{1})
+    result = BaseAIProvider.assemble_answer({'insufficient_evidence':True,'sections':[]},{1})
     assert result['answer'] == NO_EVIDENCE
     Chatbot.validate_answer(result,{1})
 
 
 def test_invalid_output_retried_once(monkeypatch):
-    provider = OllamaProvider(Settings())
+    provider = DeepSeekGeminiProvider(Settings(ai_mode='cloud', gemini_api_key='fake', deepseek_api_key='fake'))
     calls = []
     def structured(*args):
         calls.append(args)
@@ -49,7 +49,7 @@ def test_errors_distinguished():
 
 
 def test_timeout_not_retried(monkeypatch):
-    provider=OllamaProvider(Settings())
+    provider = DeepSeekGeminiProvider(Settings(ai_mode='cloud', gemini_api_key='fake', deepseek_api_key='fake'))
     calls=[]
     def fail(*args):
         calls.append(1)

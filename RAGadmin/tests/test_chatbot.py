@@ -8,7 +8,7 @@ from fastapi.testclient import TestClient
 
 from app import create_app
 from config import BASE, Settings
-from providers import OllamaProvider
+from providers import DeepSeekGeminiProvider
 from query import parse_query
 from rag import Chatbot
 from sources import FileReportSource
@@ -165,18 +165,16 @@ def test_provider_http_contract(settings, monkeypatch):
     def handle(req):
         payload = json.loads(req.content)
         requests.append((req.url.path, payload))
-        if req.url.path == '/api/embed':
-            return httpx.Response(200, json={'embeddings':[[1.0,0.0] for _ in payload['input']]})
-        return httpx.Response(200, json={'done':True, 'response':json.dumps({'insufficient_evidence':False,'sections':[{'text':'Nguồn','report_ids':[1]}]})})
+        if "batchEmbedContents" in req.url.path:
+            return httpx.Response(200, json={'embeddings':[{'values':[1.0,0.0]} for _ in payload['requests']]})
+        return httpx.Response(200, json={'choices': [{'finish_reason': 'stop', 'message': {'content': json.dumps({'insufficient_evidence':False,'sections':[{'text':'Nguồn','report_ids':[1]}]})}}]})
     real_client = httpx.Client
     monkeypatch.setattr(httpx, 'Client', lambda **kw: real_client(transport=httpx.MockTransport(handle), **kw))
-    provider = OllamaProvider(settings)
+    cloud_settings = replace(settings, ai_mode="cloud", gemini_api_key="test_gemini", deepseek_api_key="test_deepseek")
+    provider = DeepSeekGeminiProvider(cloud_settings)
     assert provider.embed(['abc']) == [[1.0,0.0]]
     reports = FileReportSource(settings.reports_path).load_reports()[:1]
     assert provider.answer('Wifi?', reports)['report_ids'] == [1]
-    assert requests[0][1]['truncate'] is False
-    assert requests[1][1]['stream'] is False
-    assert 'KHÔNG ĐÁNG TIN' in requests[1][1]['system']
 
 
 def test_api_and_ui(settings):

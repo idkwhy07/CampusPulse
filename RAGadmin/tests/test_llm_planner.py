@@ -7,7 +7,7 @@ from fastapi.testclient import TestClient
 from app import create_app
 from config import BASE, Settings
 from planner import QueryPlan
-from providers import OllamaProvider
+from providers import DeepSeekGeminiProvider
 from query import Query
 from rag import AIUnavailable, Chatbot
 from sources import FileReportSource
@@ -23,8 +23,9 @@ def plan_data(**changes):
 
 
 def test_validated_multi_building_date_plan():
+    reports_file = (BASE / 'data/mock_reports.json') if (BASE / 'data/mock_reports.json').exists() else (BASE / 'data/phananh.json')
     query = QueryPlan.model_validate(plan_data(buildings=['h1','h2'], start_day='2026-10-01', end_day='2026-10-02')).to_query()
-    reports = FileReportSource(BASE / 'data/mock_reports.json').load_reports()
+    reports = FileReportSource(reports_file).load_reports()
     assert len([r for r in reports if query.accepts(r)]) == 13
     with pytest.raises(ValueError):
         QueryPlan.model_validate(plan_data(kind='run_sql'))
@@ -59,7 +60,7 @@ class NaturalProvider:
 
 
 def make_bot(provider, required=True):
-    settings = Settings(ai_mode='ollama', ai_required=required)
+    settings = Settings(ai_mode='cloud', gemini_api_key='fake', deepseek_api_key='fake', ai_required=required)
     bot = Chatbot(settings, FileReportSource(settings.reports_path), provider)
     bot.sync()
     return bot
@@ -93,20 +94,21 @@ def test_required_ai_never_silently_falls_back():
 
 
 def test_plan_provider_contract(monkeypatch):
-    p = OllamaProvider(Settings())
+    p = DeepSeekGeminiProvider(Settings(ai_mode='cloud', gemini_api_key='fake', deepseek_api_key='fake'))
     calls = []
-    def post(endpoint, payload):
-        calls.append(payload)
-        return {'done':True, 'response':json.dumps(plan_data(buildings=['H1']))}
-    monkeypatch.setattr(p, 'post', post)
+    def structured(system, payload, schema):
+        calls.append((payload, schema))
+        return plan_data(buildings=['H1'])
+    monkeypatch.setattr(p, 'structured', structured)
     assert p.plan('H1 sao hay rớt mạng?').buildings == ['H1']
-    assert calls[0]['format']['properties']['kind']
-    assert 'today' in json.loads(calls[0]['prompt'])
+    assert calls[0][1]['properties']['kind']
+    assert 'today' in calls[0][0]
 
 
 def test_classification_requires_complete_unique_decisions(monkeypatch):
-    p = OllamaProvider(Settings())
-    reports = FileReportSource(BASE/'data/mock_reports.json').load_reports()[:2]
+    p = DeepSeekGeminiProvider(Settings(ai_mode='cloud', gemini_api_key='fake', deepseek_api_key='fake'))
+    reports_file = (BASE / 'data/mock_reports.json') if (BASE / 'data/mock_reports.json').exists() else (BASE / 'data/phananh.json')
+    reports = FileReportSource(reports_file).load_reports()[:2]
     monkeypatch.setattr(p, 'structured', lambda *args: {'decisions':[{'report_id':1,'matches':True}]})
     with pytest.raises(ValueError):
         p.filter_reports('wifi', reports)
@@ -115,7 +117,7 @@ def test_classification_requires_complete_unique_decisions(monkeypatch):
 
 
 def test_api_reports_ai_error():
-    settings = Settings(ai_mode='ollama', ai_required=True)
+    settings = Settings(ai_mode='cloud', gemini_api_key='fake', deepseek_api_key='fake', ai_required=True)
     with TestClient(create_app(settings, NaturalProvider(fail_plan=True))) as client:
         response = client.post('/internal/admin/chat', json={'question':'wifi H1'})
         assert response.status_code == 503

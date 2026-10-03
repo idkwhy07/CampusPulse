@@ -9,7 +9,7 @@ BASE = Path(__file__).resolve().parent
 
 @dataclass(frozen=True)
 class Settings:
-    reports_path: Path = BASE / "data/mock_reports.json"
+    reports_path: Path = BASE / "data/phananh.json"
     app_mode: str = "demo"
     data_mode: str = "mock"
     api_key: str = ""
@@ -25,7 +25,7 @@ class Settings:
     @classmethod
     def from_env(cls):
         load_dotenv(BASE / ".env")
-        path = Path(os.getenv("REPORTS_PATH", "data/mock_reports.json"))
+        path = Path(os.getenv("REPORTS_PATH", "data/phananh.json"))
         return cls(
             reports_path=path if path.is_absolute() else BASE / path,
             app_mode=os.getenv("APP_MODE", "demo"),

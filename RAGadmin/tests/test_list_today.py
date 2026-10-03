@@ -26,7 +26,7 @@ class WrongSearchProvider:
 ])
 def test_list_today_complete_even_when_model_misroutes(question, monkeypatch):
     monkeypatch.setattr(planner,'parse_query',lambda q:parse_query(q,today=date(2026,10,2)))
-    settings=Settings(ai_mode='ollama',ai_required=True)
+    settings = Settings(ai_mode='cloud', gemini_api_key='fake', deepseek_api_key='fake', ai_required=True)
     bot=Chatbot(settings,FileReportSource(settings.reports_path),WrongSearchProvider())
     bot.sync()
     result=bot.chat(question,top_k=1)
@@ -37,7 +37,7 @@ def test_list_today_complete_even_when_model_misroutes(question, monkeypatch):
 
 def test_tomorrow_does_not_pretend_old_data_is_today(monkeypatch):
     monkeypatch.setattr(planner,'parse_query',lambda q:parse_query(q,today=date(2026,10,3)))
-    settings=Settings(ai_mode='ollama',ai_required=True)
+    settings = Settings(ai_mode='cloud', gemini_api_key='fake', deepseek_api_key='fake', ai_required=True)
     bot=Chatbot(settings,FileReportSource(settings.reports_path),WrongSearchProvider())
     bot.sync()
     result=bot.chat('Hôm nay có những phản ánh gì?')

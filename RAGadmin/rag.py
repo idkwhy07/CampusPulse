@@ -49,7 +49,7 @@ class Chatbot:
                     mode = "semantic"
                 except Exception:
                     if self.settings.ai_required:
-                        raise AIUnavailable("Không tạo được embedding. Kiểm tra cấu hình AI (Ollama / Gemini API key) và EMBED_MODEL; AI_REQUIRED không cho phép chuyển sang từ khóa.")
+                        raise AIUnavailable("Không tạo được embedding. Kiểm tra cấu hình AI (Gemini API key) và EMBED_MODEL; AI_REQUIRED không cho phép chuyển sang từ khóa.")
                     logger.warning("Không tạo được embedding; dùng tìm kiếm từ khóa.")
                     index = SearchIndex(reports)
                     warning = "Embedding chưa sẵn sàng; đang dùng tìm kiếm từ khóa."
@@ -83,7 +83,7 @@ class Chatbot:
                 understanding_mode = "llm"
             except Exception:
                 if self.settings.ai_required:
-                    raise AIUnavailable("LLM chưa hiểu được câu hỏi hoặc không kết nối được. Kiểm tra cấu hình AI (CHAT_MODEL / API key / Ollama) rồi thử lại.")
+                    raise AIUnavailable("LLM chưa hiểu được câu hỏi hoặc không kết nối được. Kiểm tra cấu hình AI (CHAT_MODEL / DeepSeek API key) rồi thử lại.")
                 q = parse_query(question)
                 planner_warning = "LLM hiểu câu hỏi chưa sẵn sàng; đang dùng bộ quy tắc giới hạn."
         else:
