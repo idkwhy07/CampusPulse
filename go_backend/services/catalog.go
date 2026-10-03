@@ -111,3 +111,32 @@ func UIStatus(internal string) string {
 		return ""
 	}
 }
+
+func InternalStatus(labelOrCode string) (string, bool) {
+	value := strings.TrimSpace(labelOrCode)
+
+	switch value {
+	case "Chưa xử lý":
+		return "CONFIRMED", true
+
+	case "Đang xử lý":
+		return "IN_PROGRESS", true
+
+	case "Đã xử lý":
+		return "RESOLVED", true
+	}
+
+	upper := strings.ToUpper(value)
+
+	switch upper {
+	case "EMERGING",
+		"CONFIRMED",
+		"IN_PROGRESS",
+		"RESOLVED":
+
+		return upper, true
+
+	default:
+		return "", false
+	}
+}
