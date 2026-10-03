@@ -47,18 +47,32 @@ vector_store.add_documents(
 )
 print(f"  → Tổng documents trong ChromaDB: {vector_store.count()}")
 
-# ── Step 6: Query thử ──
+# ── Step 6: Hybrid Search (Dense + Sparse + RRF) ──
 print("=" * 60)
 query_text = "đại học xây dựng"
-print(f'Step 6: Query "{query_text}"...')
-query_embedding = embedder.embed(query_text)
-results = vector_store.query(query_embedding=query_embedding, n_results=5)
+print(f'Step 6: Hybrid Search "{query_text}"...')
 
-print(f"  → Tìm thấy {len(results.documents)} kết quả:")
-for i, (doc_id, doc, dist) in enumerate(zip(results.ids, results.documents, results.distances)):
-    print(f"\n  [{i+1}] ID: {doc_id}")
-    print(f"      Distance: {dist:.4f}")
-    print(f"      Content: {doc[:200]}...")
+from knowledge_base.hybrid_retrievel import HybridRetriever
+
+retriever = HybridRetriever()
+
+results = retriever.search(query=query_text, n_results=5)
+
+print(f"  → Mode: {results.mode}")
+print(f"  → Dense results: {results.dense_count}")
+print(f"  → Sparse results: {results.sparse_count}")
+print(f"  → Final results (after RRF): {len(results.documents)}")
+
+if results.is_empty:
+    print("  ⚠ Không tìm thấy kết quả nào!")
+else:
+    for i, (doc_id, doc, meta, score) in enumerate(
+        zip(results.ids, results.documents, results.metadatas, results.rrf_scores)
+    ):
+        print(f"\n  [{i+1}] ID: {doc_id}")
+        print(f"      RRF Score: {score:.6f}")
+        print(f"      Metadata: {meta}")
+        print(f"      Content: {doc[:300]}...")
 
 print("\n" + "=" * 60)
-print("Done!")
+print("Done!")

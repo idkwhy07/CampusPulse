@@ -121,3 +121,52 @@
 2026-10-03 10:05:21 | [32mINFO    [0m | knowledge_base.embed:354 | Embedding complete: 6 vectors (3072D each)
 2026-10-03 10:05:21 | [32mINFO    [0m | knowledge_base.vector_store:234 | Adding 6 documents to collection 'student_data'
 2026-10-03 10:05:21 | [32mINFO    [0m | knowledge_base.vector_store:271 | Successfully added 6 documents to 'student_data' (total: 6)
+2026-10-03 11:07:17 | INFO     | core.logger:197 | ============================================================
+2026-10-03 11:07:17 | INFO     | core.logger:198 | Logging initialized successfully
+2026-10-03 11:07:17 | INFO     | core.logger:199 |   Log level : INFO
+2026-10-03 11:07:17 | INFO     | core.logger:200 |   Log file  : logs\agent.log
+2026-10-03 11:07:17 | INFO     | core.logger:201 | ============================================================
+2026-10-03 11:10:20 | [32mINFO    [0m | core.logger:197 | ============================================================
+2026-10-03 11:10:20 | [32mINFO    [0m | core.logger:198 | Logging initialized successfully
+2026-10-03 11:10:20 | [32mINFO    [0m | core.logger:199 |   Log level : INFO
+2026-10-03 11:10:20 | [32mINFO    [0m | core.logger:200 |   Log file  : logs\agent.log
+2026-10-03 11:10:20 | [32mINFO    [0m | core.logger:201 | ============================================================
+2026-10-03 11:10:22 | [32mINFO    [0m | knowledge_base.vector_store:148 | VectorStore (ChromaDB) initialized LOCAL: path=E:\CampusPulse\python_service\data\chroma_db
+2026-10-03 11:10:22 | [32mINFO    [0m | knowledge_base.vector_store:158 | Collection 'student_data' ready — 0 documents
+2026-10-03 11:10:23 | [32mINFO    [0m | knowledge_base.embed:204 | GeminiEmbedder initialized: model=gemini-embedding-2, dimension=3072, batch_size=25
+2026-10-03 11:10:23 | [32mINFO    [0m | knowledge_base.embed:502 | Default Gemini embedder registered successfully
+2026-10-03 11:10:23 | [32mINFO    [0m | knowledge_base.document_loader:393 | Loading PDF: data.pdf with chunk_size=1200
+2026-10-03 11:10:23 | [32mINFO    [0m | knowledge_base.document_loader:454 | Loaded 6 chunks from data.pdf
+2026-10-03 11:10:23 | [32mINFO    [0m | knowledge_base.embed:312 | Embedding 6 texts in 1 batch(es) of max 25
+2026-10-03 11:10:25 | [32mINFO    [0m | knowledge_base.embed:354 | Embedding complete: 6 vectors (3072D each)
+2026-10-03 11:10:25 | [32mINFO    [0m | knowledge_base.vector_store:234 | Adding 6 documents to collection 'student_data'
+2026-10-03 11:10:25 | [32mINFO    [0m | knowledge_base.vector_store:271 | Successfully added 6 documents to 'student_data' (total: 6)
+2026-10-03 11:10:25 | [32mINFO    [0m | knowledge_base.vector_store:148 | VectorStore (ChromaDB) initialized LOCAL: path=E:\CampusPulse\python_service\data\chroma_db
+2026-10-03 11:10:25 | [32mINFO    [0m | knowledge_base.vector_store:158 | Collection 'student_data' ready — 6 documents
+2026-10-03 11:10:27 | [31mERROR   [0m | knowledge_base.supabase_bm25_storage:74 | Failed to init Supabase client: Invalid URL
+2026-10-03 11:10:29 | [32mINFO    [0m | core.redis:66 | Redis connected successfully | url=redis://default:VHo7VYbttkNVu7Wm7FLdm1XAByCQnCJP@carmine-bag-snowlit-93777.db.redis.io:17088
+2026-10-03 11:10:29 | [32mINFO    [0m | knowledge_base.cache_manager:92 | CacheManager initialized | L1: maxsize=100, ttl=1800s | L2: Redis TTL=86400s | Origin: Supabase available=False
+2026-10-03 11:10:29 | [32mINFO    [0m | knowledge_base.cache_manager:359 | Pub/Sub listener started on 'bm25:invalidate'
+2026-10-03 11:14:08 | [32mINFO    [0m | core.logger:197 | ============================================================
+2026-10-03 11:14:08 | [32mINFO    [0m | core.logger:198 | Logging initialized successfully
+2026-10-03 11:14:08 | [32mINFO    [0m | core.logger:199 |   Log level : INFO
+2026-10-03 11:14:08 | [32mINFO    [0m | core.logger:200 |   Log file  : logs\agent.log
+2026-10-03 11:14:08 | [32mINFO    [0m | core.logger:201 | ============================================================
+2026-10-03 11:14:10 | [32mINFO    [0m | knowledge_base.vector_store:148 | VectorStore (ChromaDB) initialized LOCAL: path=E:\CampusPulse\python_service\data\chroma_db
+2026-10-03 11:14:10 | [32mINFO    [0m | knowledge_base.vector_store:158 | Collection 'student_data' ready — 6 documents
+2026-10-03 11:14:10 | [32mINFO    [0m | knowledge_base.embed:204 | GeminiEmbedder initialized: model=gemini-embedding-2, dimension=3072, batch_size=25
+2026-10-03 11:14:10 | [32mINFO    [0m | knowledge_base.embed:502 | Default Gemini embedder registered successfully
+2026-10-03 11:14:10 | [32mINFO    [0m | knowledge_base.document_loader:393 | Loading PDF: data.pdf with chunk_size=1200
+2026-10-03 11:14:11 | [32mINFO    [0m | knowledge_base.document_loader:454 | Loaded 6 chunks from data.pdf
+2026-10-03 11:14:11 | [32mINFO    [0m | knowledge_base.embed:312 | Embedding 6 texts in 1 batch(es) of max 25
+2026-10-03 11:14:12 | [32mINFO    [0m | knowledge_base.embed:354 | Embedding complete: 6 vectors (3072D each)
+2026-10-03 11:14:12 | [32mINFO    [0m | knowledge_base.vector_store:234 | Adding 6 documents to collection 'student_data'
+2026-10-03 11:14:12 | [32mINFO    [0m | knowledge_base.vector_store:271 | Successfully added 6 documents to 'student_data' (total: 6)
+2026-10-03 11:14:12 | [32mINFO    [0m | knowledge_base.vector_store:148 | VectorStore (ChromaDB) initialized LOCAL: path=E:\CampusPulse\python_service\data\chroma_db
+2026-10-03 11:14:12 | [32mINFO    [0m | knowledge_base.vector_store:158 | Collection 'student_data' ready — 6 documents
+2026-10-03 11:14:13 | [32mINFO    [0m | knowledge_base.supabase_bm25_storage:69 | SupabaseBM25Storage initialized | bucket='StudentData'
+2026-10-03 11:14:14 | [32mINFO    [0m | core.redis:66 | Redis connected successfully | url=redis://default:VHo7VYbttkNVu7Wm7FLdm1XAByCQnCJP@carmine-bag-snowlit-93777.db.redis.io:17088
+2026-10-03 11:14:14 | [32mINFO    [0m | knowledge_base.cache_manager:92 | CacheManager initialized | L1: maxsize=100, ttl=1800s | L2: Redis TTL=86400s | Origin: Supabase available=True
+2026-10-03 11:14:14 | [32mINFO    [0m | knowledge_base.cache_manager:359 | Pub/Sub listener started on 'bm25:invalidate'
+2026-10-03 11:14:22 | [32mINFO    [0m | knowledge_base.tokenize:85 | VietnameseTokenizer initialized with PyVi
+2026-10-03 11:14:24 | [32mINFO    [0m | knowledge_base.hybrid_retrievel:267 | HybridSearch completed | query='đại học xây dựng', mode=dense_only, dense=6, sparse=0, final=6
