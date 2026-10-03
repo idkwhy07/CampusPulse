@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CampusPulse • Đăng nhập</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body class="auth-page">
+  <main class="auth-shell">
+    <section class="auth-card">
+      <a class="auth-brand" href="/login">
+        <span class="brand-mark">CP</span>
+        <span><strong>CampusPulse</strong><small>Campus incident reporting</small></span>
+      </a>
+
+      <div class="auth-heading">
+        <span class="eyebrow">WELCOME BACK</span>
+        <h1>Đăng nhập</h1>
+        <p>Đăng nhập để gửi report hoặc quản lý incident.</p>
+      </div>
+
+      <form id="loginForm" class="auth-form" novalidate>
+        <label class="field">
+          <span class="field-label">Email</span>
+          <input id="loginEmail" type="email" autocomplete="email" placeholder="you@example.com" required />
+        </label>
+        <label class="field">
+          <span class="field-label">Mật khẩu</span>
+          <input id="loginPassword" type="password" autocomplete="current-password" placeholder="••••••••" required />
+        </label>
+        <p id="loginError" class="auth-error"></p>
+        <button id="loginBtn" class="submit-btn auth-submit" type="submit"><span>Đăng nhập</span><span>→</span></button>
+      </form>
+
+      <div class="auth-demo-note">
+        <strong>Tài khoản demo Admin</strong>
+        <span>staff@campus.local / 123456</span>
+      </div>
+
+      <p class="auth-switch">Chưa có tài khoản? <a href="/register">Đăng ký Student</a></p>
+    </section>
+  </main>
+  <script src="/static/js/api.js"></script>
+  <script src="/static/js/login.js"></script>
+</body>
+</html>

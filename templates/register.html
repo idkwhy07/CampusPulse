@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CampusPulse • Đăng ký</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body class="auth-page">
+  <main class="auth-shell">
+    <section class="auth-card">
+      <a class="auth-brand" href="/login">
+        <span class="brand-mark">CP</span>
+        <span><strong>CampusPulse</strong><small>Student registration</small></span>
+      </a>
+
+      <div class="auth-heading">
+        <span class="eyebrow">CREATE ACCOUNT</span>
+        <h1>Đăng ký</h1>
+        <p>Tài khoản đăng ký từ trang này luôn có quyền Student.</p>
+      </div>
+
+      <form id="registerForm" class="auth-form" novalidate>
+        <label class="field">
+          <span class="field-label">Họ và tên</span>
+          <input id="registerName" type="text" autocomplete="name" maxlength="100" placeholder="Nguyễn Văn A" required />
+        </label>
+        <label class="field">
+          <span class="field-label">Email</span>
+          <input id="registerEmail" type="email" autocomplete="email" placeholder="you@example.com" required />
+        </label>
+        <label class="field">
+          <span class="field-label">Mật khẩu</span>
+          <input id="registerPassword" type="password" autocomplete="new-password" minlength="6" maxlength="72" placeholder="Tối thiểu 6 ký tự" required />
+        </label>
+        <label class="field">
+          <span class="field-label">Nhập lại mật khẩu</span>
+          <input id="registerConfirm" type="password" autocomplete="new-password" minlength="6" maxlength="72" placeholder="Nhập lại mật khẩu" required />
+        </label>
+        <p id="registerError" class="auth-error"></p>
+        <button id="registerBtn" class="submit-btn auth-submit" type="submit"><span>Tạo tài khoản</span><span>→</span></button>
+      </form>
+
+      <p class="auth-switch">Đã có tài khoản? <a href="/login">Đăng nhập</a></p>
+    </section>
+  </main>
+  <script src="/static/js/api.js"></script>
+  <script src="/static/js/register.js"></script>
+</body>
+</html>
