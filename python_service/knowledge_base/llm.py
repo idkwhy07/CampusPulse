@@ -71,10 +71,10 @@ logger = get_logger(__name__)
 
 
 # ═══════════════════════════════════════════════════════════════════════
-# SYSTEM PROMPT — Vai trò CampusPulse AI Assistant
+# SYSTEM PROMPT — Vai trò Assistant AI Assistant
 # ═══════════════════════════════════════════════════════════════════════
 
-SYSTEM_PROMPT = """Bạn là CampusPulse AI — trợ lý thông minh chuyên cung cấp thông tin chính xác cho sinh viên đại học.
+SYSTEM_PROMPT = """Bạn là Assistant AI — trợ lý thông minh chuyên cung cấp thông tin chính xác cho sinh viên đại học.
 
 ## Vai trò
 Bạn giúp sinh viên tra cứu và hiểu rõ các thông tin liên quan đến trường đại học, bao gồm nhưng không giới hạn:

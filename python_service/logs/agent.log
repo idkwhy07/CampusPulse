@@ -170,3 +170,522 @@
 2026-10-03 11:14:14 | [32mINFO    [0m | knowledge_base.cache_manager:359 | Pub/Sub listener started on 'bm25:invalidate'
 2026-10-03 11:14:22 | [32mINFO    [0m | knowledge_base.tokenize:85 | VietnameseTokenizer initialized with PyVi
 2026-10-03 11:14:24 | [32mINFO    [0m | knowledge_base.hybrid_retrievel:267 | HybridSearch completed | query='đại học xây dựng', mode=dense_only, dense=6, sparse=0, final=6
+2026-10-03 12:36:20 | INFO     | core.logger:197 | ============================================================
+2026-10-03 12:36:20 | INFO     | core.logger:198 | Logging initialized successfully
+2026-10-03 12:36:20 | INFO     | core.logger:199 |   Log level : INFO
+2026-10-03 12:36:20 | INFO     | core.logger:200 |   Log file  : logs\agent.log
+2026-10-03 12:36:20 | INFO     | core.logger:201 | ============================================================
+2026-10-03 12:36:41 | INFO     | core.logger:197 | ============================================================
+2026-10-03 12:36:41 | INFO     | core.logger:198 | Logging initialized successfully
+2026-10-03 12:36:41 | INFO     | core.logger:199 |   Log level : INFO
+2026-10-03 12:36:41 | INFO     | core.logger:200 |   Log file  : logs\agent.log
+2026-10-03 12:36:41 | INFO     | core.logger:201 | ============================================================
+2026-10-03 12:38:52 | INFO     | core.logger:197 | ============================================================
+2026-10-03 12:38:52 | INFO     | core.logger:198 | Logging initialized successfully
+2026-10-03 12:38:52 | INFO     | core.logger:199 |   Log level : INFO
+2026-10-03 12:38:52 | INFO     | core.logger:200 |   Log file  : logs\agent.log
+2026-10-03 12:38:52 | INFO     | core.logger:201 | ============================================================
+2026-10-03 12:38:52 | INFO     | service.chat:47 | ChatService: HybridRetriever initialized
+2026-10-03 13:35:27 | [32mINFO    [0m | core.logger:197 | ============================================================
+2026-10-03 13:35:27 | [32mINFO    [0m | core.logger:198 | Logging initialized successfully
+2026-10-03 13:35:27 | [32mINFO    [0m | core.logger:199 |   Log level : INFO
+2026-10-03 13:35:27 | [32mINFO    [0m | core.logger:200 |   Log file  : logs\agent.log
+2026-10-03 13:35:27 | [32mINFO    [0m | core.logger:201 | ============================================================
+2026-10-03 13:38:47 | INFO     | core.logger:197 | ============================================================
+2026-10-03 13:38:47 | INFO     | core.logger:198 | Logging initialized successfully
+2026-10-03 13:38:47 | INFO     | core.logger:199 |   Log level : INFO
+2026-10-03 13:38:47 | INFO     | core.logger:200 |   Log file  : logs\agent.log
+2026-10-03 13:38:47 | INFO     | core.logger:201 | ============================================================
+2026-10-03 13:39:42 | [32mINFO    [0m | core.logger:197 | ============================================================
+2026-10-03 13:39:42 | [32mINFO    [0m | core.logger:198 | Logging initialized successfully
+2026-10-03 13:39:42 | [32mINFO    [0m | core.logger:199 |   Log level : INFO
+2026-10-03 13:39:42 | [32mINFO    [0m | core.logger:200 |   Log file  : logs\agent.log
+2026-10-03 13:39:42 | [32mINFO    [0m | core.logger:201 | ============================================================
+2026-10-03 13:40:23 | [32mINFO    [0m | core.logger:197 | ============================================================
+2026-10-03 13:40:23 | [32mINFO    [0m | core.logger:198 | Logging initialized successfully
+2026-10-03 13:40:23 | [32mINFO    [0m | core.logger:199 |   Log level : INFO
+2026-10-03 13:40:23 | [32mINFO    [0m | core.logger:200 |   Log file  : logs\agent.log
+2026-10-03 13:40:23 | [32mINFO    [0m | core.logger:201 | ============================================================
+2026-10-03 13:47:17 | INFO     | core.logger:197 | ============================================================
+2026-10-03 13:47:17 | INFO     | core.logger:198 | Logging initialized successfully
+2026-10-03 13:47:17 | INFO     | core.logger:199 |   Log level : INFO
+2026-10-03 13:47:17 | INFO     | core.logger:200 |   Log file  : logs\agent.log
+2026-10-03 13:47:17 | INFO     | core.logger:201 | ============================================================
+2026-10-03 13:50:48 | [32mINFO    [0m | core.logger:197 | ============================================================
+2026-10-03 13:50:48 | [32mINFO    [0m | core.logger:198 | Logging initialized successfully
+2026-10-03 13:50:48 | [32mINFO    [0m | core.logger:199 |   Log level : INFO
+2026-10-03 13:50:48 | [32mINFO    [0m | core.logger:200 |   Log file  : logs\agent.log
+2026-10-03 13:50:48 | [32mINFO    [0m | core.logger:201 | ============================================================
+2026-10-03 13:50:48 | [32mINFO    [0m | service.document_service:126 | DocumentService.upload() | file='Ban Đào tạo Kỹ sư chất lượng cao2.docx'
+2026-10-03 13:50:48 | [32mINFO    [0m | knowledge_base.document_loader:494 | Loading DOCX: Ban Đào tạo Kỹ sư chất lượng cao2.docx
+2026-10-03 13:50:49 | [32mINFO    [0m | knowledge_base.document_loader:555 | Loaded 32 chunks from Ban Đào tạo Kỹ sư chất lượng cao2.docx (226 paragraphs)
+2026-10-03 13:50:49 | [32mINFO    [0m | service.document_service:152 | Step 1 done | Loaded 32 chunks from 'Ban Đào tạo Kỹ sư chất lượng cao2.docx'
+2026-10-03 13:50:51 | [32mINFO    [0m | knowledge_base.embed:204 | GeminiEmbedder initialized: model=gemini-embedding-2, dimension=3072, batch_size=25
+2026-10-03 13:50:51 | [32mINFO    [0m | knowledge_base.embed:502 | Default Gemini embedder registered successfully
+2026-10-03 13:50:51 | [32mINFO    [0m | service.document_service:74 | DocumentService: Embedder initialized
+2026-10-03 13:50:51 | [32mINFO    [0m | knowledge_base.embed:312 | Embedding 32 texts in 2 batch(es) of max 25
+2026-10-03 13:50:55 | [32mINFO    [0m | knowledge_base.embed:354 | Embedding complete: 32 vectors (3072D each)
+2026-10-03 13:50:55 | [32mINFO    [0m | service.document_service:160 | Step 2 done | Embedded 32 vectors (3072D each)
+2026-10-03 13:52:06 | [32mINFO    [0m | core.logger:197 | ============================================================
+2026-10-03 13:52:06 | [32mINFO    [0m | core.logger:198 | Logging initialized successfully
+2026-10-03 13:52:06 | [32mINFO    [0m | core.logger:199 |   Log level : INFO
+2026-10-03 13:52:06 | [32mINFO    [0m | core.logger:200 |   Log file  : logs\agent.log
+2026-10-03 13:52:06 | [32mINFO    [0m | core.logger:201 | ============================================================
+2026-10-03 13:52:06 | [32mINFO    [0m | service.document_service:126 | DocumentService.upload() | file='Ban Đào tạo Kỹ sư chất lượng cao2.docx'
+2026-10-03 13:52:06 | [32mINFO    [0m | knowledge_base.document_loader:494 | Loading DOCX: Ban Đào tạo Kỹ sư chất lượng cao2.docx
+2026-10-03 13:52:06 | [32mINFO    [0m | knowledge_base.document_loader:555 | Loaded 32 chunks from Ban Đào tạo Kỹ sư chất lượng cao2.docx (226 paragraphs)
+2026-10-03 13:52:06 | [32mINFO    [0m | service.document_service:152 | Step 1 done | Loaded 32 chunks from 'Ban Đào tạo Kỹ sư chất lượng cao2.docx'
+2026-10-03 13:52:07 | [32mINFO    [0m | knowledge_base.embed:204 | GeminiEmbedder initialized: model=gemini-embedding-2, dimension=3072, batch_size=25
+2026-10-03 13:52:07 | [32mINFO    [0m | knowledge_base.embed:502 | Default Gemini embedder registered successfully
+2026-10-03 13:52:07 | [32mINFO    [0m | service.document_service:74 | DocumentService: Embedder initialized
+2026-10-03 13:52:07 | [32mINFO    [0m | knowledge_base.embed:312 | Embedding 32 texts in 2 batch(es) of max 25
+2026-10-03 13:52:11 | [32mINFO    [0m | knowledge_base.embed:354 | Embedding complete: 32 vectors (3072D each)
+2026-10-03 13:52:11 | [32mINFO    [0m | service.document_service:160 | Step 2 done | Embedded 32 vectors (3072D each)
+2026-10-03 13:52:13 | [32mINFO    [0m | knowledge_base.vector_store:148 | VectorStore (ChromaDB) initialized LOCAL: path=E:\CampusPulse\python_service\data\chroma_db
+2026-10-03 13:52:13 | [32mINFO    [0m | knowledge_base.vector_store:158 | Collection 'student_data' ready — 0 documents
+2026-10-03 13:52:13 | [32mINFO    [0m | service.document_service:67 | DocumentService: VectorStore initialized
+2026-10-03 13:52:13 | [32mINFO    [0m | knowledge_base.vector_store:234 | Adding 32 documents to collection 'student_data'
+2026-10-03 13:52:13 | [32mINFO    [0m | knowledge_base.vector_store:271 | Successfully added 32 documents to 'student_data' (total: 32)
+2026-10-03 13:52:13 | [32mINFO    [0m | service.document_service:175 | Step 3 done | ChromaDB upserted 32 docs, total=32
+2026-10-03 13:52:17 | [32mINFO    [0m | knowledge_base.tokenize:85 | VietnameseTokenizer initialized with PyVi
+2026-10-03 13:52:17 | [32mINFO    [0m | service.document_service:81 | DocumentService: VietnameseTokenizer initialized
+2026-10-03 13:52:17 | [32mINFO    [0m | service.document_service:184 | Step 4 done | Tokenized 32 documents
+2026-10-03 13:52:17 | [32mINFO    [0m | knowledge_base.supabase_bm25_storage:69 | SupabaseBM25Storage initialized | bucket='StudentData'
+2026-10-03 13:52:19 | [32mINFO    [0m | core.redis:66 | Redis connected successfully | url=redis://default:VHo7VYbttkNVu7Wm7FLdm1XAByCQnCJP@carmine-bag-snowlit-93777.db.redis.io:17088
+2026-10-03 13:52:19 | [32mINFO    [0m | knowledge_base.cache_manager:92 | CacheManager initialized | L1: maxsize=100, ttl=1800s | L2: Redis TTL=86400s | Origin: Supabase available=True
+2026-10-03 13:52:19 | [32mINFO    [0m | knowledge_base.cache_manager:359 | Pub/Sub listener started on 'bm25:invalidate'
+2026-10-03 13:52:19 | [32mINFO    [0m | service.document_service:88 | DocumentService: CacheManager initialized
+2026-10-03 13:52:21 | [32mINFO    [0m | knowledge_base.bm25_store:100 | BM25Store built | 32 documents, 4872 total tokens
+2026-10-03 13:52:21 | [32mINFO    [0m | service.document_service:201 | Step 5 done | BM25Store built from scratch
+2026-10-03 13:52:21 | [32mINFO    [0m | knowledge_base.supabase_bm25_storage:107 | BM25 index uploaded to Supabase | size=18574 bytes
+2026-10-03 13:52:21 | [32mINFO    [0m | knowledge_base.cache_manager:245 | BM25Store saved all tiers | size=18574 bytes
+2026-10-03 13:52:21 | [32mINFO    [0m | service.document_service:220 | Step 6 done | BM25 saved to all cache tiers
+2026-10-03 13:52:21 | [32mINFO    [0m | service.document_service:224 | DocumentService.upload() completed | file='Ban Đào tạo Kỹ sư chất lượng cao2.docx', chunks=32, chroma_total=32, bm25_total=32
+2026-10-03 13:53:23 | [32mINFO    [0m | core.logger:197 | ============================================================
+2026-10-03 13:53:23 | [32mINFO    [0m | core.logger:198 | Logging initialized successfully
+2026-10-03 13:53:23 | [32mINFO    [0m | core.logger:199 |   Log level : INFO
+2026-10-03 13:53:23 | [32mINFO    [0m | core.logger:200 |   Log file  : logs\agent.log
+2026-10-03 13:53:23 | [32mINFO    [0m | core.logger:201 | ============================================================
+2026-10-03 13:53:23 | [32mINFO    [0m | service.document_service:126 | DocumentService.upload() | file='Bộ môn Ngoại ngữ1.docx'
+2026-10-03 13:53:23 | [32mINFO    [0m | knowledge_base.document_loader:494 | Loading DOCX: Bộ môn Ngoại ngữ1.docx
+2026-10-03 13:53:24 | [32mINFO    [0m | knowledge_base.document_loader:555 | Loaded 7 chunks from Bộ môn Ngoại ngữ1.docx (74 paragraphs)
+2026-10-03 13:53:24 | [32mINFO    [0m | service.document_service:152 | Step 1 done | Loaded 7 chunks from 'Bộ môn Ngoại ngữ1.docx'
+2026-10-03 13:53:25 | [32mINFO    [0m | knowledge_base.embed:204 | GeminiEmbedder initialized: model=gemini-embedding-2, dimension=3072, batch_size=25
+2026-10-03 13:53:25 | [32mINFO    [0m | knowledge_base.embed:502 | Default Gemini embedder registered successfully
+2026-10-03 13:53:25 | [32mINFO    [0m | service.document_service:74 | DocumentService: Embedder initialized
+2026-10-03 13:53:25 | [32mINFO    [0m | knowledge_base.embed:312 | Embedding 7 texts in 1 batch(es) of max 25
+2026-10-03 13:53:27 | [32mINFO    [0m | knowledge_base.embed:354 | Embedding complete: 7 vectors (3072D each)
+2026-10-03 13:53:27 | [32mINFO    [0m | service.document_service:160 | Step 2 done | Embedded 7 vectors (3072D each)
+2026-10-03 13:53:28 | [32mINFO    [0m | knowledge_base.vector_store:148 | VectorStore (ChromaDB) initialized LOCAL: path=E:\CampusPulse\python_service\data\chroma_db
+2026-10-03 13:53:28 | [32mINFO    [0m | knowledge_base.vector_store:158 | Collection 'student_data' ready — 32 documents
+2026-10-03 13:53:28 | [32mINFO    [0m | service.document_service:67 | DocumentService: VectorStore initialized
+2026-10-03 13:53:28 | [32mINFO    [0m | knowledge_base.vector_store:234 | Adding 7 documents to collection 'student_data'
+2026-10-03 13:53:28 | [32mINFO    [0m | knowledge_base.vector_store:271 | Successfully added 7 documents to 'student_data' (total: 39)
+2026-10-03 13:53:28 | [32mINFO    [0m | service.document_service:175 | Step 3 done | ChromaDB upserted 7 docs, total=39
+2026-10-03 13:53:30 | [32mINFO    [0m | knowledge_base.tokenize:85 | VietnameseTokenizer initialized with PyVi
+2026-10-03 13:53:30 | [32mINFO    [0m | service.document_service:81 | DocumentService: VietnameseTokenizer initialized
+2026-10-03 13:53:30 | [32mINFO    [0m | service.document_service:184 | Step 4 done | Tokenized 7 documents
+2026-10-03 13:53:30 | [32mINFO    [0m | knowledge_base.supabase_bm25_storage:69 | SupabaseBM25Storage initialized | bucket='StudentData'
+2026-10-03 13:53:31 | [32mINFO    [0m | core.redis:66 | Redis connected successfully | url=redis://default:VHo7VYbttkNVu7Wm7FLdm1XAByCQnCJP@carmine-bag-snowlit-93777.db.redis.io:17088
+2026-10-03 13:53:31 | [32mINFO    [0m | knowledge_base.cache_manager:92 | CacheManager initialized | L1: maxsize=100, ttl=1800s | L2: Redis TTL=86400s | Origin: Supabase available=True
+2026-10-03 13:53:31 | [32mINFO    [0m | knowledge_base.cache_manager:359 | Pub/Sub listener started on 'bm25:invalidate'
+2026-10-03 13:53:31 | [32mINFO    [0m | service.document_service:88 | DocumentService: CacheManager initialized
+2026-10-03 13:53:32 | [32mINFO    [0m | knowledge_base.bm25_store:100 | BM25Store built | 32 documents, 4872 total tokens
+2026-10-03 13:53:32 | [32mINFO    [0m | knowledge_base.bm25_store:185 | BM25Store updated | added 7 docs, total=39
+2026-10-03 13:53:32 | [32mINFO    [0m | service.document_service:210 | Step 5 done | BM25Store updated, total=39
+2026-10-03 13:53:32 | [32mINFO    [0m | knowledge_base.supabase_bm25_storage:107 | BM25 index uploaded to Supabase | size=22412 bytes
+2026-10-03 13:53:32 | [32mINFO    [0m | knowledge_base.cache_manager:245 | BM25Store saved all tiers | size=22412 bytes
+2026-10-03 13:53:32 | [32mINFO    [0m | service.document_service:220 | Step 6 done | BM25 saved to all cache tiers
+2026-10-03 13:53:32 | [32mINFO    [0m | service.document_service:224 | DocumentService.upload() completed | file='Bộ môn Ngoại ngữ1.docx', chunks=7, chroma_total=39, bm25_total=39
+2026-10-03 13:53:52 | [32mINFO    [0m | core.logger:197 | ============================================================
+2026-10-03 13:53:52 | [32mINFO    [0m | core.logger:198 | Logging initialized successfully
+2026-10-03 13:53:52 | [32mINFO    [0m | core.logger:199 |   Log level : INFO
+2026-10-03 13:53:52 | [32mINFO    [0m | core.logger:200 |   Log file  : logs\agent.log
+2026-10-03 13:53:52 | [32mINFO    [0m | core.logger:201 | ============================================================
+2026-10-03 13:53:52 | [32mINFO    [0m | service.document_service:126 | DocumentService.upload() | file='DANH MỤC ĐƯỜNG DẪN QUY CHẾ - QUY ĐỊNH HUCE.docx'
+2026-10-03 13:53:52 | [32mINFO    [0m | knowledge_base.document_loader:494 | Loading DOCX: DANH MỤC ĐƯỜNG DẪN QUY CHẾ - QUY ĐỊNH HUCE.docx
+2026-10-03 13:53:53 | [32mINFO    [0m | knowledge_base.document_loader:555 | Loaded 4 chunks from DANH MỤC ĐƯỜNG DẪN QUY CHẾ - QUY ĐỊNH HUCE.docx (35 paragraphs)
+2026-10-03 13:53:53 | [32mINFO    [0m | service.document_service:152 | Step 1 done | Loaded 4 chunks from 'DANH MỤC ĐƯỜNG DẪN QUY CHẾ - QUY ĐỊNH HUCE.docx'
+2026-10-03 13:53:54 | [32mINFO    [0m | knowledge_base.embed:204 | GeminiEmbedder initialized: model=gemini-embedding-2, dimension=3072, batch_size=25
+2026-10-03 13:53:54 | [32mINFO    [0m | knowledge_base.embed:502 | Default Gemini embedder registered successfully
+2026-10-03 13:53:54 | [32mINFO    [0m | service.document_service:74 | DocumentService: Embedder initialized
+2026-10-03 13:53:54 | [32mINFO    [0m | knowledge_base.embed:312 | Embedding 4 texts in 1 batch(es) of max 25
+2026-10-03 13:53:55 | [32mINFO    [0m | knowledge_base.embed:354 | Embedding complete: 4 vectors (3072D each)
+2026-10-03 13:53:55 | [32mINFO    [0m | service.document_service:160 | Step 2 done | Embedded 4 vectors (3072D each)
+2026-10-03 13:53:56 | [32mINFO    [0m | knowledge_base.vector_store:148 | VectorStore (ChromaDB) initialized LOCAL: path=E:\CampusPulse\python_service\data\chroma_db
+2026-10-03 13:53:56 | [32mINFO    [0m | knowledge_base.vector_store:158 | Collection 'student_data' ready — 39 documents
+2026-10-03 13:53:56 | [32mINFO    [0m | service.document_service:67 | DocumentService: VectorStore initialized
+2026-10-03 13:53:56 | [32mINFO    [0m | knowledge_base.vector_store:234 | Adding 4 documents to collection 'student_data'
+2026-10-03 13:53:56 | [32mINFO    [0m | knowledge_base.vector_store:271 | Successfully added 4 documents to 'student_data' (total: 43)
+2026-10-03 13:53:56 | [32mINFO    [0m | service.document_service:175 | Step 3 done | ChromaDB upserted 4 docs, total=43
+2026-10-03 13:53:58 | [32mINFO    [0m | knowledge_base.tokenize:85 | VietnameseTokenizer initialized with PyVi
+2026-10-03 13:53:58 | [32mINFO    [0m | service.document_service:81 | DocumentService: VietnameseTokenizer initialized
+2026-10-03 13:53:58 | [32mINFO    [0m | service.document_service:184 | Step 4 done | Tokenized 4 documents
+2026-10-03 13:53:58 | [32mINFO    [0m | knowledge_base.supabase_bm25_storage:69 | SupabaseBM25Storage initialized | bucket='StudentData'
+2026-10-03 13:53:59 | [32mINFO    [0m | core.redis:66 | Redis connected successfully | url=redis://default:VHo7VYbttkNVu7Wm7FLdm1XAByCQnCJP@carmine-bag-snowlit-93777.db.redis.io:17088
+2026-10-03 13:53:59 | [32mINFO    [0m | knowledge_base.cache_manager:92 | CacheManager initialized | L1: maxsize=100, ttl=1800s | L2: Redis TTL=86400s | Origin: Supabase available=True
+2026-10-03 13:53:59 | [32mINFO    [0m | knowledge_base.cache_manager:359 | Pub/Sub listener started on 'bm25:invalidate'
+2026-10-03 13:53:59 | [32mINFO    [0m | service.document_service:88 | DocumentService: CacheManager initialized
+2026-10-03 13:54:00 | [32mINFO    [0m | knowledge_base.bm25_store:100 | BM25Store built | 39 documents, 5770 total tokens
+2026-10-03 13:54:00 | [32mINFO    [0m | knowledge_base.bm25_store:185 | BM25Store updated | added 4 docs, total=43
+2026-10-03 13:54:00 | [32mINFO    [0m | service.document_service:210 | Step 5 done | BM25Store updated, total=43
+2026-10-03 13:54:00 | [32mINFO    [0m | knowledge_base.supabase_bm25_storage:107 | BM25 index uploaded to Supabase | size=24622 bytes
+2026-10-03 13:54:01 | [32mINFO    [0m | knowledge_base.cache_manager:245 | BM25Store saved all tiers | size=24622 bytes
+2026-10-03 13:54:01 | [32mINFO    [0m | service.document_service:220 | Step 6 done | BM25 saved to all cache tiers
+2026-10-03 13:54:01 | [32mINFO    [0m | service.document_service:224 | DocumentService.upload() completed | file='DANH MỤC ĐƯỜNG DẪN QUY CHẾ - QUY ĐỊNH HUCE.docx', chunks=4, chroma_total=43, bm25_total=43
+2026-10-03 13:54:35 | [32mINFO    [0m | core.logger:197 | ============================================================
+2026-10-03 13:54:35 | [32mINFO    [0m | core.logger:198 | Logging initialized successfully
+2026-10-03 13:54:35 | [32mINFO    [0m | core.logger:199 |   Log level : INFO
+2026-10-03 13:54:35 | [32mINFO    [0m | core.logger:200 |   Log file  : logs\agent.log
+2026-10-03 13:54:35 | [32mINFO    [0m | core.logger:201 | ============================================================
+2026-10-03 13:54:35 | [32mINFO    [0m | service.document_service:126 | DocumentService.upload() | file='Khoa Đào tạo quốc tế1.docx'
+2026-10-03 13:54:35 | [32mINFO    [0m | knowledge_base.document_loader:494 | Loading DOCX: Khoa Đào tạo quốc tế1.docx
+2026-10-03 13:54:36 | [32mINFO    [0m | knowledge_base.document_loader:555 | Loaded 43 chunks from Khoa Đào tạo quốc tế1.docx (435 paragraphs)
+2026-10-03 13:54:36 | [32mINFO    [0m | service.document_service:152 | Step 1 done | Loaded 43 chunks from 'Khoa Đào tạo quốc tế1.docx'
+2026-10-03 13:54:37 | [32mINFO    [0m | knowledge_base.embed:204 | GeminiEmbedder initialized: model=gemini-embedding-2, dimension=3072, batch_size=25
+2026-10-03 13:54:37 | [32mINFO    [0m | knowledge_base.embed:502 | Default Gemini embedder registered successfully
+2026-10-03 13:54:37 | [32mINFO    [0m | service.document_service:74 | DocumentService: Embedder initialized
+2026-10-03 13:54:37 | [32mINFO    [0m | knowledge_base.embed:312 | Embedding 43 texts in 2 batch(es) of max 25
+2026-10-03 13:54:41 | [32mINFO    [0m | knowledge_base.embed:354 | Embedding complete: 43 vectors (3072D each)
+2026-10-03 13:54:41 | [32mINFO    [0m | service.document_service:160 | Step 2 done | Embedded 43 vectors (3072D each)
+2026-10-03 13:54:42 | [32mINFO    [0m | knowledge_base.vector_store:148 | VectorStore (ChromaDB) initialized LOCAL: path=E:\CampusPulse\python_service\data\chroma_db
+2026-10-03 13:54:42 | [32mINFO    [0m | knowledge_base.vector_store:158 | Collection 'student_data' ready — 43 documents
+2026-10-03 13:54:42 | [32mINFO    [0m | service.document_service:67 | DocumentService: VectorStore initialized
+2026-10-03 13:54:42 | [32mINFO    [0m | knowledge_base.vector_store:234 | Adding 43 documents to collection 'student_data'
+2026-10-03 13:54:42 | [32mINFO    [0m | knowledge_base.vector_store:271 | Successfully added 43 documents to 'student_data' (total: 86)
+2026-10-03 13:54:42 | [32mINFO    [0m | service.document_service:175 | Step 3 done | ChromaDB upserted 43 docs, total=86
+2026-10-03 13:54:44 | [32mINFO    [0m | knowledge_base.tokenize:85 | VietnameseTokenizer initialized with PyVi
+2026-10-03 13:54:44 | [32mINFO    [0m | service.document_service:81 | DocumentService: VietnameseTokenizer initialized
+2026-10-03 13:54:44 | [32mINFO    [0m | service.document_service:184 | Step 4 done | Tokenized 43 documents
+2026-10-03 13:54:45 | [32mINFO    [0m | knowledge_base.supabase_bm25_storage:69 | SupabaseBM25Storage initialized | bucket='StudentData'
+2026-10-03 13:54:45 | [32mINFO    [0m | core.redis:66 | Redis connected successfully | url=redis://default:VHo7VYbttkNVu7Wm7FLdm1XAByCQnCJP@carmine-bag-snowlit-93777.db.redis.io:17088
+2026-10-03 13:54:45 | [32mINFO    [0m | knowledge_base.cache_manager:92 | CacheManager initialized | L1: maxsize=100, ttl=1800s | L2: Redis TTL=86400s | Origin: Supabase available=True
+2026-10-03 13:54:45 | [32mINFO    [0m | knowledge_base.cache_manager:359 | Pub/Sub listener started on 'bm25:invalidate'
+2026-10-03 13:54:45 | [32mINFO    [0m | service.document_service:88 | DocumentService: CacheManager initialized
+2026-10-03 13:54:46 | [32mINFO    [0m | knowledge_base.bm25_store:100 | BM25Store built | 43 documents, 6461 total tokens
+2026-10-03 13:54:46 | [32mINFO    [0m | knowledge_base.bm25_store:185 | BM25Store updated | added 43 docs, total=86
+2026-10-03 13:54:46 | [32mINFO    [0m | service.document_service:210 | Step 5 done | BM25Store updated, total=86
+2026-10-03 13:54:47 | [32mINFO    [0m | knowledge_base.supabase_bm25_storage:107 | BM25 index uploaded to Supabase | size=47870 bytes
+2026-10-03 13:54:47 | [32mINFO    [0m | knowledge_base.cache_manager:245 | BM25Store saved all tiers | size=47870 bytes
+2026-10-03 13:54:47 | [32mINFO    [0m | service.document_service:220 | Step 6 done | BM25 saved to all cache tiers
+2026-10-03 13:54:47 | [32mINFO    [0m | service.document_service:224 | DocumentService.upload() completed | file='Khoa Đào tạo quốc tế1.docx', chunks=43, chroma_total=86, bm25_total=86
+2026-10-03 13:55:03 | [32mINFO    [0m | core.logger:197 | ============================================================
+2026-10-03 13:55:03 | [32mINFO    [0m | core.logger:198 | Logging initialized successfully
+2026-10-03 13:55:03 | [32mINFO    [0m | core.logger:199 |   Log level : INFO
+2026-10-03 13:55:03 | [32mINFO    [0m | core.logger:200 |   Log file  : logs\agent.log
+2026-10-03 13:55:03 | [32mINFO    [0m | core.logger:201 | ============================================================
+2026-10-03 13:55:03 | [32mINFO    [0m | service.document_service:126 | DocumentService.upload() | file='Khoa Giáo dục Thể chất - Quốc phòng2.docx'
+2026-10-03 13:55:03 | [32mINFO    [0m | knowledge_base.document_loader:494 | Loading DOCX: Khoa Giáo dục Thể chất - Quốc phòng2.docx
+2026-10-03 13:55:03 | [32mINFO    [0m | knowledge_base.document_loader:555 | Loaded 6 chunks from Khoa Giáo dục Thể chất - Quốc phòng2.docx (60 paragraphs)
+2026-10-03 13:55:03 | [32mINFO    [0m | service.document_service:152 | Step 1 done | Loaded 6 chunks from 'Khoa Giáo dục Thể chất - Quốc phòng2.docx'
+2026-10-03 13:55:04 | [32mINFO    [0m | knowledge_base.embed:204 | GeminiEmbedder initialized: model=gemini-embedding-2, dimension=3072, batch_size=25
+2026-10-03 13:55:04 | [32mINFO    [0m | knowledge_base.embed:502 | Default Gemini embedder registered successfully
+2026-10-03 13:55:04 | [32mINFO    [0m | service.document_service:74 | DocumentService: Embedder initialized
+2026-10-03 13:55:04 | [32mINFO    [0m | knowledge_base.embed:312 | Embedding 6 texts in 1 batch(es) of max 25
+2026-10-03 13:55:06 | [32mINFO    [0m | knowledge_base.embed:354 | Embedding complete: 6 vectors (3072D each)
+2026-10-03 13:55:06 | [32mINFO    [0m | service.document_service:160 | Step 2 done | Embedded 6 vectors (3072D each)
+2026-10-03 13:55:07 | [32mINFO    [0m | knowledge_base.vector_store:148 | VectorStore (ChromaDB) initialized LOCAL: path=E:\CampusPulse\python_service\data\chroma_db
+2026-10-03 13:55:07 | [32mINFO    [0m | knowledge_base.vector_store:158 | Collection 'student_data' ready — 86 documents
+2026-10-03 13:55:07 | [32mINFO    [0m | service.document_service:67 | DocumentService: VectorStore initialized
+2026-10-03 13:55:07 | [32mINFO    [0m | knowledge_base.vector_store:234 | Adding 6 documents to collection 'student_data'
+2026-10-03 13:55:07 | [32mINFO    [0m | knowledge_base.vector_store:271 | Successfully added 6 documents to 'student_data' (total: 92)
+2026-10-03 13:55:07 | [32mINFO    [0m | service.document_service:175 | Step 3 done | ChromaDB upserted 6 docs, total=92
+2026-10-03 13:55:09 | [32mINFO    [0m | knowledge_base.tokenize:85 | VietnameseTokenizer initialized with PyVi
+2026-10-03 13:55:09 | [32mINFO    [0m | service.document_service:81 | DocumentService: VietnameseTokenizer initialized
+2026-10-03 13:55:09 | [32mINFO    [0m | service.document_service:184 | Step 4 done | Tokenized 6 documents
+2026-10-03 13:55:09 | [32mINFO    [0m | knowledge_base.supabase_bm25_storage:69 | SupabaseBM25Storage initialized | bucket='StudentData'
+2026-10-03 13:55:10 | [32mINFO    [0m | core.redis:66 | Redis connected successfully | url=redis://default:VHo7VYbttkNVu7Wm7FLdm1XAByCQnCJP@carmine-bag-snowlit-93777.db.redis.io:17088
+2026-10-03 13:55:10 | [32mINFO    [0m | knowledge_base.cache_manager:92 | CacheManager initialized | L1: maxsize=100, ttl=1800s | L2: Redis TTL=86400s | Origin: Supabase available=True
+2026-10-03 13:55:10 | [32mINFO    [0m | knowledge_base.cache_manager:359 | Pub/Sub listener started on 'bm25:invalidate'
+2026-10-03 13:55:10 | [32mINFO    [0m | service.document_service:88 | DocumentService: CacheManager initialized
+2026-10-03 13:55:11 | [32mINFO    [0m | knowledge_base.bm25_store:100 | BM25Store built | 86 documents, 12376 total tokens
+2026-10-03 13:55:11 | [32mINFO    [0m | knowledge_base.bm25_store:185 | BM25Store updated | added 6 docs, total=92
+2026-10-03 13:55:11 | [32mINFO    [0m | service.document_service:210 | Step 5 done | BM25Store updated, total=92
+2026-10-03 13:55:11 | [32mINFO    [0m | knowledge_base.supabase_bm25_storage:107 | BM25 index uploaded to Supabase | size=52337 bytes
+2026-10-03 13:55:12 | [32mINFO    [0m | knowledge_base.cache_manager:245 | BM25Store saved all tiers | size=52337 bytes
+2026-10-03 13:55:12 | [32mINFO    [0m | service.document_service:220 | Step 6 done | BM25 saved to all cache tiers
+2026-10-03 13:55:12 | [32mINFO    [0m | service.document_service:224 | DocumentService.upload() completed | file='Khoa Giáo dục Thể chất - Quốc phòng2.docx', chunks=6, chroma_total=92, bm25_total=92
+2026-10-03 13:55:27 | [32mINFO    [0m | core.logger:197 | ============================================================
+2026-10-03 13:55:27 | [32mINFO    [0m | core.logger:198 | Logging initialized successfully
+2026-10-03 13:55:27 | [32mINFO    [0m | core.logger:199 |   Log level : INFO
+2026-10-03 13:55:27 | [32mINFO    [0m | core.logger:200 |   Log file  : logs\agent.log
+2026-10-03 13:55:27 | [32mINFO    [0m | core.logger:201 | ============================================================
+2026-10-03 13:55:27 | [32mINFO    [0m | service.document_service:126 | DocumentService.upload() | file='Khoa Kiến trúc và Quy hoạch.docx'
+2026-10-03 13:55:27 | [32mINFO    [0m | knowledge_base.document_loader:494 | Loading DOCX: Khoa Kiến trúc và Quy hoạch.docx
+2026-10-03 13:55:28 | [32mINFO    [0m | knowledge_base.document_loader:555 | Loaded 3 chunks from Khoa Kiến trúc và Quy hoạch.docx (20 paragraphs)
+2026-10-03 13:55:28 | [32mINFO    [0m | service.document_service:152 | Step 1 done | Loaded 3 chunks from 'Khoa Kiến trúc và Quy hoạch.docx'
+2026-10-03 13:55:29 | [32mINFO    [0m | knowledge_base.embed:204 | GeminiEmbedder initialized: model=gemini-embedding-2, dimension=3072, batch_size=25
+2026-10-03 13:55:29 | [32mINFO    [0m | knowledge_base.embed:502 | Default Gemini embedder registered successfully
+2026-10-03 13:55:29 | [32mINFO    [0m | service.document_service:74 | DocumentService: Embedder initialized
+2026-10-03 13:55:29 | [32mINFO    [0m | knowledge_base.embed:312 | Embedding 3 texts in 1 batch(es) of max 25
+2026-10-03 13:55:30 | [32mINFO    [0m | knowledge_base.embed:354 | Embedding complete: 3 vectors (3072D each)
+2026-10-03 13:55:30 | [32mINFO    [0m | service.document_service:160 | Step 2 done | Embedded 3 vectors (3072D each)
+2026-10-03 13:55:31 | [32mINFO    [0m | knowledge_base.vector_store:148 | VectorStore (ChromaDB) initialized LOCAL: path=E:\CampusPulse\python_service\data\chroma_db
+2026-10-03 13:55:31 | [32mINFO    [0m | knowledge_base.vector_store:158 | Collection 'student_data' ready — 92 documents
+2026-10-03 13:55:31 | [32mINFO    [0m | service.document_service:67 | DocumentService: VectorStore initialized
+2026-10-03 13:55:31 | [32mINFO    [0m | knowledge_base.vector_store:234 | Adding 3 documents to collection 'student_data'
+2026-10-03 13:55:31 | [32mINFO    [0m | knowledge_base.vector_store:271 | Successfully added 3 documents to 'student_data' (total: 95)
+2026-10-03 13:55:31 | [32mINFO    [0m | service.document_service:175 | Step 3 done | ChromaDB upserted 3 docs, total=95
+2026-10-03 13:55:32 | [32mINFO    [0m | knowledge_base.tokenize:85 | VietnameseTokenizer initialized with PyVi
+2026-10-03 13:55:32 | [32mINFO    [0m | service.document_service:81 | DocumentService: VietnameseTokenizer initialized
+2026-10-03 13:55:32 | [32mINFO    [0m | service.document_service:184 | Step 4 done | Tokenized 3 documents
+2026-10-03 13:55:33 | [32mINFO    [0m | knowledge_base.supabase_bm25_storage:69 | SupabaseBM25Storage initialized | bucket='StudentData'
+2026-10-03 13:55:34 | [32mINFO    [0m | core.redis:66 | Redis connected successfully | url=redis://default:VHo7VYbttkNVu7Wm7FLdm1XAByCQnCJP@carmine-bag-snowlit-93777.db.redis.io:17088
+2026-10-03 13:55:34 | [32mINFO    [0m | knowledge_base.cache_manager:92 | CacheManager initialized | L1: maxsize=100, ttl=1800s | L2: Redis TTL=86400s | Origin: Supabase available=True
+2026-10-03 13:55:34 | [32mINFO    [0m | knowledge_base.cache_manager:359 | Pub/Sub listener started on 'bm25:invalidate'
+2026-10-03 13:55:34 | [32mINFO    [0m | service.document_service:88 | DocumentService: CacheManager initialized
+2026-10-03 13:55:35 | [32mINFO    [0m | knowledge_base.bm25_store:100 | BM25Store built | 92 documents, 13176 total tokens
+2026-10-03 13:55:35 | [32mINFO    [0m | knowledge_base.bm25_store:185 | BM25Store updated | added 3 docs, total=95
+2026-10-03 13:55:35 | [32mINFO    [0m | service.document_service:210 | Step 5 done | BM25Store updated, total=95
+2026-10-03 13:55:36 | [32mINFO    [0m | knowledge_base.supabase_bm25_storage:107 | BM25 index uploaded to Supabase | size=53882 bytes
+2026-10-03 13:55:36 | [32mINFO    [0m | knowledge_base.cache_manager:245 | BM25Store saved all tiers | size=53882 bytes
+2026-10-03 13:55:36 | [32mINFO    [0m | service.document_service:220 | Step 6 done | BM25 saved to all cache tiers
+2026-10-03 13:55:36 | [32mINFO    [0m | service.document_service:224 | DocumentService.upload() completed | file='Khoa Kiến trúc và Quy hoạch.docx', chunks=3, chroma_total=95, bm25_total=95
+2026-10-03 13:56:03 | [32mINFO    [0m | core.logger:197 | ============================================================
+2026-10-03 13:56:03 | [32mINFO    [0m | core.logger:198 | Logging initialized successfully
+2026-10-03 13:56:03 | [32mINFO    [0m | core.logger:199 |   Log level : INFO
+2026-10-03 13:56:03 | [32mINFO    [0m | core.logger:200 |   Log file  : logs\agent.log
+2026-10-03 13:56:03 | [32mINFO    [0m | core.logger:201 | ============================================================
+2026-10-03 13:56:03 | [32mINFO    [0m | service.document_service:126 | DocumentService.upload() | file='KHOA KINH TẾ VÀ QUẢN LÝ XÂY DỰNG.docx'
+2026-10-03 13:56:03 | [32mINFO    [0m | knowledge_base.document_loader:494 | Loading DOCX: KHOA KINH TẾ VÀ QUẢN LÝ XÂY DỰNG.docx
+2026-10-03 13:56:03 | [32mINFO    [0m | knowledge_base.document_loader:555 | Loaded 16 chunks from KHOA KINH TẾ VÀ QUẢN LÝ XÂY DỰNG.docx (278 paragraphs)
+2026-10-03 13:56:03 | [32mINFO    [0m | service.document_service:152 | Step 1 done | Loaded 16 chunks from 'KHOA KINH TẾ VÀ QUẢN LÝ XÂY DỰNG.docx'
+2026-10-03 13:56:04 | [32mINFO    [0m | knowledge_base.embed:204 | GeminiEmbedder initialized: model=gemini-embedding-2, dimension=3072, batch_size=25
+2026-10-03 13:56:04 | [32mINFO    [0m | knowledge_base.embed:502 | Default Gemini embedder registered successfully
+2026-10-03 13:56:04 | [32mINFO    [0m | service.document_service:74 | DocumentService: Embedder initialized
+2026-10-03 13:56:04 | [32mINFO    [0m | knowledge_base.embed:312 | Embedding 16 texts in 1 batch(es) of max 25
+2026-10-03 13:56:06 | [32mINFO    [0m | knowledge_base.embed:354 | Embedding complete: 16 vectors (3072D each)
+2026-10-03 13:56:06 | [32mINFO    [0m | service.document_service:160 | Step 2 done | Embedded 16 vectors (3072D each)
+2026-10-03 13:56:07 | [32mINFO    [0m | knowledge_base.vector_store:148 | VectorStore (ChromaDB) initialized LOCAL: path=E:\CampusPulse\python_service\data\chroma_db
+2026-10-03 13:56:07 | [32mINFO    [0m | knowledge_base.vector_store:158 | Collection 'student_data' ready — 95 documents
+2026-10-03 13:56:07 | [32mINFO    [0m | service.document_service:67 | DocumentService: VectorStore initialized
+2026-10-03 13:56:07 | [32mINFO    [0m | knowledge_base.vector_store:234 | Adding 16 documents to collection 'student_data'
+2026-10-03 13:56:08 | [32mINFO    [0m | knowledge_base.vector_store:271 | Successfully added 16 documents to 'student_data' (total: 111)
+2026-10-03 13:56:08 | [32mINFO    [0m | service.document_service:175 | Step 3 done | ChromaDB upserted 16 docs, total=111
+2026-10-03 13:56:10 | [32mINFO    [0m | knowledge_base.tokenize:85 | VietnameseTokenizer initialized with PyVi
+2026-10-03 13:56:10 | [32mINFO    [0m | service.document_service:81 | DocumentService: VietnameseTokenizer initialized
+2026-10-03 13:56:10 | [32mINFO    [0m | service.document_service:184 | Step 4 done | Tokenized 16 documents
+2026-10-03 13:56:10 | [32mINFO    [0m | knowledge_base.supabase_bm25_storage:69 | SupabaseBM25Storage initialized | bucket='StudentData'
+2026-10-03 13:56:11 | [32mINFO    [0m | core.redis:66 | Redis connected successfully | url=redis://default:VHo7VYbttkNVu7Wm7FLdm1XAByCQnCJP@carmine-bag-snowlit-93777.db.redis.io:17088
+2026-10-03 13:56:11 | [32mINFO    [0m | knowledge_base.cache_manager:92 | CacheManager initialized | L1: maxsize=100, ttl=1800s | L2: Redis TTL=86400s | Origin: Supabase available=True
+2026-10-03 13:56:11 | [32mINFO    [0m | knowledge_base.cache_manager:359 | Pub/Sub listener started on 'bm25:invalidate'
+2026-10-03 13:56:11 | [32mINFO    [0m | service.document_service:88 | DocumentService: CacheManager initialized
+2026-10-03 13:56:12 | [32mINFO    [0m | knowledge_base.bm25_store:100 | BM25Store built | 95 documents, 13442 total tokens
+2026-10-03 13:56:12 | [32mINFO    [0m | knowledge_base.bm25_store:185 | BM25Store updated | added 16 docs, total=111
+2026-10-03 13:56:12 | [32mINFO    [0m | service.document_service:210 | Step 5 done | BM25Store updated, total=111
+2026-10-03 13:56:13 | [32mINFO    [0m | knowledge_base.supabase_bm25_storage:107 | BM25 index uploaded to Supabase | size=62668 bytes
+2026-10-03 13:56:13 | [32mINFO    [0m | knowledge_base.cache_manager:245 | BM25Store saved all tiers | size=62668 bytes
+2026-10-03 13:56:13 | [32mINFO    [0m | service.document_service:220 | Step 6 done | BM25 saved to all cache tiers
+2026-10-03 13:56:13 | [32mINFO    [0m | service.document_service:224 | DocumentService.upload() completed | file='KHOA KINH TẾ VÀ QUẢN LÝ XÂY DỰNG.docx', chunks=16, chroma_total=111, bm25_total=111
+2026-10-03 13:56:28 | [32mINFO    [0m | core.logger:197 | ============================================================
+2026-10-03 13:56:28 | [32mINFO    [0m | core.logger:198 | Logging initialized successfully
+2026-10-03 13:56:28 | [32mINFO    [0m | core.logger:199 |   Log level : INFO
+2026-10-03 13:56:28 | [32mINFO    [0m | core.logger:200 |   Log file  : logs\agent.log
+2026-10-03 13:56:28 | [32mINFO    [0m | core.logger:201 | ============================================================
+2026-10-03 13:56:28 | [32mINFO    [0m | service.document_service:126 | DocumentService.upload() | file='Khoa Kỹ thuật môi trường1.docx'
+2026-10-03 13:56:28 | [32mINFO    [0m | knowledge_base.document_loader:494 | Loading DOCX: Khoa Kỹ thuật môi trường1.docx
+2026-10-03 13:56:28 | [32mINFO    [0m | knowledge_base.document_loader:555 | Loaded 19 chunks from Khoa Kỹ thuật môi trường1.docx (155 paragraphs)
+2026-10-03 13:56:28 | [32mINFO    [0m | service.document_service:152 | Step 1 done | Loaded 19 chunks from 'Khoa Kỹ thuật môi trường1.docx'
+2026-10-03 13:56:29 | [32mINFO    [0m | knowledge_base.embed:204 | GeminiEmbedder initialized: model=gemini-embedding-2, dimension=3072, batch_size=25
+2026-10-03 13:56:29 | [32mINFO    [0m | knowledge_base.embed:502 | Default Gemini embedder registered successfully
+2026-10-03 13:56:29 | [32mINFO    [0m | service.document_service:74 | DocumentService: Embedder initialized
+2026-10-03 13:56:29 | [32mINFO    [0m | knowledge_base.embed:312 | Embedding 19 texts in 1 batch(es) of max 25
+2026-10-03 13:56:31 | [32mINFO    [0m | knowledge_base.embed:354 | Embedding complete: 19 vectors (3072D each)
+2026-10-03 13:56:31 | [32mINFO    [0m | service.document_service:160 | Step 2 done | Embedded 19 vectors (3072D each)
+2026-10-03 13:56:32 | [32mINFO    [0m | knowledge_base.vector_store:148 | VectorStore (ChromaDB) initialized LOCAL: path=E:\CampusPulse\python_service\data\chroma_db
+2026-10-03 13:56:32 | [32mINFO    [0m | knowledge_base.vector_store:158 | Collection 'student_data' ready — 111 documents
+2026-10-03 13:56:32 | [32mINFO    [0m | service.document_service:67 | DocumentService: VectorStore initialized
+2026-10-03 13:56:32 | [32mINFO    [0m | knowledge_base.vector_store:234 | Adding 19 documents to collection 'student_data'
+2026-10-03 13:56:32 | [32mINFO    [0m | knowledge_base.vector_store:271 | Successfully added 19 documents to 'student_data' (total: 130)
+2026-10-03 13:56:32 | [32mINFO    [0m | service.document_service:175 | Step 3 done | ChromaDB upserted 19 docs, total=130
+2026-10-03 13:56:34 | [32mINFO    [0m | knowledge_base.tokenize:85 | VietnameseTokenizer initialized with PyVi
+2026-10-03 13:56:34 | [32mINFO    [0m | service.document_service:81 | DocumentService: VietnameseTokenizer initialized
+2026-10-03 13:56:34 | [32mINFO    [0m | service.document_service:184 | Step 4 done | Tokenized 19 documents
+2026-10-03 13:56:34 | [32mINFO    [0m | knowledge_base.supabase_bm25_storage:69 | SupabaseBM25Storage initialized | bucket='StudentData'
+2026-10-03 13:56:35 | [32mINFO    [0m | core.redis:66 | Redis connected successfully | url=redis://default:VHo7VYbttkNVu7Wm7FLdm1XAByCQnCJP@carmine-bag-snowlit-93777.db.redis.io:17088
+2026-10-03 13:56:35 | [32mINFO    [0m | knowledge_base.cache_manager:92 | CacheManager initialized | L1: maxsize=100, ttl=1800s | L2: Redis TTL=86400s | Origin: Supabase available=True
+2026-10-03 13:56:35 | [32mINFO    [0m | knowledge_base.cache_manager:359 | Pub/Sub listener started on 'bm25:invalidate'
+2026-10-03 13:56:35 | [32mINFO    [0m | service.document_service:88 | DocumentService: CacheManager initialized
+2026-10-03 13:56:36 | [32mINFO    [0m | knowledge_base.bm25_store:100 | BM25Store built | 111 documents, 15735 total tokens
+2026-10-03 13:56:36 | [32mINFO    [0m | knowledge_base.bm25_store:185 | BM25Store updated | added 19 docs, total=130
+2026-10-03 13:56:36 | [32mINFO    [0m | service.document_service:210 | Step 5 done | BM25Store updated, total=130
+2026-10-03 13:56:37 | [32mINFO    [0m | knowledge_base.supabase_bm25_storage:107 | BM25 index uploaded to Supabase | size=73618 bytes
+2026-10-03 13:56:38 | [32mINFO    [0m | knowledge_base.cache_manager:245 | BM25Store saved all tiers | size=73618 bytes
+2026-10-03 13:56:38 | [32mINFO    [0m | service.document_service:220 | Step 6 done | BM25 saved to all cache tiers
+2026-10-03 13:56:38 | [32mINFO    [0m | service.document_service:224 | DocumentService.upload() completed | file='Khoa Kỹ thuật môi trường1.docx', chunks=19, chroma_total=130, bm25_total=130
+2026-10-03 13:57:31 | [32mINFO    [0m | core.logger:197 | ============================================================
+2026-10-03 13:57:31 | [32mINFO    [0m | core.logger:198 | Logging initialized successfully
+2026-10-03 13:57:31 | [32mINFO    [0m | core.logger:199 |   Log level : INFO
+2026-10-03 13:57:31 | [32mINFO    [0m | core.logger:200 |   Log file  : logs\agent.log
+2026-10-03 13:57:31 | [32mINFO    [0m | core.logger:201 | ============================================================
+2026-10-03 13:57:31 | [32mINFO    [0m | service.document_service:126 | DocumentService.upload() | file='KHOA VẬT LIỆU XÂY DỰNG.docx'
+2026-10-03 13:57:31 | [32mINFO    [0m | knowledge_base.document_loader:494 | Loading DOCX: KHOA VẬT LIỆU XÂY DỰNG.docx
+2026-10-03 13:57:31 | [32mINFO    [0m | knowledge_base.document_loader:555 | Loaded 11 chunks from KHOA VẬT LIỆU XÂY DỰNG.docx (133 paragraphs)
+2026-10-03 13:57:31 | [32mINFO    [0m | service.document_service:152 | Step 1 done | Loaded 11 chunks from 'KHOA VẬT LIỆU XÂY DỰNG.docx'
+2026-10-03 13:57:32 | [32mINFO    [0m | knowledge_base.embed:204 | GeminiEmbedder initialized: model=gemini-embedding-2, dimension=3072, batch_size=25
+2026-10-03 13:57:32 | [32mINFO    [0m | knowledge_base.embed:502 | Default Gemini embedder registered successfully
+2026-10-03 13:57:32 | [32mINFO    [0m | service.document_service:74 | DocumentService: Embedder initialized
+2026-10-03 13:57:32 | [32mINFO    [0m | knowledge_base.embed:312 | Embedding 11 texts in 1 batch(es) of max 25
+2026-10-03 13:57:34 | [32mINFO    [0m | knowledge_base.embed:354 | Embedding complete: 11 vectors (3072D each)
+2026-10-03 13:57:34 | [32mINFO    [0m | service.document_service:160 | Step 2 done | Embedded 11 vectors (3072D each)
+2026-10-03 13:57:35 | [32mINFO    [0m | knowledge_base.vector_store:148 | VectorStore (ChromaDB) initialized LOCAL: path=E:\CampusPulse\python_service\data\chroma_db
+2026-10-03 13:57:35 | [32mINFO    [0m | knowledge_base.vector_store:158 | Collection 'student_data' ready — 130 documents
+2026-10-03 13:57:35 | [32mINFO    [0m | service.document_service:67 | DocumentService: VectorStore initialized
+2026-10-03 13:57:35 | [32mINFO    [0m | knowledge_base.vector_store:234 | Adding 11 documents to collection 'student_data'
+2026-10-03 13:57:35 | [32mINFO    [0m | knowledge_base.vector_store:271 | Successfully added 11 documents to 'student_data' (total: 141)
+2026-10-03 13:57:35 | [32mINFO    [0m | service.document_service:175 | Step 3 done | ChromaDB upserted 11 docs, total=141
+2026-10-03 13:57:37 | [32mINFO    [0m | knowledge_base.tokenize:85 | VietnameseTokenizer initialized with PyVi
+2026-10-03 13:57:37 | [32mINFO    [0m | service.document_service:81 | DocumentService: VietnameseTokenizer initialized
+2026-10-03 13:57:37 | [32mINFO    [0m | service.document_service:184 | Step 4 done | Tokenized 11 documents
+2026-10-03 13:57:37 | [32mINFO    [0m | knowledge_base.supabase_bm25_storage:69 | SupabaseBM25Storage initialized | bucket='StudentData'
+2026-10-03 13:57:38 | [32mINFO    [0m | core.redis:66 | Redis connected successfully | url=redis://default:VHo7VYbttkNVu7Wm7FLdm1XAByCQnCJP@carmine-bag-snowlit-93777.db.redis.io:17088
+2026-10-03 13:57:38 | [32mINFO    [0m | knowledge_base.cache_manager:92 | CacheManager initialized | L1: maxsize=100, ttl=1800s | L2: Redis TTL=86400s | Origin: Supabase available=True
+2026-10-03 13:57:38 | [32mINFO    [0m | knowledge_base.cache_manager:359 | Pub/Sub listener started on 'bm25:invalidate'
+2026-10-03 13:57:38 | [32mINFO    [0m | service.document_service:88 | DocumentService: CacheManager initialized
+2026-10-03 13:57:39 | [32mINFO    [0m | knowledge_base.bm25_store:100 | BM25Store built | 130 documents, 17935 total tokens
+2026-10-03 13:57:39 | [32mINFO    [0m | knowledge_base.bm25_store:185 | BM25Store updated | added 11 docs, total=141
+2026-10-03 13:57:39 | [32mINFO    [0m | service.document_service:210 | Step 5 done | BM25Store updated, total=141
+2026-10-03 13:57:40 | [32mINFO    [0m | knowledge_base.supabase_bm25_storage:107 | BM25 index uploaded to Supabase | size=79606 bytes
+2026-10-03 13:57:40 | [32mINFO    [0m | knowledge_base.cache_manager:245 | BM25Store saved all tiers | size=79606 bytes
+2026-10-03 13:57:40 | [32mINFO    [0m | service.document_service:220 | Step 6 done | BM25 saved to all cache tiers
+2026-10-03 13:57:40 | [32mINFO    [0m | service.document_service:224 | DocumentService.upload() completed | file='KHOA VẬT LIỆU XÂY DỰNG.docx', chunks=11, chroma_total=141, bm25_total=141
+2026-10-03 13:57:55 | [32mINFO    [0m | core.logger:197 | ============================================================
+2026-10-03 13:57:55 | [32mINFO    [0m | core.logger:198 | Logging initialized successfully
+2026-10-03 13:57:55 | [32mINFO    [0m | core.logger:199 |   Log level : INFO
+2026-10-03 13:57:55 | [32mINFO    [0m | core.logger:200 |   Log file  : logs\agent.log
+2026-10-03 13:57:55 | [32mINFO    [0m | core.logger:201 | ============================================================
+2026-10-03 13:57:55 | [32mINFO    [0m | service.document_service:126 | DocumentService.upload() | file='KHOA XÂY DỰNG CẦU ĐƯỜNG.docx'
+2026-10-03 13:57:55 | [32mINFO    [0m | knowledge_base.document_loader:494 | Loading DOCX: KHOA XÂY DỰNG CẦU ĐƯỜNG.docx
+2026-10-03 13:57:55 | [32mINFO    [0m | knowledge_base.document_loader:555 | Loaded 4 chunks from KHOA XÂY DỰNG CẦU ĐƯỜNG.docx (66 paragraphs)
+2026-10-03 13:57:55 | [32mINFO    [0m | service.document_service:152 | Step 1 done | Loaded 4 chunks from 'KHOA XÂY DỰNG CẦU ĐƯỜNG.docx'
+2026-10-03 13:57:56 | [32mINFO    [0m | knowledge_base.embed:204 | GeminiEmbedder initialized: model=gemini-embedding-2, dimension=3072, batch_size=25
+2026-10-03 13:57:56 | [32mINFO    [0m | knowledge_base.embed:502 | Default Gemini embedder registered successfully
+2026-10-03 13:57:56 | [32mINFO    [0m | service.document_service:74 | DocumentService: Embedder initialized
+2026-10-03 13:57:56 | [32mINFO    [0m | knowledge_base.embed:312 | Embedding 4 texts in 1 batch(es) of max 25
+2026-10-03 13:57:57 | [32mINFO    [0m | knowledge_base.embed:354 | Embedding complete: 4 vectors (3072D each)
+2026-10-03 13:57:57 | [32mINFO    [0m | service.document_service:160 | Step 2 done | Embedded 4 vectors (3072D each)
+2026-10-03 13:57:58 | [32mINFO    [0m | knowledge_base.vector_store:148 | VectorStore (ChromaDB) initialized LOCAL: path=E:\CampusPulse\python_service\data\chroma_db
+2026-10-03 13:57:58 | [32mINFO    [0m | knowledge_base.vector_store:158 | Collection 'student_data' ready — 141 documents
+2026-10-03 13:57:58 | [32mINFO    [0m | service.document_service:67 | DocumentService: VectorStore initialized
+2026-10-03 13:57:58 | [32mINFO    [0m | knowledge_base.vector_store:234 | Adding 4 documents to collection 'student_data'
+2026-10-03 13:57:58 | [32mINFO    [0m | knowledge_base.vector_store:271 | Successfully added 4 documents to 'student_data' (total: 145)
+2026-10-03 13:57:58 | [32mINFO    [0m | service.document_service:175 | Step 3 done | ChromaDB upserted 4 docs, total=145
+2026-10-03 13:58:00 | [32mINFO    [0m | knowledge_base.tokenize:85 | VietnameseTokenizer initialized with PyVi
+2026-10-03 13:58:00 | [32mINFO    [0m | service.document_service:81 | DocumentService: VietnameseTokenizer initialized
+2026-10-03 13:58:00 | [32mINFO    [0m | service.document_service:184 | Step 4 done | Tokenized 4 documents
+2026-10-03 13:58:00 | [32mINFO    [0m | knowledge_base.supabase_bm25_storage:69 | SupabaseBM25Storage initialized | bucket='StudentData'
+2026-10-03 13:58:01 | [32mINFO    [0m | core.redis:66 | Redis connected successfully | url=redis://default:VHo7VYbttkNVu7Wm7FLdm1XAByCQnCJP@carmine-bag-snowlit-93777.db.redis.io:17088
+2026-10-03 13:58:01 | [32mINFO    [0m | knowledge_base.cache_manager:92 | CacheManager initialized | L1: maxsize=100, ttl=1800s | L2: Redis TTL=86400s | Origin: Supabase available=True
+2026-10-03 13:58:01 | [32mINFO    [0m | knowledge_base.cache_manager:359 | Pub/Sub listener started on 'bm25:invalidate'
+2026-10-03 13:58:01 | [32mINFO    [0m | service.document_service:88 | DocumentService: CacheManager initialized
+2026-10-03 13:58:02 | [32mINFO    [0m | knowledge_base.bm25_store:100 | BM25Store built | 141 documents, 19416 total tokens
+2026-10-03 13:58:02 | [32mINFO    [0m | knowledge_base.bm25_store:185 | BM25Store updated | added 4 docs, total=145
+2026-10-03 13:58:02 | [32mINFO    [0m | service.document_service:210 | Step 5 done | BM25Store updated, total=145
+2026-10-03 13:58:03 | [32mINFO    [0m | knowledge_base.supabase_bm25_storage:107 | BM25 index uploaded to Supabase | size=82389 bytes
+2026-10-03 13:58:03 | [32mINFO    [0m | knowledge_base.cache_manager:245 | BM25Store saved all tiers | size=82389 bytes
+2026-10-03 13:58:03 | [32mINFO    [0m | service.document_service:220 | Step 6 done | BM25 saved to all cache tiers
+2026-10-03 13:58:03 | [32mINFO    [0m | service.document_service:224 | DocumentService.upload() completed | file='KHOA XÂY DỰNG CẦU ĐƯỜNG.docx', chunks=4, chroma_total=145, bm25_total=145
+2026-10-03 13:58:19 | [32mINFO    [0m | core.logger:197 | ============================================================
+2026-10-03 13:58:19 | [32mINFO    [0m | core.logger:198 | Logging initialized successfully
+2026-10-03 13:58:19 | [32mINFO    [0m | core.logger:199 |   Log level : INFO
+2026-10-03 13:58:19 | [32mINFO    [0m | core.logger:200 |   Log file  : logs\agent.log
+2026-10-03 13:58:19 | [32mINFO    [0m | core.logger:201 | ============================================================
+2026-10-03 13:58:19 | [32mINFO    [0m | service.document_service:126 | DocumentService.upload() | file='KHOA XÂY DỰNG CẦU ĐƯỜNG.docx'
+2026-10-03 13:58:19 | [32mINFO    [0m | knowledge_base.document_loader:494 | Loading DOCX: KHOA XÂY DỰNG CẦU ĐƯỜNG.docx
+2026-10-03 13:58:19 | [32mINFO    [0m | knowledge_base.document_loader:555 | Loaded 4 chunks from KHOA XÂY DỰNG CẦU ĐƯỜNG.docx (66 paragraphs)
+2026-10-03 13:58:19 | [32mINFO    [0m | service.document_service:152 | Step 1 done | Loaded 4 chunks from 'KHOA XÂY DỰNG CẦU ĐƯỜNG.docx'
+2026-10-03 13:58:20 | [32mINFO    [0m | knowledge_base.embed:204 | GeminiEmbedder initialized: model=gemini-embedding-2, dimension=3072, batch_size=25
+2026-10-03 13:58:20 | [32mINFO    [0m | knowledge_base.embed:502 | Default Gemini embedder registered successfully
+2026-10-03 13:58:20 | [32mINFO    [0m | service.document_service:74 | DocumentService: Embedder initialized
+2026-10-03 13:58:20 | [32mINFO    [0m | knowledge_base.embed:312 | Embedding 4 texts in 1 batch(es) of max 25
+2026-10-03 13:58:21 | [32mINFO    [0m | knowledge_base.embed:354 | Embedding complete: 4 vectors (3072D each)
+2026-10-03 13:58:21 | [32mINFO    [0m | service.document_service:160 | Step 2 done | Embedded 4 vectors (3072D each)
+2026-10-03 13:58:22 | [32mINFO    [0m | knowledge_base.vector_store:148 | VectorStore (ChromaDB) initialized LOCAL: path=E:\CampusPulse\python_service\data\chroma_db
+2026-10-03 13:58:22 | [32mINFO    [0m | knowledge_base.vector_store:158 | Collection 'student_data' ready — 145 documents
+2026-10-03 13:58:22 | [32mINFO    [0m | service.document_service:67 | DocumentService: VectorStore initialized
+2026-10-03 13:58:22 | [32mINFO    [0m | knowledge_base.vector_store:234 | Adding 4 documents to collection 'student_data'
+2026-10-03 13:58:22 | [32mINFO    [0m | knowledge_base.vector_store:271 | Successfully added 4 documents to 'student_data' (total: 145)
+2026-10-03 13:58:22 | [32mINFO    [0m | service.document_service:175 | Step 3 done | ChromaDB upserted 4 docs, total=145
+2026-10-03 13:58:24 | [32mINFO    [0m | knowledge_base.tokenize:85 | VietnameseTokenizer initialized with PyVi
+2026-10-03 13:58:24 | [32mINFO    [0m | service.document_service:81 | DocumentService: VietnameseTokenizer initialized
+2026-10-03 13:58:24 | [32mINFO    [0m | service.document_service:184 | Step 4 done | Tokenized 4 documents
+2026-10-03 13:58:24 | [32mINFO    [0m | knowledge_base.supabase_bm25_storage:69 | SupabaseBM25Storage initialized | bucket='StudentData'
+2026-10-03 13:58:25 | [32mINFO    [0m | core.redis:66 | Redis connected successfully | url=redis://default:VHo7VYbttkNVu7Wm7FLdm1XAByCQnCJP@carmine-bag-snowlit-93777.db.redis.io:17088
+2026-10-03 13:58:25 | [32mINFO    [0m | knowledge_base.cache_manager:92 | CacheManager initialized | L1: maxsize=100, ttl=1800s | L2: Redis TTL=86400s | Origin: Supabase available=True
+2026-10-03 13:58:25 | [32mINFO    [0m | knowledge_base.cache_manager:359 | Pub/Sub listener started on 'bm25:invalidate'
+2026-10-03 13:58:25 | [32mINFO    [0m | service.document_service:88 | DocumentService: CacheManager initialized
+2026-10-03 13:58:27 | [32mINFO    [0m | knowledge_base.bm25_store:100 | BM25Store built | 145 documents, 19977 total tokens
+2026-10-03 13:58:27 | [32mINFO    [0m | knowledge_base.bm25_store:185 | BM25Store updated | added 4 docs, total=149
+2026-10-03 13:58:27 | [32mINFO    [0m | service.document_service:210 | Step 5 done | BM25Store updated, total=149
+2026-10-03 13:58:27 | [32mINFO    [0m | knowledge_base.supabase_bm25_storage:107 | BM25 index uploaded to Supabase | size=82548 bytes
+2026-10-03 13:58:28 | [32mINFO    [0m | knowledge_base.cache_manager:245 | BM25Store saved all tiers | size=82548 bytes
+2026-10-03 13:58:28 | [32mINFO    [0m | service.document_service:220 | Step 6 done | BM25 saved to all cache tiers
+2026-10-03 13:58:28 | [32mINFO    [0m | service.document_service:224 | DocumentService.upload() completed | file='KHOA XÂY DỰNG CẦU ĐƯỜNG.docx', chunks=4, chroma_total=145, bm25_total=149
+2026-10-03 13:58:41 | [32mINFO    [0m | core.logger:197 | ============================================================
+2026-10-03 13:58:41 | [32mINFO    [0m | core.logger:198 | Logging initialized successfully
+2026-10-03 13:58:41 | [32mINFO    [0m | core.logger:199 |   Log level : INFO
+2026-10-03 13:58:41 | [32mINFO    [0m | core.logger:200 |   Log file  : logs\agent.log
+2026-10-03 13:58:41 | [32mINFO    [0m | core.logger:201 | ============================================================
+2026-10-03 13:58:41 | [32mINFO    [0m | service.document_service:126 | DocumentService.upload() | file='KHOA XÂY DỰNG DÂN DỤNG VÀ CÔNG NGHIỆP.docx'
+2026-10-03 13:58:41 | [32mINFO    [0m | knowledge_base.document_loader:494 | Loading DOCX: KHOA XÂY DỰNG DÂN DỤNG VÀ CÔNG NGHIỆP.docx
+2026-10-03 13:58:41 | [32mINFO    [0m | knowledge_base.document_loader:555 | Loaded 29 chunks from KHOA XÂY DỰNG DÂN DỤNG VÀ CÔNG NGHIỆP.docx (378 paragraphs)
+2026-10-03 13:58:41 | [32mINFO    [0m | service.document_service:152 | Step 1 done | Loaded 29 chunks from 'KHOA XÂY DỰNG DÂN DỤNG VÀ CÔNG NGHIỆP.docx'
+2026-10-03 13:58:42 | [32mINFO    [0m | knowledge_base.embed:204 | GeminiEmbedder initialized: model=gemini-embedding-2, dimension=3072, batch_size=25
+2026-10-03 13:58:42 | [32mINFO    [0m | knowledge_base.embed:502 | Default Gemini embedder registered successfully
+2026-10-03 13:58:42 | [32mINFO    [0m | service.document_service:74 | DocumentService: Embedder initialized
+2026-10-03 13:58:42 | [32mINFO    [0m | knowledge_base.embed:312 | Embedding 29 texts in 2 batch(es) of max 25
+2026-10-03 13:58:45 | [32mINFO    [0m | knowledge_base.embed:354 | Embedding complete: 29 vectors (3072D each)
+2026-10-03 13:58:45 | [32mINFO    [0m | service.document_service:160 | Step 2 done | Embedded 29 vectors (3072D each)
+2026-10-03 13:58:46 | [32mINFO    [0m | knowledge_base.vector_store:148 | VectorStore (ChromaDB) initialized LOCAL: path=E:\CampusPulse\python_service\data\chroma_db
+2026-10-03 13:58:46 | [32mINFO    [0m | knowledge_base.vector_store:158 | Collection 'student_data' ready — 145 documents
+2026-10-03 13:58:46 | [32mINFO    [0m | service.document_service:67 | DocumentService: VectorStore initialized
+2026-10-03 13:58:46 | [32mINFO    [0m | knowledge_base.vector_store:234 | Adding 29 documents to collection 'student_data'
+2026-10-03 13:58:47 | [32mINFO    [0m | knowledge_base.vector_store:271 | Successfully added 29 documents to 'student_data' (total: 174)
+2026-10-03 13:58:47 | [32mINFO    [0m | service.document_service:175 | Step 3 done | ChromaDB upserted 29 docs, total=174
+2026-10-03 13:58:48 | [32mINFO    [0m | knowledge_base.tokenize:85 | VietnameseTokenizer initialized with PyVi
+2026-10-03 13:58:48 | [32mINFO    [0m | service.document_service:81 | DocumentService: VietnameseTokenizer initialized
+2026-10-03 13:58:48 | [32mINFO    [0m | service.document_service:184 | Step 4 done | Tokenized 29 documents
+2026-10-03 13:58:49 | [32mINFO    [0m | knowledge_base.supabase_bm25_storage:69 | SupabaseBM25Storage initialized | bucket='StudentData'
+2026-10-03 13:58:50 | [32mINFO    [0m | core.redis:66 | Redis connected successfully | url=redis://default:VHo7VYbttkNVu7Wm7FLdm1XAByCQnCJP@carmine-bag-snowlit-93777.db.redis.io:17088
+2026-10-03 13:58:50 | [32mINFO    [0m | knowledge_base.cache_manager:92 | CacheManager initialized | L1: maxsize=100, ttl=1800s | L2: Redis TTL=86400s | Origin: Supabase available=True
+2026-10-03 13:58:50 | [32mINFO    [0m | knowledge_base.cache_manager:359 | Pub/Sub listener started on 'bm25:invalidate'
+2026-10-03 13:58:50 | [32mINFO    [0m | service.document_service:88 | DocumentService: CacheManager initialized
+2026-10-03 13:58:51 | [32mINFO    [0m | knowledge_base.bm25_store:100 | BM25Store built | 149 documents, 20538 total tokens
+2026-10-03 13:58:51 | [32mINFO    [0m | knowledge_base.bm25_store:185 | BM25Store updated | added 29 docs, total=178
+2026-10-03 13:58:51 | [32mINFO    [0m | service.document_service:210 | Step 5 done | BM25Store updated, total=178
+2026-10-03 13:58:51 | [32mINFO    [0m | knowledge_base.supabase_bm25_storage:107 | BM25 index uploaded to Supabase | size=98112 bytes
+2026-10-03 13:58:52 | [32mINFO    [0m | knowledge_base.cache_manager:245 | BM25Store saved all tiers | size=98112 bytes
+2026-10-03 13:58:52 | [32mINFO    [0m | service.document_service:220 | Step 6 done | BM25 saved to all cache tiers
+2026-10-03 13:58:52 | [32mINFO    [0m | service.document_service:224 | DocumentService.upload() completed | file='KHOA XÂY DỰNG DÂN DỤNG VÀ CÔNG NGHIỆP.docx', chunks=29, chroma_total=174, bm25_total=178
+2026-10-03 13:59:11 | [32mINFO    [0m | core.logger:197 | ============================================================
+2026-10-03 13:59:11 | [32mINFO    [0m | core.logger:198 | Logging initialized successfully
+2026-10-03 13:59:11 | [32mINFO    [0m | core.logger:199 |   Log level : INFO
+2026-10-03 13:59:11 | [32mINFO    [0m | core.logger:200 |   Log file  : logs\agent.log
+2026-10-03 13:59:11 | [32mINFO    [0m | core.logger:201 | ============================================================
+2026-10-03 14:01:08 | [32mINFO    [0m | core.logger:197 | ============================================================
+2026-10-03 14:01:08 | [32mINFO    [0m | core.logger:198 | Logging initialized successfully
+2026-10-03 14:01:08 | [32mINFO    [0m | core.logger:199 |   Log level : INFO
+2026-10-03 14:01:08 | [32mINFO    [0m | core.logger:200 |   Log file  : logs\agent.log
+2026-10-03 14:01:08 | [32mINFO    [0m | core.logger:201 | ============================================================
+2026-10-03 14:01:25 | [32mINFO    [0m | api.dependencies:47 | ChatService dependency initialized (singleton)
+2026-10-03 14:01:25 | [32mINFO    [0m | service.chat_service:100 | ChatService.ask() | query='cho tôi thông tin khoa cầu đường'
+2026-10-03 14:01:25 | [32mINFO    [0m | service.chat_service:47 | ChatService: HybridRetriever initialized
+2026-10-03 14:01:27 | [32mINFO    [0m | knowledge_base.vector_store:148 | VectorStore (ChromaDB) initialized LOCAL: path=E:\CampusPulse\python_service\data\chroma_db
+2026-10-03 14:01:27 | [32mINFO    [0m | knowledge_base.vector_store:158 | Collection 'student_data' ready — 174 documents
+2026-10-03 14:01:28 | [32mINFO    [0m | knowledge_base.embed:204 | GeminiEmbedder initialized: model=gemini-embedding-2, dimension=3072, batch_size=25
+2026-10-03 14:01:28 | [32mINFO    [0m | knowledge_base.embed:502 | Default Gemini embedder registered successfully
+2026-10-03 14:01:29 | [32mINFO    [0m | knowledge_base.supabase_bm25_storage:69 | SupabaseBM25Storage initialized | bucket='StudentData'
+2026-10-03 14:01:30 | [32mINFO    [0m | core.redis:66 | Redis connected successfully | url=redis://default:VHo7VYbttkNVu7Wm7FLdm1XAByCQnCJP@carmine-bag-snowlit-93777.db.redis.io:17088
+2026-10-03 14:01:30 | [32mINFO    [0m | knowledge_base.cache_manager:92 | CacheManager initialized | L1: maxsize=100, ttl=1800s | L2: Redis TTL=86400s | Origin: Supabase available=True
+2026-10-03 14:01:30 | [32mINFO    [0m | knowledge_base.cache_manager:359 | Pub/Sub listener started on 'bm25:invalidate'
+2026-10-03 14:01:32 | [32mINFO    [0m | knowledge_base.tokenize:85 | VietnameseTokenizer initialized with PyVi
+2026-10-03 14:01:33 | [32mINFO    [0m | knowledge_base.bm25_store:100 | BM25Store built | 178 documents, 25364 total tokens
+2026-10-03 14:01:33 | [32mINFO    [0m | knowledge_base.hybrid_retrievel:267 | HybridSearch completed | query='cho tôi thông tin khoa cầu đường', mode=hybrid, dense=20, sparse=20, final=10
+2026-10-03 14:01:33 | [32mINFO    [0m | knowledge_base.reranker:166 | GroqReranker initialized with official groq SDK | model=openai/gpt-oss-120b
+2026-10-03 14:01:33 | [32mINFO    [0m | service.chat_service:54 | ChatService: GroqReranker initialized
+2026-10-03 14:01:36 | [32mINFO    [0m | knowledge_base.reranker:296 | GroqReranker completed in 3139.4ms | candidates=10, filtered=5/5, min_score=5.0
+2026-10-03 14:01:39 | [32mINFO    [0m | knowledge_base.llm:372 | DeepSeekProvider initialized | model=deepseek-flash
+2026-10-03 14:01:39 | [32mINFO    [0m | service.chat_service:65 | ChatService: DeepSeekProvider initialized
+2026-10-03 14:01:39 | [32mINFO    [0m | knowledge_base.llm:499 | DeepSeekProvider.ask() | query='cho tôi thông tin khoa cầu đường...' | estimated_input_tokens≈1901, temperature=0.5
+2026-10-03 14:01:39 | [32mINFO    [0m | httpx2:1085 | HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-10-03 14:01:46 | [32mINFO    [0m | service.chat_service:135 | ChatService.ask() completed | mode=hybrid, candidates=10, reranked=5, fallback=False

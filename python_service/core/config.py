@@ -17,6 +17,9 @@ class Settings(BaseSettings):
 
     CHROMA_DB_PATH: str = "./data/chroma_db"
     COLLECTION_NAME: str = "student_data"
+    CHROMA_HOST: str = ""          # Để trống → dùng local PersistentClient
+    CHROMA_PORT: int = 8000
+    CHROMA_AUTH_TOKEN: str = ""
     
     
     LLM_PROVIDER:str = "deepseek"
