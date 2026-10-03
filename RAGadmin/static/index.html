@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CampusPulse · Trợ lý phản ánh</title><link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="shell">
+  <aside>
+    <div class="brand"><span class="logo">C</span><div>CampusPulse<small>ADMIN WORKSPACE</small></div></div>
+    <div class="nav active">◉ &nbsp; Trợ lý phản ánh</div>
+    <div class="dataset"><span class="eyebrow">NGUỒN DỮ LIỆU</span><h2>Bộ phản ánh mẫu</h2><p>20 bản ghi giả lập · H1, H2, H3<br>Ngày 01–02/10/2026</p><div id="status">Đang nạp dữ liệu…</div><button id="sync" type="button">↻ &nbsp; Đồng bộ dữ liệu</button></div>
+    <div class="note">Phản ánh ≠ Sự cố<p>Nhiều phản ánh có thể cùng liên kết với một sự cố. Thống kê luôn phân biệt hai loại.</p></div>
+    <footer>Chỉ đọc dữ liệu · Không cập nhật trạng thái</footer>
+  </aside>
+  <main>
+    <header><div><span class="eyebrow">CAMPUS INTELLIGENCE</span><h1>Hỏi dữ liệu. Xem bằng chứng.</h1></div><span class="badge">DEMO · DỮ LIỆU GIẢ</span></header>
+    <p class="intro">Tìm phản ánh, tra cứu sự cố và tổng hợp thông tin từ dữ liệu đã đồng bộ.</p>
+
+    <section id="messages" aria-label="Hội thoại" aria-live="polite"><article class="message bot"><div class="sender">TRỢ LÝ CAMPUSPULSE</div><p>Bạn muốn kiểm tra vấn đề gì?<br>Mỗi câu hỏi được xử lý độc lập. Hãy ghi rõ tòa nhà hoặc mã phản ánh nếu cần.</p></article></section>
+    <form id="chat-form"><label class="sr-only" for="question">Câu hỏi</label><textarea id="question" rows="2" maxlength="1000" placeholder="Ví dụ: Có bao nhiêu phản ánh chưa xử lý ở H1?" required></textarea><button id="send" type="submit">Gửi ↗</button></form>
+    <div class="footnote">Muốn hỏi tự nhiên: chạy run_ai.bat và kiểm tra “Hiểu câu hỏi: LLM”. Số liệu tính trên dữ liệu đã nạp. “Chưa xử lý” gồm EMERGING, CONFIRMED và IN_PROGRESS.</div>
+  </main>
+</div><script src="/static/app.js" defer></script>
+</body></html>
