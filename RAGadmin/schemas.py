@@ -9,7 +9,7 @@ class Report(BaseModel):
     report_id: int = Field(gt=0, strict=True)
     incident_id: int | None = Field(default=None, gt=0, strict=True)
     raw_text: str = Field(min_length=1, max_length=10000)
-    category: Literal["NETWORK", "ELEVATOR", "PROJECTOR", "FACILITY", "OTHER"]
+    category: Literal["NETWORK", "ELEVATOR", "PROJECTOR", "FACILITY", "OTHER", "ELECTRICAL", "SANITATION", "SECURITY", "STUDENT_SERVICE"]
     building: str = Field(min_length=1, max_length=20)
     floor: str | None = None
     room: str | None = None

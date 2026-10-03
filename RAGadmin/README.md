@@ -1,3 +1,7 @@
+# Cập nhật CSV
+
+Xem [CSV_HUONG_DAN.md](CSV_HUONG_DAN.md) để dùng dữ liệu mẫu của Tuấn và xử lý tiêu đề cột sai.
+
 # 🏫 CampusPulse — Hệ Thống Giám Sát & Trợ Lý AI Quản Trị Cơ Sở Vật Chất Học Đường
 
 > **CampusPulse** là giải pháp thông minh hỗ trợ quản lý, tiếp nhận và phân tích các phản ánh về cơ sở vật chất (mạng Wi-Fi, thang máy, máy chiếu, điều hòa, phòng học...) trong khuôn viên trường học. Hệ thống tích hợp **RAG Admin Chatbot** ứng dụng mô hình ngôn ngữ lớn (LLM) và tìm kiếm ngữ nghĩa (Semantic Search) giúp cán bộ quản trị tra cứu, thống kê và tổng hợp sự cố tức thì với độ chính xác cao và chống ảo giác (Anti-Hallucination).
@@ -145,7 +149,7 @@ Tạo file `.env` bên trong thư mục `RAGadmin/` dựa theo mẫu `.env.examp
 APP_MODE=demo
 INTERNAL_API_KEY=your_secret_internal_key_here
 DATA_MODE=mock
-REPORTS_PATH=data/phananh.json
+REPORTS_PATH=data/rag_knowledge.csv
 
 # Chế độ AI: 'cloud' (Gemini Embedding + DeepSeek Chat) hoặc 'offline'
 AI_MODE=cloud

@@ -33,7 +33,7 @@ class QueryPlan(BaseModel):
     report_id: int | None = Field(gt=0, strict=True)
     incident_id: int | None = Field(gt=0, strict=True)
     buildings: list[str] = Field(max_length=30)
-    categories: list[Literal["NETWORK", "ELEVATOR", "PROJECTOR", "FACILITY", "OTHER"]]
+    categories: list[Literal["NETWORK", "ELEVATOR", "PROJECTOR", "FACILITY", "OTHER", "ELECTRICAL", "SANITATION", "SECURITY", "STUDENT_SERVICE"]]
     floor: str | None
     room: str | None
     statuses: list[Literal["EMERGING", "CONFIRMED", "IN_PROGRESS", "RESOLVED"]]
@@ -70,8 +70,12 @@ so sánh số lượng; summary khi muốn tổng hợp đầy đủ; list khi m
 phản ánh gì (kể cả viết tắt 'j'); clarification nếu thiếu thông tin.
 "Hôm nay có những phản ánh j" là list, lọc ngày today, không phải semantic search.
 Không suy đoán giá trị bộ lọc mà người dùng không yêu cầu. Mảng rỗng nghĩa không lọc.
-Không gán category nếu chưa chắc: ghế, đèn, cửa, vệ sinh thường OTHER; mạng NETWORK;
+Không gán category nếu chưa chắc: ghế, cửa và cơ sở vật chất FACILITY; điện/đèn ELECTRICAL; vệ sinh/môi trường SANITATION;
+an ninh/an toàn SECURITY; dịch vụ sinh viên/học phí STUDENT_SERVICE; mạng NETWORK;
 máy chiếu PROJECTOR; thang máy ELEVATOR; điều hòa FACILITY.
+Cơ sở vật chất nói chung gồm FACILITY, PROJECTOR, ELEVATOR.
+Nếu chỉ hỏi điều hòa, thêm content_filter về điều hòa.
+Mã tòa nhà là A1, H1, H2... không kèm tiền tố "Tòa nhà".
 start_day/end_day là ngày gửi phản ánh, inclusive, ISO YYYY-MM-DD; quy đổi thời gian
 tương đối theo today trong input. Không có yêu cầu ngày thì để null.
 Chưa xử lý = EMERGING, CONFIRMED, IN_PROGRESS. Đã xử lý = RESOLVED.

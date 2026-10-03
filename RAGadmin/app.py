@@ -81,7 +81,7 @@ def create_app(settings=None, provider=None):
             return bot.sync()
         except Exception:
             logging.getLogger(__name__).warning("Đồng bộ thất bại; giữ snapshot cũ.")
-            raise HTTPException(400, "Không đồng bộ được. Kiểm tra file JSON, mã trùng, múi giờ và trạng thái sự cố. Dữ liệu cũ vẫn được giữ.")
+            raise HTTPException(400, "Không đồng bộ được. Kiểm tra file CSV/JSON, mã trùng, múi giờ và trạng thái sự cố. Dữ liệu cũ vẫn được giữ.")
 
     @app.post("/internal/admin/chat", dependencies=[Depends(authorize)])
     def chat(body: ChatRequest):

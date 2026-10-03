@@ -9,7 +9,11 @@ CATEGORIES = {
     "NETWORK": ("wifi", "wi fi", "wi-fi", "mang", "internet", "ket noi"),
     "ELEVATOR": ("thang may",),
     "PROJECTOR": ("may chieu", "hdmi"),
-    "FACILITY": ("dieu hoa",),
+    "FACILITY": ("dieu hoa", "co so vat chat"),
+    "ELECTRICAL": ("dien", "chieu sang", "den", "bong den"),
+    "SANITATION": ("ve sinh", "moi truong", "rac", "mui la"),
+    "SECURITY": ("an ninh", "an toan", "mat do", "trom cap"),
+    "STUDENT_SERVICE": ("dich vu sinh vien", "hoc phi"),
 }
 
 
@@ -50,11 +54,13 @@ class Query:
             and (not self.building or report.building == self.building)
             and (not self.floor or report.floor == self.floor)
             and (not self.room or report.room == self.room)
-            and (not self.category or report.category == self.category)
+            and (not self.category or report.category == self.category or
+                 (self.category == "FACILITY" and report.category in {"PROJECTOR", "ELEVATOR"}))
             and (not self.statuses or report.incident_status in self.statuses)
             and (not self.day or report.created_at.astimezone(VN).date() == self.day)
             and (not self.buildings or report.building in self.buildings)
-            and (not self.categories or report.category in self.categories)
+            and (not self.categories or report.category in self.categories or
+                 ("FACILITY" in self.categories and report.category in {"PROJECTOR", "ELEVATOR"}))
             and (not self.start_day or report.created_at.astimezone(VN).date() >= self.start_day)
             and (not self.end_day or report.created_at.astimezone(VN).date() <= self.end_day)
         )
@@ -67,7 +73,7 @@ def parse_query(question, today=None):
     if any(x in text for x in ("cap nhat", "doi trang thai", "xoa phan anh", "phan cong")):
         q.clarification = "Chatbot chỉ đọc dữ liệu. Hãy dùng trang quản lý sự cố để cập nhật."
         return q
-    buildings = set(re.findall(r"\bh\d+\b", text))
+    buildings = set(re.findall(r"\b[a-z]\d+\b", text))
     if len(buildings) > 1:
         q.clarification = "Bản này lọc một tòa mỗi lần. Bạn muốn xem tòa nào?"
     q.building = next(iter(buildings)).upper() if len(buildings) == 1 else None
@@ -136,15 +142,17 @@ def parse_query(question, today=None):
     elif q.kind != "lookup" and (any(x in text for x in ("liet ke", "danh sach")) or
                                  re.search(r"(?:co nhung|co cac|phan anh (?:gi|nao))", text)):
         q.kind = "list"
+    if q.kind in {"count", "summary", "list"} and contains(text, "dieu hoa"):
+        q.clarification = "Hãy bật AI để lọc nội dung điều hòa trong nhóm cơ sở vật chất."
     if q.kind in {"count", "summary", "list"}:
         # Không đếm một điều kiện nội dung chưa được bộ lọc cấu trúc hiểu.
         residue = text
         for aliases in CATEGORIES.values():
             for alias in sorted(aliases, key=len, reverse=True):
                 residue = re.sub(r"(?<!\w)" + re.escape(alias) + r"(?!\w)", " ", residue)
-        residue = re.sub(r"\bh\d+\b|\d{4}-\d{2}-\d{2}|\d{1,2}/\d{1,2}/\d{4}|\d+", " ", residue)
+        residue = re.sub(r"\b[a-z]\d+\b|\d{4}-\d{2}-\d{2}|\d{1,2}/\d{1,2}/\d{4}|\d+", " ", residue)
         allowed = set(normalize("co bao nhieu phan anh report reports su co incident incidents thong ke dem so luong tong tat ca toan bo du lieu tom tat hop ve tai o toa nha khu nao nhieu nhat theo loai trang thai chua da dang xu ly giai quyet xac nhan moi phat sinh hom nay qua ngay tang phong so ma la va cac cua sinh vien network elevator projector facility other emerging confirmed in_progress resolved").split())
-        allowed.update("liet ke danh sach nhung gi xem cho toi minh".split())
+        allowed.update("liet ke danh sach nhung gi xem cho toi minh electrical sanitation security student_service".split())
         unknown = [word for word in re.findall(r"\w+", residue) if word not in allowed]
         if unknown:
             q.clarification = "Mình chưa hiểu đầy đủ điều kiện thống kê/tóm tắt. Hãy dùng loại vấn đề, tòa H1/H2/H3, tầng, phòng, trạng thái hoặc một ngày cụ thể."
