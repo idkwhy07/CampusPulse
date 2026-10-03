@@ -38,11 +38,9 @@ func NewIncidentService(
 	pool *pgxpool.Pool,
 ) *IncidentService {
 	return &IncidentService{
-		incidents:
-			repositories.NewIncidentRepository(pool),
+		incidents: repositories.NewIncidentRepository(pool),
 
-		links:
-			repositories.NewIncidentObservationRepository(pool),
+		links: repositories.NewIncidentObservationRepository(pool),
 	}
 }
 
@@ -282,50 +280,37 @@ func incidentView(
 	}
 
 	return IncidentView{
-		IncidentID:
-		item.Incident.ID,
+		IncidentID: item.Incident.ID,
 
-		Title:
-		item.Incident.Title,
+		Title: item.Incident.Title,
 
-		Category:
-		CategoryLabel(
+		Category: CategoryLabel(
 			item.Incident.Category,
 		),
 
-		Location:
-		BuildingLabel(
+		Location: BuildingLabel(
 			item.Incident.Building,
 		),
 
-		Room:
-		room,
+		Room: room,
 
-		ReportCount:
-		item.ReportCount,
+		ReportCount: item.ReportCount,
 
-		UniqueSupport:
-		item.UniqueSupport,
+		UniqueSupport: item.UniqueSupport,
 
-		Status:
-		UIStatus(
+		Status: UIStatus(
 			item.Incident.Status,
 		),
 
-		Confidence:
-		item.Incident.Confidence,
+		Confidence: item.Incident.Confidence,
 
-		EmergedAt:
-		emerged,
+		EmergedAt: emerged,
 
-		FirstReportAt:
-		format(item.FirstReportAt),
+		FirstReportAt: format(item.FirstReportAt),
 
-		LatestReportAt:
-		format(item.LatestReportAt),
+		LatestReportAt: format(item.LatestReportAt),
 
-		Reports:
-		reports,
+		Reports: reports,
 	}
 }
 
@@ -341,27 +326,21 @@ func plainReportView(
 	return ReportView{
 		ID: obs.ID,
 
-		Category:
-		CategoryLabel(
+		Category: CategoryLabel(
 			obs.Category,
 		),
 
-		Location:
-		BuildingLabel(
+		Location: BuildingLabel(
 			obs.Building,
 		),
 
-		Room:
-		room,
+		Room: room,
 
-		Description:
-		obs.RawText,
+		Description: obs.RawText,
 
-		CreatedAt:
-		obs.CreatedAt,
+		CreatedAt: obs.CreatedAt,
 
-		CreatedText:
-		obs.CreatedAt.Format(
+		CreatedText: obs.CreatedAt.Format(
 			"02/01/2006 15:04:05",
 		),
 	}
@@ -379,11 +358,9 @@ func BuildIncidentFilter(
 ) {
 	filter :=
 		repositories.IncidentFilter{
-			Room:
-			strings.TrimSpace(room),
+			Room: strings.TrimSpace(room),
 
-			Search:
-			strings.TrimSpace(search),
+			Search: strings.TrimSpace(search),
 		}
 
 	if strings.TrimSpace(status) != "" {
