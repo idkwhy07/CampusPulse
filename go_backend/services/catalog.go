@@ -1,6 +1,9 @@
 package services
 
-import "strings"
+import (
+	"fmt"
+	"strings"
+)
 
 const IncidentFormationThreshold = 4
 
@@ -139,4 +142,45 @@ func InternalStatus(labelOrCode string) (string, bool) {
 	default:
 		return "", false
 	}
+}
+
+
+func Categories() []string {
+	return []string{
+		"Mạng / Đường truyền",
+		"Cơ sở vật chất",
+		"Điện / Chiếu sáng",
+		"Vệ sinh / Môi trường",
+		"An ninh / An toàn",
+		"Dịch vụ sinh viên",
+		"Khác",
+	}
+}
+
+func Locations() []string {
+	return []string{
+		"Tòa nhà H1",
+		"Tòa nhà H2",
+		"Tòa nhà H3",
+		"Tòa nhà A1",
+	}
+}
+
+func RoomsByLocation() map[string][]string {
+	result := make(map[string][]string)
+
+	for _, location := range Locations() {
+		rooms := make([]string, 0, 41)
+
+		for room := 10; room <= 50; room++ {
+			rooms = append(
+				rooms,
+				fmt.Sprintf("%02d", room),
+			)
+		}
+
+		result[location] = rooms
+	}
+
+	return result
 }

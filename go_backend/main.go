@@ -84,6 +84,50 @@ func main() {
 		log.Fatal(err)
 	}
 
+	// Frontend HTML/CSS/JS.
+	router.LoadHTMLGlob("../templates/*.html")
+	router.Static("/static", "../static")
+
+	router.GET("/", func(c *gin.Context) {
+		c.HTML(
+			http.StatusOK,
+			"student.html",
+			nil,
+		)
+	})
+
+	router.GET("/login", func(c *gin.Context) {
+		c.HTML(
+			http.StatusOK,
+			"login.html",
+			nil,
+		)
+	})
+
+	router.GET("/register", func(c *gin.Context) {
+		c.HTML(
+			http.StatusOK,
+			"register.html",
+			nil,
+		)
+	})
+
+	router.GET("/admin", func(c *gin.Context) {
+		c.HTML(
+			http.StatusOK,
+			"admin.html",
+			nil,
+		)
+	})
+
+	router.GET("/admin/reports", func(c *gin.Context) {
+		c.HTML(
+			http.StatusOK,
+			"admin_reports.html",
+			nil,
+		)
+	})
+
 	// health check
 	router.GET("/health", func(c *gin.Context) {
 		if err := pool.Ping(c.Request.Context()); err != nil {
@@ -112,6 +156,18 @@ func main() {
 		"/auth/register",
 		authHandler.Register,
 	)
+
+	// Public options used by Student/Admin frontend.
+	api.GET("/options", func(c *gin.Context) {
+		c.JSON(
+			http.StatusOK,
+			gin.H{
+				"categories": services.Categories(),
+				"locations": services.Locations(),
+				"rooms_by_location": services.RoomsByLocation(),
+			},
+		)
+	})
 
 	// JWT protected routes
 	protected := api.Group("")
