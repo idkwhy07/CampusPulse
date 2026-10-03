@@ -16,7 +16,6 @@ type Observation struct {
 	Floor        *string    `json:"floor,omitempty"`
 	Room         *string    `json:"room,omitempty"`
 	ServiceState string     `json:"service_state"`
-	ImageURL     *string    `json:"image_url,omitempty"`
 	Status       string     `json:"status"`
 	OccurredAt   *time.Time `json:"occurred_at,omitempty"`
 	CreatedAt    time.Time  `json:"created_at"`
