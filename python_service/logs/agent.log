@@ -1,0 +1,7 @@
+2026-10-03 09:07:10 | [32mINFO    [0m | core.logger:197 | ============================================================
+2026-10-03 09:07:10 | [32mINFO    [0m | core.logger:198 | Logging initialized successfully
+2026-10-03 09:07:10 | [32mINFO    [0m | core.logger:199 |   Log level : INFO
+2026-10-03 09:07:10 | [32mINFO    [0m | core.logger:200 |   Log file  : logs\agent.log
+2026-10-03 09:07:10 | [32mINFO    [0m | core.logger:201 | ============================================================
+2026-10-03 09:07:13 | [32mINFO    [0m | knowledge_base.vector_store:148 | VectorStore (ChromaDB) initialized LOCAL: path=E:\CampusPulse\python_service\data\chroma_db
+2026-10-03 09:07:13 | [32mINFO    [0m | knowledge_base.vector_store:158 | Collection 'user_data' ready — 0 documents
