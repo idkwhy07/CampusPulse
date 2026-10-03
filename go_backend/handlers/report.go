@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"net/http"
+	"strconv"
 	"strings"
 	"time"
 
@@ -124,3 +125,85 @@ func (h *ReportHandler) ListMine(c *gin.Context) {
 	c.JSON(http.StatusOK, reports)
 }
 
+// GET /api/reports/:id
+func (h *ReportHandler) GetMine(
+	c *gin.Context,
+) {
+	userID, ok := middleware.UserID(c)
+	if !ok {
+		c.JSON(
+			http.StatusUnauthorized,
+			gin.H{
+				"error": "unauthenticated",
+			},
+		)
+		return
+	}
+
+	id, err := strconv.Atoi(c.Param("id"))
+	if err != nil || id <= 0 {
+		c.JSON(
+			http.StatusBadRequest,
+			gin.H{
+				"error": "invalid report id",
+			},
+		)
+		return
+	}
+
+	report, err := h.service.GetMine(
+		c.Request.Context(),
+		userID,
+		id,
+	)
+
+	if err != nil {
+		writeServiceError(c, err)
+		return
+	}
+
+	c.JSON(
+		http.StatusOK,
+		report,
+	)
+}
+
+// DELETE /api/reports/:id
+func (h *ReportHandler) DeleteMine(
+	c *gin.Context,
+) {
+	userID, ok := middleware.UserID(c)
+	if !ok {
+		c.JSON(
+			http.StatusUnauthorized,
+			gin.H{
+				"error": "unauthenticated",
+			},
+		)
+		return
+	}
+
+	id, err := strconv.Atoi(c.Param("id"))
+	if err != nil || id <= 0 {
+		c.JSON(
+			http.StatusBadRequest,
+			gin.H{
+				"error": "invalid report id",
+			},
+		)
+		return
+	}
+
+	err = h.service.DeleteMine(
+		c.Request.Context(),
+		userID,
+		id,
+	)
+
+	if err != nil {
+		writeServiceError(c, err)
+		return
+	}
+
+	c.Status(http.StatusNoContent)
+}
