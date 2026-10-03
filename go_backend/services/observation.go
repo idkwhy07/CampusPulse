@@ -2,7 +2,6 @@ package services
 
 import (
 	"context"
-	"errors"
 	"fmt"
 	"strings"
 	"time"
@@ -149,75 +148,6 @@ func (s *ObservationService) ListMine(
 	}
 
 	return result, nil
-}
-
-// GET ONE REPORT OF CURRENT STUDENT
-func (s *ObservationService) GetMine(
-	ctx context.Context,
-	userID int,
-	id int,
-) (ReportView, error) {
-	item, err := s.observations.GetByIDWithIncident(
-		ctx,
-		id,
-	)
-
-	if errors.Is(err, repositories.ErrNotFound) {
-		return ReportView{}, ErrNotFound
-	}
-
-	if err != nil {
-		return ReportView{}, err
-	}
-
-	// Ownership check:
-	// student khong duoc xem report cua student khac.
-	if item.Observation.UserID != userID {
-		return ReportView{}, ErrForbidden
-	}
-
-	return reportView(item), nil
-}
-
-// DELETE ONE REPORT OF CURRENT STUDENT
-func (s *ObservationService) DeleteMine(
-	ctx context.Context,
-	userID int,
-	id int,
-) error {
-	obs, err := s.observations.GetByID(
-		ctx,
-		id,
-	)
-
-	if errors.Is(err, repositories.ErrNotFound) {
-		return ErrNotFound
-	}
-
-	if err != nil {
-		return err
-	}
-
-	// Student chi duoc xoa report cua chinh minh.
-	if obs.UserID != userID {
-		return ErrForbidden
-	}
-
-	err = s.observations.SoftDelete(
-		ctx,
-		id,
-		userID,
-	)
-
-	if errors.Is(err, repositories.ErrNotFound) {
-		return ErrNotFound
-	}
-
-	if err != nil {
-		return err
-	}
-
-	return nil
 }
 
 func reportView(
