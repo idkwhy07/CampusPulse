@@ -1,7 +1,7 @@
 """
-BM25 Store — Wrapper BM25Okapi + Serialization cho Multi-Tenant.
+BM25 Store — Wrapper BM25Okapi + Serialization.
 
-Module này quản lý chỉ mục BM25 của từng user, hỗ trợ:
+Module này quản lý chỉ mục BM25, hỗ trợ:
     - Xây dựng chỉ mục BM25Okapi trên tokenized corpus
     - Tìm kiếm sparse (keyword matching)
     - Serialize/Deserialize (pickle + zstd compression) để lưu trữ vào
@@ -11,7 +11,6 @@ Cách sử dụng:
     from knowledge_base.bm25_store import BM25Store
 
     store = BM25Store.build(
-        user_id=1,
         doc_ids=["chunk_1", "chunk_2"],
         documents=["nội dung chunk 1", "nội dung chunk 2"],
         metadatas=[{"source_file": "report.pdf"}, ...],
@@ -45,20 +44,17 @@ logger = get_logger(__name__)
 @dataclass
 class BM25Store:
     """
-    Encapsulate BM25Okapi model cùng dữ liệu corpus của một user.
+    Encapsulate BM25Okapi model cùng dữ liệu corpus.
 
-    Mỗi BM25Store đại diện cho toàn bộ chỉ mục BM25 của một user_id cụ thể.
     Chứa đầy đủ thông tin để tái tạo lại model từ serialized bytes.
 
     Attributes:
-        user_id: ID người dùng sở hữu chỉ mục.
         doc_ids: Danh sách chunk_id map 1-1 với ChromaDB.
         documents: Nội dung văn bản gốc của các chunks.
         metadatas: Metadata đi kèm (source_file, chunk_index, ...).
         tokenized_corpus: Mảng tokens đã qua PyVi cho mỗi document.
         bm25_model: Đối tượng BM25Okapi đã fit trên corpus.
     """
-    user_id: int
     doc_ids: list[str] = field(default_factory=list)
     documents: list[str] = field(default_factory=list)
     metadatas: list[dict] = field(default_factory=list)
@@ -70,7 +66,6 @@ class BM25Store:
     @classmethod
     def build(
         cls,
-        user_id: int,
         doc_ids: list[str],
         documents: list[str],
         metadatas: list[dict],
@@ -80,7 +75,6 @@ class BM25Store:
         Xây dựng BM25Store mới từ corpus đã tokenize.
 
         Args:
-            user_id: ID user.
             doc_ids: Danh sách chunk IDs.
             documents: Nội dung text gốc.
             metadatas: Metadata (source_file, page, ...).
@@ -92,11 +86,8 @@ class BM25Store:
         from rank_bm25 import BM25Okapi
 
         if not tokenized_corpus:
-            logger.warning(
-                f"BM25Store.build: empty corpus for user_id={user_id}"
-            )
+            logger.warning("BM25Store.build: empty corpus")
             return cls(
-                user_id=user_id,
                 doc_ids=doc_ids,
                 documents=documents,
                 metadatas=metadatas,
@@ -107,13 +98,12 @@ class BM25Store:
         bm25 = BM25Okapi(tokenized_corpus)
 
         logger.info(
-            f"BM25Store built for user_id={user_id} | "
+            f"BM25Store built | "
             f"{len(doc_ids)} documents, "
             f"{sum(len(t) for t in tokenized_corpus)} total tokens"
         )
 
         return cls(
-            user_id=user_id,
             doc_ids=doc_ids,
             documents=documents,
             metadatas=metadatas,
@@ -193,7 +183,7 @@ class BM25Store:
         self._rebuild_model()
 
         logger.info(
-            f"BM25Store updated for user_id={self.user_id} | "
+            f"BM25Store updated | "
             f"added {len(doc_ids)} docs, total={len(self.doc_ids)}"
         )
 
@@ -221,7 +211,7 @@ class BM25Store:
         self._rebuild_model()
 
         logger.info(
-            f"BM25Store pruned for user_id={self.user_id} | "
+            f"BM25Store pruned | "
             f"removed {len(doc_ids_to_remove)} docs, "
             f"remaining={len(self.doc_ids)}"
         )
@@ -248,7 +238,6 @@ class BM25Store:
             Compressed bytes.
         """
         payload = {
-            "user_id": self.user_id,
             "doc_ids": self.doc_ids,
             "documents": self.documents,
             "metadatas": self.metadatas,
@@ -258,7 +247,7 @@ class BM25Store:
         compressed = zlib.compress(raw, level=6)
 
         logger.debug(
-            f"BM25Store serialized for user_id={self.user_id} | "
+            f"BM25Store serialized | "
             f"raw={len(raw)} bytes, compressed={len(compressed)} bytes "
             f"(ratio={len(compressed)/max(len(raw),1):.2%})"
         )
@@ -279,7 +268,6 @@ class BM25Store:
         payload = pickle.loads(raw)
 
         return cls.build(
-            user_id=payload["user_id"],
             doc_ids=payload["doc_ids"],
             documents=payload["documents"],
             metadatas=payload["metadatas"],
