@@ -17,27 +17,23 @@ class Settings(BaseSettings):
 
     CHROMA_DB_PATH: str = "./data/chroma_db"
     COLLECTION_NAME: str = "student_data"
-    # ChromaDB Remote (Fly.io) 
-    CHROMA_HOST: str = ""
-    CHROMA_PORT: int = 443
-    CHROMA_AUTH_TOKEN: str = ""
+    
     
     LLM_PROVIDER:str = "deepseek"
     EMBEDDING_PROVIDER: str = "gemini"  # Provider embedding (gemini, openai, ...)
     EMBEDDING_MODEL: str = "gemini-embedding-2"  # Model embedding cụ thể
-    CHECKPOINT_DB_PATH: str = "./data/checkpoints.sqlite"
-    MAX_AGENT_STEPS: int = 10
+    
+    
     LOG_LEVEL: str = "INFO"   # DEBUG, INFO, WARNING, ERROR, CRITICAL
     LOG_DIR: str = "logs"      # Thư mục lưu file log
     
     
-    # Database
-    DATABASE_URL: str
+    
 
     # ─── Supabase Storage (Tầng Gốc - BM25 Index) ────────────────────
     SUPABASE_URL: str = ""
     SUPABASE_SERVICE_ROLE_KEY: str = ""
-    SUPABASE_BM25_BUCKET: str = ""
+    SUPABASE_BM25_BUCKET: str = "StudentData"
 
     # ─── Redis (Tầng 2 - Distributed Cache) ───────────────────────────
     REDIS_URL: str = ""
