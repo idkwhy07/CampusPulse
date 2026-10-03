@@ -40,6 +40,13 @@ func main() {
 	}
 	defer pool.Close()
 
+	if err := database.RunMigrations(
+		ctx,
+		pool,
+	); err != nil {
+		log.Fatal(err)
+	}
+
 	// repositories
 	userRepo := repositories.NewUserRepository(pool)
 
@@ -120,6 +127,16 @@ func main() {
 	studentReports.GET(
 		"/me",
 		reportHandler.ListMine,
+	)
+
+	studentReports.GET(
+		"/:id",
+		reportHandler.GetMine,
+	)
+
+	studentReports.DELETE(
+		"/:id",
+		reportHandler.DeleteMine,
 	)
 
 	port := os.Getenv("PORT")
