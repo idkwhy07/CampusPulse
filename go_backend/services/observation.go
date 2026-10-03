@@ -2,12 +2,17 @@ package services
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"strings"
 	"time"
 
+	database "go_backend/databases"
 	"go_backend/models"
 	"go_backend/repositories"
+
+	"github.com/jackc/pgx/v5"
+	"github.com/jackc/pgx/v5/pgxpool"
 )
 
 type CreateObservationInput struct {
@@ -38,18 +43,25 @@ type ReportView struct {
 }
 
 type ObservationService struct {
+	pool         *pgxpool.Pool
 	observations *repositories.ObservationRepository
 }
 
 func NewObservationService(
-	observations *repositories.ObservationRepository,
+	pool *pgxpool.Pool,
 ) *ObservationService {
 	return &ObservationService{
-		observations: observations,
+		pool:         pool,
+		observations: repositories.NewObservationRepository(pool),
 	}
 }
 
 // CREATE REPORT
+//
+// Toan bo:
+// observation -> fusion -> link -> incident
+//
+// duoc chay trong cung mot transaction.
 func (s *ObservationService) Create(
 	ctx context.Context,
 	userID int,
@@ -82,7 +94,9 @@ func (s *ObservationService) Create(
 
 	text := strings.TrimSpace(input.Text)
 
-	if len([]rune(text)) < 10 || len([]rune(text)) > 1000 {
+	if len([]rune(text)) < 10 ||
+		len([]rune(text)) > 1000 {
+
 		return ReportView{}, fmt.Errorf(
 			"%w: description must be 10-1000 characters",
 			ErrInvalidInput,
@@ -111,15 +125,74 @@ func (s *ObservationService) Create(
 		OccurredAt:   input.OccurredAt,
 	}
 
-	if err := s.observations.Create(ctx, &obs); err != nil {
+	err := database.WithTx(
+		ctx,
+		s.pool,
+		func(tx pgx.Tx) error {
+			// Tao repository gan voi transaction.
+			observationRepo :=
+				repositories.NewObservationRepository(tx)
+
+			incidentRepo :=
+				repositories.NewIncidentRepository(tx)
+
+			linkRepo :=
+				repositories.NewIncidentObservationRepository(tx)
+
+			fusionService :=
+				NewFusionService(
+					incidentRepo,
+					linkRepo,
+				)
+
+			// 1. Luu report.
+			if err := observationRepo.Create(
+				ctx,
+				&obs,
+			); err != nil {
+				return fmt.Errorf(
+					"create observation: %w",
+					err,
+				)
+			}
+
+			// 2. Gom report vao incident.
+			if _, err := fusionService.AttachObservation(
+				ctx,
+				obs,
+			); err != nil {
+				return fmt.Errorf(
+					"fusion observation: %w",
+					err,
+				)
+			}
+
+			return nil
+		},
+	)
+
+	if err != nil {
 		return ReportView{}, err
 	}
 
-	return reportView(
-		repositories.ObservationWithIncident{
-			Observation: obs,
-		},
-	), nil
+	// Transaction da commit.
+	//
+	// Doc lai report de response co thong tin incident
+	// neu incident vua duoc hinh thanh.
+	item, err := s.observations.GetByIDWithIncident(
+		ctx,
+		obs.ID,
+	)
+
+	if errors.Is(err, repositories.ErrNotFound) {
+		return ReportView{}, ErrNotFound
+	}
+
+	if err != nil {
+		return ReportView{}, err
+	}
+
+	return reportView(item), nil
 }
 
 // LIST REPORTS OF CURRENT STUDENT
@@ -138,7 +211,11 @@ func (s *ObservationService) ListMine(
 		return nil, err
 	}
 
-	result := make([]ReportView, 0, len(items))
+	result := make(
+		[]ReportView,
+		0,
+		len(items),
+	)
 
 	for _, item := range items {
 		result = append(
@@ -148,6 +225,76 @@ func (s *ObservationService) ListMine(
 	}
 
 	return result, nil
+}
+
+// GET ONE REPORT OF CURRENT STUDENT
+func (s *ObservationService) GetMine(
+	ctx context.Context,
+	userID int,
+	id int,
+) (ReportView, error) {
+	item, err :=
+		s.observations.GetByIDWithIncident(
+			ctx,
+			id,
+		)
+
+	if errors.Is(err, repositories.ErrNotFound) {
+		return ReportView{}, ErrNotFound
+	}
+
+	if err != nil {
+		return ReportView{}, err
+	}
+
+	// Student khong duoc xem report cua student khac.
+	if item.Observation.UserID != userID {
+		return ReportView{}, ErrForbidden
+	}
+
+	return reportView(item), nil
+}
+
+// DELETE ONE REPORT OF CURRENT STUDENT
+func (s *ObservationService) DeleteMine(
+	ctx context.Context,
+	userID int,
+	id int,
+) error {
+	obs, err :=
+		s.observations.GetByID(
+			ctx,
+			id,
+		)
+
+	if errors.Is(err, repositories.ErrNotFound) {
+		return ErrNotFound
+	}
+
+	if err != nil {
+		return err
+	}
+
+	// Student chi duoc xoa report cua chinh minh.
+	if obs.UserID != userID {
+		return ErrForbidden
+	}
+
+	err = s.observations.SoftDelete(
+		ctx,
+		id,
+		userID,
+	)
+
+	if errors.Is(err, repositories.ErrNotFound) {
+		return ErrNotFound
+	}
+
+	if err != nil {
+		return err
+	}
+
+	return nil
 }
 
 func reportView(
@@ -166,28 +313,39 @@ func reportView(
 		Room:        room,
 		Description: item.Observation.RawText,
 		CreatedAt:   item.Observation.CreatedAt,
-		CreatedText: item.Observation.CreatedAt.Format("02/01/2006 15:04:05"),
+		CreatedText: item.Observation.CreatedAt.Format(
+			"02/01/2006 15:04:05",
+		),
 	}
 
+	// Student chi thay incident khi du threshold.
 	formed :=
 		item.IncidentReportCount != nil &&
-			*item.IncidentReportCount >= IncidentFormationThreshold
+			*item.IncidentReportCount >=
+				IncidentFormationThreshold
 
 	if item.IncidentID != nil &&
 		item.IncidentStatus != nil &&
 		item.IncidentConfidence != nil &&
 		formed {
 
-		status := UIStatus(*item.IncidentStatus)
+		status := UIStatus(
+			*item.IncidentStatus,
+		)
 
 		if status != "" {
 			view.Status = &status
 
-			view.Incident = &IncidentTracking{
-				ID:         *item.IncidentID,
-				Status:     *item.IncidentStatus,
-				Confidence: *item.IncidentConfidence,
-			}
+			view.Incident =
+				&IncidentTracking{
+					ID: *item.IncidentID,
+
+					Status:
+					*item.IncidentStatus,
+
+					Confidence:
+					*item.IncidentConfidence,
+				}
 		}
 	}
 
