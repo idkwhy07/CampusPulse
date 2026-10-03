@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CampusPulse • Student</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body class="admin-body admin-dashboard-page student-dashboard-page">
+  <aside class="sidebar">
+    <a class="brand brand-sidebar" href="/">
+      <span class="brand-mark">CP</span>
+      <span>
+        <strong>CampusPulse</strong>
+        <small>Student</small>
+      </span>
+    </a>
+
+    <nav class="nav-stack student-nav-stack">
+      <a class="nav-item active" href="#recent" data-student-tab="recent"><span>◉</span> Báo cáo gần đây</a>
+      <a class="nav-item" href="#history" data-student-tab="history"><span>▣</span> Tất cả báo cáo đã gửi</a>
+      <a class="nav-item" href="#chatbot" data-student-tab="chatbot"><span>✦</span> Chatbot</a>
+    </nav>
+
+    <div class="sidebar-footer student-sidebar-footer">
+      <div class="live-pill"><span></span> Student demo</div>
+      <p>Student chỉ xem được report của tài khoản đang đăng nhập.</p>
+    </div>
+  </aside>
+
+  <main class="dashboard student-dashboard">
+    <div class="dashboard-head">
+      <div>
+        <span class="eyebrow">STUDENT PORTAL</span>
+        <h1>CampusPulse</h1>
+        <p>Gửi phản ánh và theo dõi các báo cáo của chính bạn.</p>
+      </div>
+      <div class="head-actions">
+        <button class="logout-btn" type="button" data-logout>Đăng xuất</button>
+        <span id="studentLastUpdated" class="last-updated">Đang đồng bộ...</span>
+      </div>
+    </div>
+
+    <section id="studentTabRecent" class="student-tab-section">
+      <div class="student-recent-grid student-recent-grid-clean">
+        <section class="reports-panel student-form-panel">
+          <div class="panel-head student-panel-head">
+            <div>
+              <h2>Gửi report mới</h2>
+              <p>Mô tả ngắn gọn, chính xác vấn đề bạn đang gặp.</p>
+            </div>
+          </div>
+
+          <form id="reportForm" novalidate>
+            <label class="field">
+              <span class="field-label">Vấn đề đang gặp <b>*</b></span>
+              <div class="select-wrap">
+                <select id="category" required>
+                  <option value="">Chọn nhóm vấn đề</option>
+                </select>
+              </div>
+              <small class="field-error" id="categoryError"></small>
+            </label>
+
+            <div class="location-grid">
+              <label class="field">
+                <span class="field-label">Tòa nhà <b>*</b></span>
+                <div class="select-wrap">
+                  <select id="location" required>
+                    <option value="">Chọn tòa nhà</option>
+                  </select>
+                </div>
+                <small class="field-error" id="locationError"></small>
+              </label>
+
+              <label class="field">
+                <span class="field-label">Phòng <b>*</b></span>
+                <input id="room" list="roomOptions" inputmode="numeric" autocomplete="off" placeholder="Chọn hoặc nhập 10–50" disabled />
+                <datalist id="roomOptions"></datalist>
+                <small class="field-error" id="roomError"></small>
+              </label>
+            </div>
+
+            <label class="field">
+              <span class="field-label">Mô tả vấn đề <b>*</b></span>
+              <textarea id="description" maxlength="1000" rows="6" placeholder="Ví dụ: Wi-Fi phòng 24 H1 mất kết nối từ khoảng 15 phút trước..."></textarea>
+              <div class="textarea-meta">
+                <small class="field-error" id="descriptionError"></small>
+                <span><span id="charCount">0</span>/1000</span>
+              </div>
+            </label>
+
+            <button class="submit-btn" id="submitBtn" type="submit">
+              <span>Gửi report</span>
+              <span class="submit-icon">↗</span>
+            </button>
+          </form>
+        </section>
+
+        <section class="reports-panel student-recent-panel">
+          <div class="panel-head student-panel-head">
+            <div>
+              <h2>Báo cáo gần đây</h2>
+              <p>Chỉ hiển thị những report của tài khoản student đang đăng nhập.</p>
+            </div>
+          </div>
+
+          <div id="recentReportsList" class="student-report-list"></div>
+          <div id="recentReportsEmpty" class="empty-state hidden">
+            <div>◎</div>
+            <h3>Chưa có report nào</h3>
+            <p>Report bạn gửi sẽ xuất hiện ở đây.</p>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section id="studentTabHistory" class="student-tab-section hidden">
+      <section class="reports-panel student-history-panel">
+        <div class="panel-head student-panel-head">
+          <div>
+            <h2>Tất cả báo cáo đã gửi</h2>
+            <p>Lịch sử report của riêng bạn.</p>
+          </div>
+          <div class="student-history-actions">
+            <span class="student-own-count"><strong id="studentTotalReports">0</strong> report</span>
+            <button class="refresh-btn" id="studentRefreshReportsBtn" type="button">↻ Làm mới</button>
+          </div>
+        </div>
+
+        <div class="report-filters student-report-filters">
+          <div class="search-box reports-search">
+            <span>⌕</span>
+            <input id="studentReportsSearch" type="search" placeholder="Tìm trong report của bạn..." />
+          </div>
+          <select id="studentReportsCategory"><option value="">Mọi vấn đề</option></select>
+          <select id="studentReportsLocation"><option value="">Mọi tòa nhà</option></select>
+          <select id="studentReportsRoom"><option value="">Mọi phòng</option></select>
+          <button id="studentClearFiltersBtn" class="clear-filters-btn" type="button">Xóa bộ lọc</button>
+        </div>
+
+        <div id="allReportsList" class="student-report-list student-report-list-full"></div>
+        <div id="allReportsEmpty" class="empty-state hidden">
+          <div>⌁</div>
+          <h3>Không có report phù hợp</h3>
+          <p>Thử thay đổi bộ lọc hoặc gửi report mới.</p>
+        </div>
+      </section>
+    </section>
+
+    <section id="studentTabChatbot" class="student-tab-section student-chat-tab hidden">
+      <div class="student-chatgpt-shell">
+        <div id="chatEmptyState" class="student-chat-empty-state">
+          <div class="student-chat-logo">CP</div>
+          <h2>Xin chào, mình có thể giúp gì?</h2>
+          <p>Hỏi về cách gửi report hoặc cách mô tả sự cố rõ ràng hơn.</p>
+          <div class="student-chat-suggestions">
+            <button type="button" class="quick-prompt-btn" data-prompt="Làm sao để viết một report rõ ràng?">Viết report rõ ràng</button>
+            <button type="button" class="quick-prompt-btn" data-prompt="Lỗi Wi-Fi thì nên mô tả những gì?">Mô tả lỗi Wi-Fi</button>
+            <button type="button" class="quick-prompt-btn" data-prompt="Tôi xem lại report đã gửi ở đâu?">Xem lại report đã gửi</button>
+          </div>
+        </div>
+
+        <div id="chatMessages" class="student-chat-messages student-chat-messages-modern"></div>
+
+        <div class="student-chat-composer-wrap">
+          <form id="chatForm" class="student-chat-composer">
+            <textarea id="chatInput" rows="1" placeholder="Nhắn CampusPulse..." autocomplete="off"></textarea>
+            <button type="submit" class="student-chat-send-btn" aria-label="Gửi">↑</button>
+          </form>
+          <small>Chatbot demo có thể trả lời sai. Hãy kiểm tra thông tin quan trọng.</small>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite">
+    <div class="toast-icon">✓</div>
+    <div>
+      <strong id="toastTitle">Đã gửi report!</strong>
+      <span id="toastText">Report của bạn đã được ghi nhận.</span>
+    </div>
+  </div>
+
+  <script src="/static/js/api.js"></script>
+  <script src="/static/js/student.js"></script>
+</body>
+</html>

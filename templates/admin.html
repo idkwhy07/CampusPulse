@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CampusPulse • Incident Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body class="admin-body admin-dashboard-page">
+  <aside class="sidebar">
+    <a class="brand brand-sidebar" href="/admin">
+      <span class="brand-mark">CP</span>
+      <span>
+        <strong>CampusPulse</strong>
+        <small>Admin Console</small>
+      </span>
+    </a>
+
+    <nav class="nav-stack">
+      <a class="nav-item active" href="/admin"><span>▦</span> Dashboard</a>
+      <a class="nav-item" href="/admin/reports"><span>◉</span> Reports</a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="live-pill"><span></span> Live demo</div>
+      <p>Dữ liệu được lưu trong PostgreSQL.</p>
+    </div>
+  </aside>
+
+  <main class="dashboard">
+    <div class="dashboard-head">
+      <div>
+        <span class="eyebrow">ADMIN OPERATIONS</span>
+        <h1>Incident Dashboard</h1>
+      </div>
+      <div class="head-actions">
+        <button class="logout-btn" type="button" data-logout>Đăng xuất</button>
+        <span id="lastUpdated" class="last-updated">Đang đồng bộ...</span>
+      </div>
+    </div>
+
+    <section class="metrics-grid">
+      <article class="metric-card metric-primary">
+        <span>Tổng incidents</span>
+        <strong id="totalCount">0</strong>
+      </article>
+      <article class="metric-card metric-danger">
+        <span>Chưa xử lý</span>
+        <strong id="newCount">0</strong>
+      </article>
+      <article class="metric-card metric-warning">
+        <span>Đang xử lý</span>
+        <strong id="processingCount">0</strong>
+      </article>
+      <article class="metric-card metric-success">
+        <span>Đã xử lý</span>
+        <strong id="doneCount">0</strong>
+      </article>
+    </section>
+
+    <section class="reports-panel dashboard-incidents-panel">
+      <div class="panel-head">
+        <div>
+          <h2>Incident Queue</h2>
+          <p>Incident mới hình thành nằm trên cùng. Màu của toàn bộ card phản ánh trạng thái xử lý.</p>
+        </div>
+        <button class="refresh-btn" id="refreshBtn" type="button">↻ Làm mới</button>
+      </div>
+
+      <div id="reportList" class="incident-list"></div>
+      <div id="emptyState" class="empty-state hidden">
+        <div>◎</div>
+        <h3>Chưa có incident nào đủ 4 report</h3>
+        <p>Các report vẫn được lưu ở trang Reports cho tới khi đủ ngưỡng hình thành incident.</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="/static/js/api.js"></script>
+  <script src="/static/js/admin.js"></script>
+  <script src="/static/js/admin_assistant.js"></script>
+</body>
+</html>

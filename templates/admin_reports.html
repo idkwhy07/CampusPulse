@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CampusPulse • Reports</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body class="admin-body admin-reports-page">
+  <aside class="sidebar">
+    <a class="brand brand-sidebar" href="/admin">
+      <span class="brand-mark">CP</span>
+      <span>
+        <strong>CampusPulse</strong>
+        <small>Admin Console</small>
+      </span>
+    </a>
+
+    <nav class="nav-stack">
+      <a class="nav-item" href="/admin"><span>▦</span> Dashboard</a>
+      <a class="nav-item active" href="/admin/reports"><span>◉</span> Reports</a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="live-pill"><span></span> Live demo</div>
+      <p>Dữ liệu được lưu trong PostgreSQL.</p>
+    </div>
+  </aside>
+
+  <main class="dashboard reports-page">
+    <div class="dashboard-head">
+      <div>
+        <span class="eyebrow">REPORT EXPLORER</span>
+        <h1>Reports</h1>
+      </div>
+      <div class="head-actions">
+        <button class="logout-btn" type="button" data-logout>Đăng xuất</button>
+        <span id="reportsUpdated" class="last-updated">Đang đồng bộ...</span>
+      </div>
+    </div>
+
+    <section class="reports-summary-grid">
+      <article class="summary-chip">
+        <span>Tổng report đang hiển thị</span>
+        <strong id="visibleReportCount">0</strong>
+      </article>
+    </section>
+
+    <section class="reports-panel report-explorer-panel">
+      <div class="panel-head">
+        <div>
+          <h2>Incident / Report Explorer</h2>
+        </div>
+        <button class="refresh-btn" id="reportsRefreshBtn" type="button">↻ Làm mới</button>
+      </div>
+
+      <div class="report-filters">
+        <div class="search-box reports-search">
+          <span>⌕</span>
+          <input id="reportsSearch" type="search" placeholder="Tìm theo nội dung report, vấn đề, tòa, phòng..." />
+        </div>
+        <select id="reportsCategory"><option value="">Mọi vấn đề</option></select>
+        <select id="reportsLocation"><option value="">Mọi tòa nhà</option></select>
+        <select id="reportsRoom"><option value="">Mọi phòng</option></select>
+        <select id="reportsStatus">
+          <option value="">Mọi trạng thái</option>
+          <option value="Chưa xử lý">Chưa xử lý</option>
+          <option value="Đang xử lý">Đang xử lý</option>
+          <option value="Đã xử lý">Đã xử lý</option>
+        </select>
+        <button id="clearFiltersBtn" class="clear-filters-btn" type="button">Xóa bộ lọc</button>
+      </div>
+
+      <div id="clusterList" class="cluster-list"></div>
+      <div id="reportsEmpty" class="empty-state hidden">
+        <div>⌁</div>
+        <h3>Không có dữ liệu phù hợp</h3>
+        <p>Thử nới bộ lọc để xem lại toàn bộ report.</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="/static/js/api.js"></script>
+  <script src="/static/js/admin_reports.js"></script>
+  <script src="/static/js/admin_assistant.js"></script>
+</body>
+</html>
