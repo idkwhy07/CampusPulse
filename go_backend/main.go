@@ -60,6 +60,10 @@ func main() {
 		pool,
 	)
 
+	incidentService := services.NewIncidentService(
+		pool,
+	)
+
 	// handlers
 	authHandler := handlers.NewAuthHandler(
 		authService,
@@ -67,6 +71,10 @@ func main() {
 
 	reportHandler := handlers.NewReportHandler(
 		observationService,
+	)
+
+	incidentHandler := handlers.NewIncidentHandler(
+		incidentService,
 	)
 
 	// router
@@ -137,6 +145,34 @@ func main() {
 	studentReports.DELETE(
 		"/:id",
 		reportHandler.DeleteMine,
+	)
+
+
+	// STAFF INCIDENT ROUTES
+	staffIncidents := protected.Group("/incidents")
+
+	staffIncidents.Use(
+		middleware.RequireRole(models.RoleStaff),
+	)
+
+	staffIncidents.GET(
+		"",
+		incidentHandler.List,
+	)
+
+	staffIncidents.GET(
+		"/:id",
+		incidentHandler.Get,
+	)
+
+	staffIncidents.GET(
+		"/:id/observations",
+		incidentHandler.Evidence,
+	)
+
+	staffIncidents.PATCH(
+		"/:id/status",
+		incidentHandler.UpdateStatus,
 	)
 
 	port := os.Getenv("PORT")
