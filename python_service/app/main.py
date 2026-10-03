@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-from api.routes import chat, document
+from api.routes import chat, document, predict
 import os
 
 
@@ -25,6 +25,11 @@ app.include_router(
 
 app.include_router(
     document.router,
+    prefix="/api"
+)
+
+app.include_router(
+    predict.router,
     prefix="/api"
 )
 

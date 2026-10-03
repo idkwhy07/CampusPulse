@@ -127,8 +127,12 @@ func main() {
 		middleware.RequireRole(models.RoleStudent),
 	)
 
+	// POST tạo report — qua middleware phân loại nội dung trước
 	studentReports.POST(
 		"",
+		middleware.ContentClassifier(
+			middleware.PredictURL(),
+		),
 		reportHandler.Create,
 	)
 

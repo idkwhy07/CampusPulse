@@ -1,0 +1,29 @@
+# Virtual env (sẽ build lại trong container)
+.venv/
+
+# Cache
+__pycache__/
+*.pyc
+*.pyo
+
+# IDE & OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Environment secrets (sẽ set qua Render dashboard)
+.env
+
+# Data files không cần thiết trong image
+data/raw/
+data/chroma_db/
+*.pdf
+
+# Logs
+logs/
