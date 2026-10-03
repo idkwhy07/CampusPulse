@@ -42,7 +42,6 @@ func main() {
 
 	// repositories
 	userRepo := repositories.NewUserRepository(pool)
-	observationRepo := repositories.NewObservationRepository(pool)
 
 	// services
 	authService := services.NewAuthService(
@@ -51,7 +50,7 @@ func main() {
 	)
 
 	observationService := services.NewObservationService(
-		observationRepo,
+		pool,
 	)
 
 	// handlers
