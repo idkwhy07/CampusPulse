@@ -119,19 +119,85 @@ function renderClusters(clusters) {
 
 async function loadClusters() {
   const params = new URLSearchParams();
-  if (searchInput.value.trim()) params.set('q', searchInput.value.trim());
-  if (categoryFilter.value) params.set('category', categoryFilter.value);
-  if (locationFilter.value) params.set('location', locationFilter.value);
-  if (roomFilter.value) params.set('room', roomFilter.value);
-  if (statusFilter.value) params.set('status', statusFilter.value);
+
+  if (searchInput.value.trim()) {
+    params.set('q', searchInput.value.trim());
+  }
+
+  if (categoryFilter.value) {
+    params.set('category', categoryFilter.value);
+  }
+
+  if (locationFilter.value) {
+    params.set('location', locationFilter.value);
+  }
+
+  if (roomFilter.value) {
+    params.set('room', roomFilter.value);
+  }
+
+  if (statusFilter.value) {
+    params.set('status', statusFilter.value);
+  }
 
   try {
-    const response = await CampusPulseAPI.apiFetch(`/api/incidents?${params.toString()}`, {}, 'STAFF');
-    const clusters = await response.json();
+    const response = await CampusPulseAPI.apiFetch(
+      `/api/incidents?${params.toString()}`,
+      {},
+      'STAFF',
+    );
+
+    if (!response.ok) {
+      throw new Error(
+        `Không tải được incident (${response.status})`,
+      );
+    }
+
+    const summaries = await response.json();
+
+    if (!Array.isArray(summaries)) {
+      throw new Error(
+        'Dữ liệu incident không hợp lệ',
+      );
+    }
+
+    const clusters = await Promise.all(
+      summaries.map(async (summary) => {
+        const detailResponse =
+          await CampusPulseAPI.apiFetch(
+            `/api/incidents/${summary.incident_id}`,
+            {},
+            'STAFF',
+          );
+
+        if (!detailResponse.ok) {
+          throw new Error(
+            `Không tải được incident #${summary.incident_id}`,
+          );
+        }
+
+        const detail =
+          await detailResponse.json();
+
+        return {
+          ...summary,
+          ...detail,
+
+          reports:
+            Array.isArray(detail.reports)
+              ? detail.reports
+              : [],
+        };
+      }),
+    );
+
     renderClusters(clusters);
-    reportsUpdated.textContent = `Cập nhật ${new Date().toLocaleTimeString('vi-VN')}`;
+
+    reportsUpdated.textContent =
+      `Cập nhật ${new Date().toLocaleTimeString('vi-VN')}`;
   } catch (error) {
-    reportsUpdated.textContent = 'Mất kết nối server';
+    reportsUpdated.textContent =
+      error.message || 'Mất kết nối server';
   }
 }
 
