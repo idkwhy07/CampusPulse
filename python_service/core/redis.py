@@ -63,9 +63,7 @@ def get_redis_client() -> redis.Redis:
         # Kiểm tra kết nối
         _redis_client.ping()
 
-        logger.info(
-            f"Redis connected successfully | url={settings.REDIS_URL}"
-        )
+        logger.info("Redis connected successfully")
         return _redis_client
 
     except redis.ConnectionError as e:

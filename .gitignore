@@ -34,3 +34,7 @@ Thumbs.db
 bin/
 dist/
 *.exe
+
+# Logs
+python_service/logs/
+*.log
