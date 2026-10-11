@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-from api.routes import chat, document, predict
+from api.routes import chat, document
 import os
 
 
@@ -28,9 +28,9 @@ app.include_router(
     prefix="/api"
 )
 
-app.include_router(
-    predict.router,
-    prefix="/api"
-)
 
 
+
+@app.get("/health")
+async def health():
+    return {"status": "ok", "service": "student-rag"}

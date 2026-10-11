@@ -43,7 +43,7 @@
           <textarea rows="1" placeholder="Nhắn CampusPulse AI..." aria-label="Tin nhắn"></textarea>
           <button type="submit" aria-label="Gửi">↑</button>
         </form>
-        <small>AI demo có thể trả lời sai. Hãy kiểm tra thông tin quan trọng.</small>
+        <small>CampusPulse AI có thể trả lời sai. Hãy kiểm tra thông tin quan trọng.</small>
       </div>
     </section>
   `;
@@ -169,45 +169,19 @@
     messages.scrollTop = messages.scrollHeight;
   }
 
-  async function incidentSummary() {
-    try {
-      const response = await CampusPulseAPI.apiFetch('/api/incidents', {}, 'STAFF');
-      if (!response.ok) throw new Error('Request failed');
-      const incidents = await response.json();
-      const newCount = incidents.filter((item) => item.status === 'Chưa xử lý').length;
-      const processing = incidents.filter((item) => item.status === 'Đang xử lý').length;
-      const done = incidents.filter((item) => item.status === 'Đã xử lý').length;
-
-      if (!incidents.length) {
-        return 'Hiện chưa có incident nào đạt ngưỡng 4 reports để hình thành.';
-      }
-
-      return `Hiện có ${incidents.length} incident: ${newCount} chưa xử lý, ${processing} đang xử lý và ${done} đã xử lý. Chỉ những cụm đã đạt ít nhất 4 reports mới xuất hiện ở khu vực Admin.`;
-    } catch (_) {
-      return 'Mình chưa đọc được dữ liệu incident lúc này. Bạn có thể thử làm mới trang rồi hỏi lại.';
-    }
-  }
-
   async function getReply(message) {
-    const text = message.toLowerCase();
+    const response = await CampusPulseAPI.apiFetch('/api/chat/admin', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message }),
+    }, 'STAFF');
 
-    if (text.includes('tóm tắt') || text.includes('bao nhiêu') || text.includes('tình trạng') || text.includes('hiện tại')) {
-      return incidentSummary();
-    }
-    if (text.includes('trạng thái') || text.includes('chưa xử lý') || text.includes('đang xử lý') || text.includes('đã xử lý')) {
-      return 'Incident có 3 trạng thái: “Chưa xử lý”, “Đang xử lý” và “Đã xử lý”. Trên Dashboard, bạn có thể đổi trạng thái bằng menu ba chấm ở cuối mỗi incident.';
-    }
-    if (text.includes('report') && (text.includes('4') || text.includes('ngưỡng') || text.includes('hình thành') || text.includes('gom'))) {
-      return 'Hệ thống gom report theo cùng vấn đề, tòa nhà và phòng. Khi một cụm đạt đủ 4 reports thì mới hình thành incident và xuất hiện trong khu vực Admin.';
-    }
-    if (text.includes('reports') || text.includes('bộ lọc') || text.includes('tìm')) {
-      return 'Trang Reports dùng để xem các report thuộc những incident đã hình thành. Bạn có thể tìm kiếm và lọc theo vấn đề, tòa nhà, phòng hoặc trạng thái.';
-    }
-    if (text.includes('dashboard') || text.includes('incident')) {
-      return 'Dashboard tập trung vào các incident đã hình thành. Mỗi card cho biết vấn đề, số reports, vị trí, phòng, trạng thái và thời điểm incident hình thành.';
+    const data = await CampusPulseAPI.safeJSON(response);
+    if (!response.ok) {
+      throw new Error(data.error || 'Trợ lý Admin hiện chưa sẵn sàng.');
     }
 
-    return 'Mình có thể hỗ trợ bạn đọc nhanh tình trạng incident, giải thích trạng thái, ngưỡng 4 reports và cách dùng trang Reports. Bạn muốn xem phần nào?';
+    return data.answer || 'Mình chưa có câu trả lời phù hợp.';
   }
 
   async function sendMessage(message) {
@@ -218,8 +192,18 @@
     input.value = '';
     autoSizeInput();
 
-    const reply = await getReply(clean);
-    window.setTimeout(() => addMessage('bot', reply), 140);
+    const sendButton = form.querySelector('button[type="submit"]');
+    if (sendButton) sendButton.disabled = true;
+
+    try {
+      const reply = await getReply(clean);
+      addMessage('bot', reply);
+    } catch (error) {
+      addMessage('bot', error.message || 'Không kết nối được trợ lý Admin.');
+    } finally {
+      if (sendButton) sendButton.disabled = false;
+      input.focus();
+    }
   }
 
   bubble.addEventListener('pointerdown', (event) => {

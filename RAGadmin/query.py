@@ -69,7 +69,8 @@ class Query:
 def parse_query(question, today=None):
     text = normalize(question)
     text = re.sub(r"\bj\b", "gi", text)
-    q = Query(entity="incident" if "su co" in text and "phan anh" not in text else "report")
+    incident_words = "su co" in text or contains(text, "incident") or contains(text, "incidents")
+    q = Query(entity="incident" if incident_words and "phan anh" not in text else "report")
     if any(x in text for x in ("cap nhat", "doi trang thai", "xoa phan anh", "phan cong")):
         q.clarification = "Chatbot chỉ đọc dữ liệu. Hãy dùng trang quản lý sự cố để cập nhật."
         return q
@@ -139,8 +140,11 @@ def parse_query(question, today=None):
             q.group_by = "incident_status"
     elif "tom tat" in text or "tong hop" in text:
         q.kind = "summary"
-    elif q.kind != "lookup" and (any(x in text for x in ("liet ke", "danh sach")) or
-                                 re.search(r"(?:co nhung|co cac|phan anh (?:gi|nao))", text)):
+    elif q.kind != "lookup" and (
+        any(x in text for x in ("liet ke", "danh sach"))
+        or re.search(r"(?:co nhung|co cac|phan anh (?:gi|nao))", text)
+        or (q.entity == "incident" and re.search(r"(?:nhung\s+)?incidents?\s+nao", text))
+    ):
         q.kind = "list"
     if q.kind in {"count", "summary", "list"} and contains(text, "dieu hoa"):
         q.clarification = "Hãy bật AI để lọc nội dung điều hòa trong nhóm cơ sở vật chất."
@@ -152,7 +156,7 @@ def parse_query(question, today=None):
                 residue = re.sub(r"(?<!\w)" + re.escape(alias) + r"(?!\w)", " ", residue)
         residue = re.sub(r"\b[a-z]\d+\b|\d{4}-\d{2}-\d{2}|\d{1,2}/\d{1,2}/\d{4}|\d+", " ", residue)
         allowed = set(normalize("co bao nhieu phan anh report reports su co incident incidents thong ke dem so luong tong tat ca toan bo du lieu tom tat hop ve tai o toa nha khu nao nhieu nhat theo loai trang thai chua da dang xu ly giai quyet xac nhan moi phat sinh hom nay qua ngay tang phong so ma la va cac cua sinh vien network elevator projector facility other emerging confirmed in_progress resolved").split())
-        allowed.update("liet ke danh sach nhung gi xem cho toi minh electrical sanitation security student_service".split())
+        allowed.update("liet ke danh sach nhung gi xem cho toi minh dang ton tai nao hien co electrical sanitation security student_service".split())
         unknown = [word for word in re.findall(r"\w+", residue) if word not in allowed]
         if unknown:
             q.clarification = "Mình chưa hiểu đầy đủ điều kiện thống kê/tóm tắt. Hãy dùng loại vấn đề, tòa H1/H2/H3, tầng, phòng, trạng thái hoặc một ngày cụ thể."

@@ -31,28 +31,37 @@ type IncidentTracking struct {
 }
 
 type ReportView struct {
-	ID          int               `json:"id"`
-	Category    string            `json:"category"`
-	Location    string            `json:"location"`
-	Room        string            `json:"room"`
-	Description string            `json:"description"`
-	CreatedAt   time.Time         `json:"created_at_raw"`
-	CreatedText string            `json:"created_at"`
-	Status      *string           `json:"status"`
-	Incident    *IncidentTracking `json:"incident,omitempty"`
+	ID           int               `json:"id"`
+	Category     string            `json:"category"`
+	Location     string            `json:"location"`
+	Room         string            `json:"room"`
+	Description  string            `json:"description"`
+	CreatedAt    time.Time         `json:"created_at_raw"`
+	CreatedText  string            `json:"created_at"`
+	Status       *string           `json:"status"`
+	Incident     *IncidentTracking `json:"incident,omitempty"`
+	AIValidation *AIValidationView `json:"ai_validation,omitempty"`
 }
 
 type ObservationService struct {
 	pool         *pgxpool.Pool
 	observations *repositories.ObservationRepository
+	validator    CompatibilityValidator
 }
 
 func NewObservationService(
 	pool *pgxpool.Pool,
+	validators ...CompatibilityValidator,
 ) *ObservationService {
+	var validator CompatibilityValidator
+	if len(validators) > 0 {
+		validator = validators[0]
+	}
+
 	return &ObservationService{
 		pool:         pool,
 		observations: repositories.NewObservationRepository(pool),
+		validator:    validator,
 	}
 }
 
@@ -110,6 +119,35 @@ func (s *ObservationService) Create(
 
 		if value != "" {
 			imageURL = &value
+		}
+	}
+
+	var aiValidation *AIValidationView
+
+	// Model hien tai chi ho tro 6 nhom cu the.
+	// "Khac" duoc phep gui ma khong chan boi AI.
+	if category != "OTHER" && s.validator != nil {
+		prediction, err := s.validator.Predict(
+			ctx,
+			CategoryLabel(category),
+			text,
+		)
+		if err != nil {
+			return ReportView{}, &AIUnavailableError{Cause: err}
+		}
+
+		aiValidation = &AIValidationView{
+			Checked:     true,
+			Matched:     prediction.IsMatch,
+			Probability: prediction.Probability,
+			Threshold:   prediction.Threshold,
+			Model:       prediction.Model,
+		}
+
+		if !prediction.IsMatch {
+			return ReportView{}, &AIValidationError{
+				Prediction: prediction,
+			}
 		}
 	}
 
@@ -192,7 +230,10 @@ func (s *ObservationService) Create(
 		return ReportView{}, err
 	}
 
-	return reportView(item), nil
+	view := reportView(item)
+	view.AIValidation = aiValidation
+
+	return view, nil
 }
 
 // LIST REPORTS OF CURRENT STUDENT

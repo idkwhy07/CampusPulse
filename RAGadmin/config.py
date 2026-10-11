@@ -21,6 +21,7 @@ class Settings:
     ai_required: bool = False
     deepseek_api_key: str = ""
     gemini_api_key: str = ""
+    database_url: str = ""
 
     @classmethod
     def from_env(cls):
@@ -39,15 +40,18 @@ class Settings:
             ai_required=os.getenv("AI_REQUIRED", "false").lower() == "true",
             deepseek_api_key=os.getenv("DEEPSEEK_API_KEY", ""),
             gemini_api_key=os.getenv("GEMINI_API_KEY", ""),
+            database_url=os.getenv("DATABASE_URL", ""),
         )
 
     def validate(self):
         if self.app_mode not in {"demo", "internal"}:
             raise ValueError("APP_MODE phải là demo hoặc internal")
-        if self.data_mode not in {"mock", "file"}:
-            raise ValueError("DATA_MODE phải là mock hoặc file")
+        if self.data_mode not in {"mock", "file", "postgres"}:
+            raise ValueError("DATA_MODE phải là mock, file hoặc postgres")
         if self.app_mode == "demo" and self.data_mode != "mock":
             raise ValueError("Dữ liệu thật phải chạy APP_MODE=internal")
+        if self.data_mode == "postgres" and not self.database_url:
+            raise ValueError("DATABASE_URL là bắt buộc khi DATA_MODE=postgres")
         if self.app_mode == "internal" and len(self.api_key) < 24:
             raise ValueError("INTERNAL_API_KEY cần ít nhất 24 ký tự")
         if self.ai_mode not in {"offline", "cloud"}:

@@ -1,0 +1,7 @@
+services:
+  campuspulse-ml-api:
+    build: .
+    ports:
+      - "127.0.0.1:8002:8001"
+    environment:
+      CAMPUSPULSE_CORS_ORIGINS: "${CAMPUSPULSE_CORS_ORIGINS:-}"

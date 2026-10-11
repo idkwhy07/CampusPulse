@@ -112,3 +112,106 @@ class FileReportSource:
                     "CSV mẫu sai header: dùng cột confidence làm created_at; "
                     "cột created_at cũ là văn bản tổng hợp. Nên sửa header thành created_at,content.")
             return result
+
+
+class PostgresReportSource:
+    """Đọc dữ liệu CampusPulse trực tiếp từ PostgreSQL/Supabase.
+
+    Chỉ incident đã đạt ngưỡng 4 SUPPORT reports mới được coi là incident đã
+    hình thành. Các observation thuộc cụm EMERGING vẫn được nạp, nhưng
+    incident_id/incident_status được đặt None để chatbot không đếm chúng như
+    incident thật trên Dashboard.
+    """
+
+    def __init__(self, database_url: str):
+        self.database_url = (database_url or "").strip()
+        if not self.database_url:
+            raise ValueError("DATABASE_URL is required")
+
+    def load_reports(self):
+        import psycopg
+
+        sql = """
+            WITH formed_incidents AS (
+                SELECT
+                    i.id,
+                    i.status
+                FROM incidents i
+                JOIN incident_observations io
+                    ON io.incident_id = i.id
+                   AND io.relation = 'SUPPORT'
+                JOIN observations so
+                    ON so.id = io.observation_id
+                   AND so.status <> 'DELETED'
+                GROUP BY i.id, i.status
+                HAVING COUNT(so.id) >= 4
+            )
+            SELECT
+                o.id,
+                fi.id AS formed_incident_id,
+                o.raw_text,
+                o.category,
+                o.building,
+                o.floor,
+                o.room,
+                o.status,
+                fi.status AS formed_incident_status,
+                o.created_at
+            FROM observations o
+            LEFT JOIN incident_observations io
+                ON io.observation_id = o.id
+               AND io.relation = 'SUPPORT'
+            LEFT JOIN formed_incidents fi
+                ON fi.id = io.incident_id
+            WHERE o.status <> 'DELETED'
+            ORDER BY o.created_at ASC, o.id ASC
+        """
+
+        with psycopg.connect(self.database_url) as conn:
+            with conn.cursor() as cur:
+                cur.execute(sql)
+                rows = cur.fetchall()
+
+        category_map = {
+            "CLEANLINESS": "SANITATION",
+            "SAFETY": "SECURITY",
+        }
+
+        reports = []
+        for row in rows:
+            (
+                report_id,
+                incident_id,
+                raw_text,
+                category,
+                building,
+                floor,
+                room,
+                report_status,
+                incident_status,
+                created_at,
+            ) = row
+
+            if created_at.tzinfo is None or created_at.utcoffset() is None:
+                # CampusPulse currently stores TIMESTAMP without timezone and
+                # writes NOW() on Supabase/Postgres, which is UTC in this setup.
+                created_at = created_at.replace(tzinfo=timezone.utc)
+
+            reports.append(
+                Report.model_validate(
+                    {
+                        "report_id": report_id,
+                        "incident_id": incident_id,
+                        "raw_text": raw_text,
+                        "category": category_map.get(category, category),
+                        "building": building,
+                        "floor": floor,
+                        "room": room,
+                        "report_status": report_status,
+                        "incident_status": incident_status,
+                        "created_at": created_at,
+                    }
+                )
+            )
+
+        return reports

@@ -5,7 +5,10 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strings"
+	"time"
 
+	"go_backend/ai"
 	database "go_backend/databases"
 	"go_backend/handlers"
 	"go_backend/middleware"
@@ -19,15 +22,78 @@ import (
 
 func main() {
 	// lay gia tri tu file .env
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal(err)
+	if err := godotenv.Load(); err != nil {
+		log.Printf(".env not loaded; using process environment: %v", err)
 	}
 
 	ctx := context.Background()
 
 	databaseURL := os.Getenv("DATABASE_URL")
 	jwtSecret := os.Getenv("JWT_SECRET")
+
+	mlTimeout := 3 * time.Second
+	if raw := strings.TrimSpace(os.Getenv("CAMPUSPULSE_ML_TIMEOUT")); raw != "" {
+		parsed, err := time.ParseDuration(raw)
+		if err != nil || parsed <= 0 {
+			log.Fatal("CAMPUSPULSE_ML_TIMEOUT must be a positive Go duration, e.g. 3s")
+		}
+		mlTimeout = parsed
+	}
+
+	chatTimeout := 60 * time.Second
+	if raw := strings.TrimSpace(os.Getenv("CAMPUSPULSE_CHAT_TIMEOUT")); raw != "" {
+		parsed, err := time.ParseDuration(raw)
+		if err != nil || parsed <= 0 {
+			log.Fatal("CAMPUSPULSE_CHAT_TIMEOUT must be a positive Go duration, e.g. 60s")
+		}
+		chatTimeout = parsed
+	}
+
+	studentAIURL := strings.TrimSpace(os.Getenv("CAMPUSPULSE_STUDENT_AI_URL"))
+	if studentAIURL == "" {
+		studentAIURL = "http://127.0.0.1:8003"
+	}
+
+	adminAIURL := strings.TrimSpace(os.Getenv("CAMPUSPULSE_ADMIN_AI_URL"))
+	if adminAIURL == "" {
+		adminAIURL = "http://127.0.0.1:8001"
+	}
+
+	adminAIKey := strings.TrimSpace(os.Getenv("CAMPUSPULSE_ADMIN_AI_KEY"))
+	if adminAIKey == "" {
+		log.Fatal("CAMPUSPULSE_ADMIN_AI_KEY is required")
+	}
+
+	mlEnabled := strings.ToLower(strings.TrimSpace(os.Getenv("CAMPUSPULSE_ML_ENABLED"))) != "false"
+	mlURL := strings.TrimSpace(os.Getenv("CAMPUSPULSE_ML_API_URL"))
+	if mlURL == "" {
+		mlURL = "http://127.0.0.1:8002"
+	}
+
+	var mlClient *ai.MLClient
+	if mlEnabled {
+		client, mlErr := ai.NewMLClient(mlURL, mlTimeout)
+		if mlErr != nil {
+			log.Fatal(mlErr)
+		}
+		mlClient = client
+		log.Printf("CampusPulse ML validation enabled: %s", mlURL)
+	} else {
+		log.Printf("CampusPulse ML validation disabled by CAMPUSPULSE_ML_ENABLED=false")
+	}
+
+	studentChatClient, err := ai.NewStudentChatClient(studentAIURL, chatTimeout)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	adminChatClient, err := ai.NewAdminChatClient(adminAIURL, adminAIKey, chatTimeout)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	log.Printf("CampusPulse student chatbot: %s", studentAIURL)
+	log.Printf("CampusPulse admin chatbot: %s", adminAIURL)
 
 	if jwtSecret == "" {
 		log.Fatal("JWT_SECRET is required")
@@ -56,8 +122,14 @@ func main() {
 		jwtSecret,
 	)
 
+	var validator services.CompatibilityValidator
+	if mlClient != nil {
+		validator = mlClient
+	}
+
 	observationService := services.NewObservationService(
 		pool,
+		validator,
 	)
 
 	incidentService := services.NewIncidentService(
@@ -75,6 +147,12 @@ func main() {
 
 	incidentHandler := handlers.NewIncidentHandler(
 		incidentService,
+	)
+
+	chatHandler := handlers.NewChatHandler(
+		studentChatClient,
+		adminChatClient,
+		chatTimeout,
 	)
 
 	// router
@@ -157,13 +235,43 @@ func main() {
 		authHandler.Register,
 	)
 
+	api.GET("/ai/health", func(c *gin.Context) {
+		if mlClient == nil {
+			c.JSON(http.StatusOK, gin.H{
+				"enabled": false,
+				"ready":   false,
+			})
+			return
+		}
+
+		healthCtx, cancel := context.WithTimeout(c.Request.Context(), mlTimeout)
+		defer cancel()
+
+		health, err := mlClient.Health(healthCtx)
+		if err != nil {
+			c.JSON(http.StatusServiceUnavailable, gin.H{
+				"enabled": true,
+				"ready":   false,
+				"error":   "ML service unavailable",
+			})
+			return
+		}
+
+		c.JSON(http.StatusOK, gin.H{
+			"enabled":   true,
+			"ready":     health.Ready,
+			"model":     health.Model,
+			"threshold": health.Threshold,
+		})
+	})
+
 	// Public options used by Student/Admin frontend.
 	api.GET("/options", func(c *gin.Context) {
 		c.JSON(
 			http.StatusOK,
 			gin.H{
-				"categories": services.Categories(),
-				"locations": services.Locations(),
+				"categories":        services.Categories(),
+				"locations":         services.Locations(),
 				"rooms_by_location": services.RoomsByLocation(),
 			},
 		)
@@ -205,6 +313,26 @@ func main() {
 	studentReports.DELETE(
 		"/:id",
 		reportHandler.DeleteMine,
+	)
+
+	// STUDENT CHATBOT ROUTE
+	studentChat := protected.Group("/chat/student")
+	studentChat.Use(
+		middleware.RequireRole(models.RoleStudent),
+	)
+	studentChat.POST(
+		"",
+		chatHandler.Student,
+	)
+
+	// ADMIN CHATBOT ROUTE
+	adminChat := protected.Group("/chat/admin")
+	adminChat.Use(
+		middleware.RequireRole(models.RoleStaff),
+	)
+	adminChat.POST(
+		"",
+		chatHandler.Admin,
 	)
 
 	// STAFF INCIDENT ROUTES

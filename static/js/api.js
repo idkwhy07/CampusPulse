@@ -118,6 +118,7 @@ const CampusPulseAPI = (() => {
     logout,
     register,
     requireRole,
+    safeJSON,
   };
 })();
 

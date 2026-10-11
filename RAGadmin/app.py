@@ -10,13 +10,19 @@ from fastapi.staticfiles import StaticFiles
 from config import BASE, Settings
 from rag import AIUnavailable, Chatbot
 from schemas import ChatRequest
-from sources import FileReportSource
+from sources import FileReportSource, PostgresReportSource
 
 
 def create_app(settings=None, provider=None):
     settings = settings or Settings.from_env()
     settings.validate()
-    bot = Chatbot(settings, FileReportSource(settings.reports_path), provider)
+
+    source = (
+        PostgresReportSource(settings.database_url)
+        if settings.data_mode == "postgres"
+        else FileReportSource(settings.reports_path)
+    )
+    bot = Chatbot(settings, source, provider)
 
     @asynccontextmanager
     async def lifespan(app):
@@ -85,6 +91,12 @@ def create_app(settings=None, provider=None):
 
     @app.post("/internal/admin/chat", dependencies=[Depends(authorize)])
     def chat(body: ChatRequest):
+        if settings.data_mode == "postgres":
+            try:
+                bot.sync()
+            except Exception:
+                logging.getLogger(__name__).exception("Không đồng bộ được PostgreSQL trước khi chat.")
+                raise HTTPException(503, "Không đọc được dữ liệu CampusPulse hiện tại")
         return bot.chat(body.question, body.top_k)
 
     if settings.app_mode == "demo":

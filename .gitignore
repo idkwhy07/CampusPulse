@@ -38,3 +38,6 @@ dist/
 # Logs
 python_service/logs/
 *.log
+
+# Local ML runtime
+ml_service/.venv/
