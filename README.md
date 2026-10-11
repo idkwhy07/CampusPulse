@@ -1,14 +1,25 @@
-# CampusPulse
+# 🏫 CampusPulse — Nền tảng tiếp nhận phản ánh và quản lý sự cố trong khuôn viên đại học
 
 **Biến những phản ánh rời rạc thành sự cố có thể hành động.**
 
-CampusPulse là nền tảng tiếp nhận và quản lý sự cố trong khuôn viên trường đại học, kết nối **sinh viên** — những người trực tiếp phát hiện vấn đề — với **bộ phận vận hành** — những người cần một bức tranh tổng thể để xử lý.
+---
 
-Thay vì coi mỗi phản ánh là một ticket độc lập, CampusPulse tổ chức các phản ánh có liên quan thành một **Incident** chung, giúp giảm trùng lặp, làm rõ mức độ ảnh hưởng và minh bạch tiến độ xử lý.
+![Backend: Go + Gin](https://img.shields.io/badge/BACKEND-Go%20%2B%20Gin-00ADD8?style=for-the-badge&labelColor=4B5563)
+![Frontend: HTML, CSS, JavaScript](https://img.shields.io/badge/FRONTEND-HTML%20%2F%20CSS%20%2F%20JS-F59E0B?style=for-the-badge&labelColor=4B5563)
+![AI services: Python + FastAPI](https://img.shields.io/badge/AI%20SERVICES-Python%20%2B%20FastAPI-009688?style=for-the-badge&labelColor=4B5563)
+![Database: PostgreSQL](https://img.shields.io/badge/DATABASE-PostgreSQL-336791?style=for-the-badge&labelColor=4B5563)
 
-> **Thành tích:** Dự án đạt **Giải Nhì Hackathon**. Đây là phiên bản được phát triển từ sản phẩm hackathon và đang tiếp tục được hoàn thiện.
->
-> **Trạng thái dự án:** Prototype / đang phát triển. Một số ý tưởng trong tài liệu thiết kế chưa được triển khai đầy đủ; các mục bên dưới phân biệt rõ chức năng hiện có và định hướng tương lai.
+---
+
+## 📝 Tóm tắt dự án (Abstract)
+
+Trong khuôn viên trường đại học, những vấn đề như mất kết nối Wi-Fi, thiết bị phòng học hư hỏng hay sự cố cơ sở vật chất có thể ảnh hưởng đến nhiều sinh viên cùng lúc. Tuy nhiên, mỗi sinh viên thường gửi phản ánh độc lập, khiến bộ phận vận hành phải đọc và đối chiếu nhiều báo cáo trùng lặp. Cách tiếp nhận này vừa khó phản ánh đúng quy mô sự cố, vừa khiến người gửi không biết vấn đề của mình đã được ghi nhận và xử lý đến đâu.
+
+Để giải quyết bài toán đó, nhóm phát triển **CampusPulse** — nền tảng giúp **chuyển những phản ánh riêng lẻ thành các sự cố tập trung để nhà trường có thể hành động**. Sinh viên gửi báo cáo bằng cách chọn loại vấn đề, tòa nhà, phòng và nhập mô tả. Backend lưu từng báo cáo dưới dạng **Observation**, liên kết các phản ánh có cùng **loại vấn đề và vị trí**, sau đó đưa **Incident** lên bảng quản trị khi số lượng báo cáo đạt ngưỡng. Thay vì xử lý hàng loạt ticket riêng lẻ, quản trị viên có thể theo dõi một sự cố thống nhất, xem các phản ánh liên quan và cập nhật trạng thái **Chưa xử lý → Đang xử lý → Đã xử lý**. Sinh viên theo dõi tiến độ thông qua báo cáo của chính mình.
+
+Hệ thống gồm giao diện web dành cho **sinh viên và quản trị viên**, **Go/Gin REST API**, cơ sở dữ liệu **PostgreSQL** và các dịch vụ **Python/FastAPI** hỗ trợ kiểm tra mức độ phù hợp của nội dung phản ánh và chatbot hỏi đáp. CampusPulse hiện là **prototype được tiếp tục phát triển sau hackathon**, với mục tiêu hoàn thiện cơ chế phát hiện sự cố, nâng cao tính bảo mật và khả năng triển khai thực tế.
+
+> 🏆 **Thành tích:** Giải Nhì Hackathon. Các phần bên dưới mô tả rõ tính năng đã triển khai, giới hạn hiện tại và định hướng phát triển, thay vì coi mọi ý tưởng trong bản thuyết trình là chức năng đã hoàn thiện.
 
 ---
 
