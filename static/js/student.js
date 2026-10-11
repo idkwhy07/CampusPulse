@@ -210,11 +210,11 @@ function validateRoomLocally() {
   return true;
 }
 
-function showToast() {
+function showToast(message = '') {
   toastTitle.textContent = 'Đã gửi report!';
-  toastText.textContent = 'Report của bạn đã được ghi nhận và có thể xem lại trong lịch sử.';
+  toastText.textContent = message || 'Report của bạn đã được ghi nhận và có thể xem lại trong lịch sử.';
   toast.classList.add('show');
-  setTimeout(() => toast.classList.remove('show'), 3200);
+  setTimeout(() => toast.classList.remove('show'), 3600);
 }
 
 function activateTab(tabName) {
@@ -247,25 +247,6 @@ function addChatMessage(role, text) {
   chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
-function getBotReply(message) {
-  const text = message.toLowerCase();
-
-  if (text.includes('wifi') || text.includes('wi-fi') || text.includes('mạng') || text.includes('internet')) {
-    return 'Bạn nên ghi rõ vị trí, thời điểm bắt đầu, biểu hiện cụ thể và phạm vi ảnh hưởng. Ví dụ: “Wi-Fi phòng 24 H1 mất kết nối từ 9h15, nhiều thiết bị trong lớp đều không truy cập được Internet.”';
-  }
-  if (text.includes('xem lại') || text.includes('đã gửi') || text.includes('lịch sử') || text.includes('ở đâu')) {
-    return 'Bạn có thể mở mục “Tất cả báo cáo đã gửi” ở thanh bên trái. Trang đó chỉ hiển thị report của chính bạn.';
-  }
-  if (text.includes('viết') || text.includes('mô tả') || text.includes('rõ ràng') || text.includes('report')) {
-    return 'Một report rõ ràng nên có 4 ý: vấn đề gì, xảy ra ở đâu, bắt đầu khi nào và ảnh hưởng như thế nào. Tránh mô tả quá chung như “bị lỗi” hoặc “không dùng được”.';
-  }
-  if (text.includes('phòng') || text.includes('tòa')) {
-    return 'Hãy chọn đúng tòa nhà và phòng nơi sự cố xảy ra. Nếu vấn đề xuất hiện ở nhiều vị trí, hãy gửi thông tin cho vị trí bạn trực tiếp quan sát được.';
-  }
-
-  return 'Mình có thể hỗ trợ bạn cách viết report, chọn thông tin cần điền và xem lại những report bạn đã gửi. Hãy mô tả điều bạn đang cần.';
-}
-
 form.addEventListener('submit', async (event) => {
   event.preventDefault();
   clearErrors();
@@ -288,7 +269,14 @@ form.addEventListener('submit', async (event) => {
 
     const data = await response.json();
     if (!response.ok) {
-      errorEls.description.textContent = data.error || 'Dữ liệu report chưa hợp lệ.';
+      if (data.code === 'AI_CATEGORY_MISMATCH' && data.ai) {
+        const percent = Math.round(Number(data.ai.probability || 0) * 100);
+        errorEls.description.textContent = `${data.error || 'Mô tả chưa phù hợp với loại sự cố đã chọn.'} AI đánh giá mức phù hợp ${percent}%.`;
+      } else if (data.code === 'AI_UNAVAILABLE') {
+        errorEls.description.textContent = data.error || 'Dịch vụ AI hiện chưa sẵn sàng. Vui lòng thử lại.';
+      } else {
+        errorEls.description.textContent = data.error || 'Dữ liệu report chưa hợp lệ.';
+      }
       return;
     }
 
@@ -297,7 +285,13 @@ form.addEventListener('submit', async (event) => {
     roomInput.disabled = true;
     roomInput.placeholder = 'Chọn tòa nhà trước';
     charCount.textContent = '0';
-    showToast();
+    const ai = data.ai_validation;
+    if (ai?.checked && ai?.matched) {
+      const percent = Math.round(Number(ai.probability || 0) * 100);
+      showToast(`AI đã xác nhận loại sự cố phù hợp với mô tả (${percent}%). Report đã được ghi nhận.`);
+    } else {
+      showToast();
+    }
     await Promise.all([refreshOwnReports(), refreshAllReportsList()]);
   } catch (error) {
     errorEls.description.textContent = 'Không kết nối được server Go. Hãy kiểm tra backend đang chạy.';
@@ -355,16 +349,38 @@ chatInput.addEventListener('keydown', (event) => {
   }
 });
 
-chatForm.addEventListener('submit', (event) => {
+chatForm.addEventListener('submit', async (event) => {
   event.preventDefault();
+
   const message = chatInput.value.trim();
   if (!message) return;
 
   addChatMessage('user', message);
   chatInput.value = '';
   autoSizeChatInput();
-  const reply = getBotReply(message);
-  setTimeout(() => addChatMessage('bot', reply), 180);
+
+  const sendButton = chatForm.querySelector('button[type="submit"]');
+  if (sendButton) sendButton.disabled = true;
+
+  try {
+    const response = await CampusPulseAPI.apiFetch('/api/chat/student', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message }),
+    }, 'STUDENT');
+
+    const data = await CampusPulseAPI.safeJSON(response);
+    if (!response.ok) {
+      throw new Error(data.error || 'Trợ lý AI hiện chưa sẵn sàng.');
+    }
+
+    addChatMessage('bot', data.answer || 'Mình chưa có câu trả lời phù hợp.');
+  } catch (error) {
+    addChatMessage('bot', error.message || 'Không kết nối được trợ lý AI.');
+  } finally {
+    if (sendButton) sendButton.disabled = false;
+    chatInput.focus();
+  }
 });
 
 quickPromptBtns.forEach((button) => {

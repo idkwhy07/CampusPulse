@@ -144,7 +144,6 @@ func InternalStatus(labelOrCode string) (string, bool) {
 	}
 }
 
-
 func Categories() []string {
 	return []string{
 		"Mạng / Đường truyền",

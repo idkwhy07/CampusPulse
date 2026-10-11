@@ -121,3 +121,53 @@
 2026-10-03 10:05:21 | [32mINFO    [0m | knowledge_base.embed:354 | Embedding complete: 6 vectors (3072D each)
 2026-10-03 10:05:21 | [32mINFO    [0m | knowledge_base.vector_store:234 | Adding 6 documents to collection 'student_data'
 2026-10-03 10:05:21 | [32mINFO    [0m | knowledge_base.vector_store:271 | Successfully added 6 documents to 'student_data' (total: 6)
+2026-10-11 12:51:56 | [32mINFO    [0m | core.logger:197 | ============================================================
+2026-10-11 12:51:56 | [32mINFO    [0m | core.logger:198 | Logging initialized successfully
+2026-10-11 12:51:56 | [32mINFO    [0m | core.logger:199 |   Log level : INFO
+2026-10-11 12:51:56 | [32mINFO    [0m | core.logger:200 |   Log file  : logs/agent.log
+2026-10-11 12:51:56 | [32mINFO    [0m | core.logger:201 | ============================================================
+2026-10-11 12:52:15 | [32mINFO    [0m | core.logger:197 | ============================================================
+2026-10-11 12:52:15 | [32mINFO    [0m | core.logger:198 | Logging initialized successfully
+2026-10-11 12:52:15 | [32mINFO    [0m | core.logger:199 |   Log level : INFO
+2026-10-11 12:52:15 | [32mINFO    [0m | core.logger:200 |   Log file  : logs/agent.log
+2026-10-11 12:52:15 | [32mINFO    [0m | core.logger:201 | ============================================================
+2026-10-11 12:56:49 | [32mINFO    [0m | core.logger:197 | ============================================================
+2026-10-11 12:56:49 | [32mINFO    [0m | core.logger:198 | Logging initialized successfully
+2026-10-11 12:56:49 | [32mINFO    [0m | core.logger:199 |   Log level : INFO
+2026-10-11 12:56:49 | [32mINFO    [0m | core.logger:200 |   Log file  : logs/agent.log
+2026-10-11 12:56:49 | [32mINFO    [0m | core.logger:201 | ============================================================
+2026-10-11 12:57:09 | [32mINFO    [0m | core.logger:197 | ============================================================
+2026-10-11 12:57:09 | [32mINFO    [0m | core.logger:198 | Logging initialized successfully
+2026-10-11 12:57:09 | [32mINFO    [0m | core.logger:199 |   Log level : INFO
+2026-10-11 12:57:09 | [32mINFO    [0m | core.logger:200 |   Log file  : logs/agent.log
+2026-10-11 12:57:09 | [32mINFO    [0m | core.logger:201 | ============================================================
+2026-10-11 13:02:21 | [32mINFO    [0m | api.dependencies:47 | ChatService dependency initialized (singleton)
+2026-10-11 13:02:21 | [32mINFO    [0m | service.chat_service:100 | ChatService.ask() | query='Cho tôi toàn bộ thông tin khoa cầu đường'
+2026-10-11 13:02:21 | [32mINFO    [0m | service.chat_service:47 | ChatService: HybridRetriever initialized
+2026-10-11 13:02:28 | [32mINFO    [0m | knowledge_base.vector_store:148 | VectorStore (ChromaDB) initialized LOCAL: path=/Users/idkwhy07/Desktop/hehe/CampusPulse/python_service/data/chroma_db
+2026-10-11 13:02:28 | [32mINFO    [0m | knowledge_base.vector_store:158 | Collection 'student_data' ready — 174 documents
+2026-10-11 13:02:33 | [32mINFO    [0m | knowledge_base.embed:204 | GeminiEmbedder initialized: model=gemini-embedding-2, dimension=3072, batch_size=25
+2026-10-11 13:02:33 | [32mINFO    [0m | knowledge_base.embed:502 | Default Gemini embedder registered successfully
+2026-10-11 13:03:08 | [33mWARNING [0m | knowledge_base.supabase_bm25_storage:56 | Supabase credentials not configured. BM25 origin storage will be disabled.
+2026-10-11 13:03:09 | [31mERROR   [0m | core.redis:79 | Redis unexpected error: Redis URL must specify one of the following schemes (redis://, rediss://, unix://)
+2026-10-11 13:03:09 | [33mWARNING [0m | knowledge_base.cache_manager:349 | Redis not available, Pub/Sub listener disabled
+2026-10-11 13:03:09 | [32mINFO    [0m | knowledge_base.cache_manager:92 | CacheManager initialized | L1: maxsize=100, ttl=1800s | L2: Redis TTL=86400s | Origin: Supabase available=False
+2026-10-11 13:03:47 | [32mINFO    [0m | knowledge_base.tokenize:85 | VietnameseTokenizer initialized with PyVi
+2026-10-11 13:03:47 | [31mERROR   [0m | core.redis:79 | Redis unexpected error: Redis URL must specify one of the following schemes (redis://, rediss://, unix://)
+2026-10-11 13:03:47 | [31mERROR   [0m | core.redis:79 | Redis unexpected error: Redis URL must specify one of the following schemes (redis://, rediss://, unix://)
+2026-10-11 13:03:47 | [33mWARNING [0m | knowledge_base.supabase_bm25_storage:126 | Supabase not available, skip download
+2026-10-11 13:03:47 | [31mERROR   [0m | core.redis:79 | Redis unexpected error: Redis URL must specify one of the following schemes (redis://, rediss://, unix://)
+2026-10-11 13:03:47 | [31mERROR   [0m | core.redis:79 | Redis unexpected error: Redis URL must specify one of the following schemes (redis://, rediss://, unix://)
+2026-10-11 13:03:47 | [32mINFO    [0m | knowledge_base.hybrid_retrievel:267 | HybridSearch completed | query='Cho tôi toàn bộ thông tin khoa cầu đường', mode=dense_only, dense=20, sparse=0, final=10
+2026-10-11 13:03:47 | [33mWARNING [0m | knowledge_base.reranker:153 | GroqReranker: GROQ_API_KEY chưa được cấu hình. Hệ thống sẽ chạy ở chế độ Fallback (sử dụng thứ tự RRF gốc).
+2026-10-11 13:03:47 | [32mINFO    [0m | service.chat_service:54 | ChatService: GroqReranker initialized
+2026-10-11 13:03:48 | [32mINFO    [0m | knowledge_base.llm:372 | DeepSeekProvider initialized | model=deepseek-flash
+2026-10-11 13:03:48 | [32mINFO    [0m | service.chat_service:65 | ChatService: DeepSeekProvider initialized
+2026-10-11 13:03:48 | [32mINFO    [0m | knowledge_base.llm:499 | DeepSeekProvider.ask() | query='Cho tôi toàn bộ thông tin khoa cầu đường...' | estimated_input_tokens≈1751, temperature=0.5
+2026-10-11 13:03:49 | [32mINFO    [0m | httpx2:1085 | HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-10-11 13:04:02 | [32mINFO    [0m | service.chat_service:135 | ChatService.ask() completed | mode=dense_only, candidates=10, reranked=5, fallback=True
+2026-10-11 13:05:18 | [32mINFO    [0m | service.chat_service:100 | ChatService.ask() | query='cho tôi toàn bộ thông tin khoa cầu đường'
+2026-10-11 13:05:19 | [32mINFO    [0m | knowledge_base.hybrid_retrievel:267 | HybridSearch completed | query='cho tôi toàn bộ thông tin khoa cầu đường', mode=dense_only, dense=20, sparse=0, final=10
+2026-10-11 13:05:19 | [32mINFO    [0m | knowledge_base.llm:499 | DeepSeekProvider.ask() | query='cho tôi toàn bộ thông tin khoa cầu đường...' | estimated_input_tokens≈1751, temperature=0.5
+2026-10-11 13:05:19 | [32mINFO    [0m | httpx2:1085 | HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-10-11 13:05:27 | [32mINFO    [0m | service.chat_service:135 | ChatService.ask() completed | mode=dense_only, candidates=10, reranked=5, fallback=True

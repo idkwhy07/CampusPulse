@@ -34,3 +34,6 @@ Thumbs.db
 bin/
 dist/
 *.exe
+
+# Local ML runtime
+ml_service/.venv/

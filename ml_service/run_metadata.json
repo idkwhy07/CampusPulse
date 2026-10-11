@@ -1,0 +1,35 @@
+{
+  "model_name": "Type × TFIDF | LR C=10",
+  "threshold": 0.5,
+  "dataset_name": "data.csv",
+  "dataset_sha256": "98e8864521373442745cd112f27aa44abb4aac538ac64c2d8b592366a6762af2",
+  "versions": {
+    "numpy": "2.1.3",
+    "pandas": "2.2.3",
+    "scipy": "1.16.3",
+    "scikit-learn": "1.6.1",
+    "joblib": "1.6.0"
+  },
+  "random_state": 42,
+  "split_sizes": {
+    "train": 18006,
+    "validation": 6000,
+    "test": 5994
+  },
+  "reserved_excluded": 0,
+  "fixed_guard_char_threshold": 0.9,
+  "selection_metric": "validation F1_macro",
+  "test_metrics": {
+    "Accuracy": 0.9904904904904905,
+    "Precision_macro": 0.990513134961303,
+    "Recall_macro": 0.9906106349998218,
+    "F1_macro": 0.9904901662438116,
+    "ROC_AUC": 0.9996555740654955
+  },
+  "fixed_correct": 10,
+  "limitations": [
+    "group_key không phát hiện mọi trùng nghĩa/template",
+    "10 câu là bộ theo dõi lỗi đã được xem nhiều lần",
+    "P(1) là ước lượng chưa được hiệu chuẩn độc lập"
+  ]
+}
