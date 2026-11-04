@@ -1,6 +1,6 @@
 # 🏫 CampusPulse — Nền tảng tiếp nhận phản ánh và quản lý sự cố trong khuôn viên đại học
 
-**Biến những phản ánh rời rạc thành sự cố có thể hành động.**
+**Biến những phản ánh rời rạc thành sự cố có thể hành động**
 
 ---
 
